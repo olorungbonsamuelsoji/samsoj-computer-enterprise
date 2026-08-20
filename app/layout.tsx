@@ -14,17 +14,24 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: business.name,
-  description: `${business.name} — IT equipment sales, services, repairs, and networking solutions.`,
+  title: `${business.name} | Computer & IT Solutions`,
+  description:
+    "SAMSOJ COMPUTER ENTERPRISE provides computer sales, IT services, repairs, networking, accessories, and technology solutions.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-screen bg-background text-foreground">
+        {children}
+      </body>
     </html>
   );
 }
