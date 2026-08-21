@@ -222,3 +222,143 @@ body {
     padding-inline: 3rem;
   }
 }
+/* =========================================================
+   SAMSOJ COMPUTER ENTERPRISE
+   Modern Technology Background Theme
+   ========================================================= */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(circle at 10% 10%, rgba(37, 99, 235, 0.18), transparent 32%),
+    radial-gradient(circle at 90% 20%, rgba(16, 185, 129, 0.12), transparent 30%),
+    radial-gradient(circle at 50% 90%, rgba(30, 64, 175, 0.14), transparent 35%),
+    linear-gradient(135deg, #f8fafc 0%, #eef4ff 45%, #f0fdf8 100%);
+  background-attachment: fixed;
+}
+
+/* Give the main website a subtle technology atmosphere */
+main {
+  position: relative;
+  isolation: isolate;
+}
+
+main::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.28;
+  background-image:
+    linear-gradient(rgba(37, 99, 235, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37, 99, 235, 0.035) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+
+/* Header */
+header {
+  background: rgba(255, 255, 255, 0.88) !important;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+/* Hero */
+section:first-of-type {
+  background:
+    radial-gradient(circle at 80% 25%, rgba(37, 99, 235, 0.12), transparent 28%),
+    radial-gradient(circle at 20% 75%, rgba(16, 185, 129, 0.08), transparent 30%),
+    transparent !important;
+}
+
+/* Sections */
+section {
+  position: relative;
+}
+
+/* Cards */
+[data-slot="card"],
+.rounded-3xl.border,
+.rounded-2xl.border {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Product and service cards */
+[data-slot="card"] {
+  box-shadow:
+    0 10px 30px rgba(15, 23, 42, 0.06),
+    0 2px 8px rgba(37, 99, 235, 0.04);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+[data-slot="card"]:hover {
+  box-shadow:
+    0 18px 40px rgba(15, 23, 42, 0.10),
+    0 4px 14px rgba(37, 99, 235, 0.08);
+}
+
+/* Technology Hub panel */
+.rounded-3xl {
+  border-color: rgba(148, 163, 184, 0.45);
+}
+
+/* Make the enquiry area feel premium */
+section.bg-primary {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(16, 185, 129, 0.18), transparent 30%),
+    radial-gradient(circle at 85% 80%, rgba(59, 130, 246, 0.20), transparent 32%),
+    linear-gradient(135deg, #0f172a 0%, #172554 50%, #064e3b 100%) !important;
+}
+
+/* Product image areas */
+.bg-muted {
+  background:
+    linear-gradient(135deg, rgba(37, 99, 235, 0.06), rgba(16, 185, 129, 0.05));
+}
+
+/* Footer */
+footer {
+  background:
+    linear-gradient(135deg, #f8fafc 0%, #eef4ff 50%, #ecfdf5 100%) !important;
+}
+
+/* Buttons get a little more polished */
+button,
+a[class*="rounded"],
+a[class*="Button"] {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* Accessibility / mobile */
+@media (max-width: 768px) {
+  body {
+    background-attachment: scroll;
+  }
+
+  main::before {
+    background-size: 34px 34px;
+  }
+}
+
+/* Reduce animation for users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
