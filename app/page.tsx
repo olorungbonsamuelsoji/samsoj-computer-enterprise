@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -80,27 +83,95 @@ const reasons = [
   },
 ];
 
+const enquiryTypes = [
+  "Computer / Laptop",
+  "Printer",
+  "Accessories",
+  "Computer Repair",
+  "Networking",
+  "CCTV / Security",
+  "Web Design",
+  "Other IT Service",
+];
+
 export default function Home() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const [form, setForm] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    need: "",
+    message: "",
+  });
+
+  const handleChange = (
+    event: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    const { name, value } = event.target;
+
+    setForm((current) => ({
+      ...current,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const message = [
+      "Hello SAMSOJ COMPUTER ENTERPRISE,",
+      "",
+      "I would like to make an enquiry.",
+      "",
+      `Name: ${form.name}`,
+      `Phone/WhatsApp: ${form.phone}`,
+      `Email: ${form.email || "Not provided"}`,
+      `What I need: ${form.need}`,
+      "",
+      "Message:",
+      form.message,
+    ].join("\n");
+
+    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+      message
+    )}`;
+
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+  };
+
   return (
     <main>
       {/* HEADER */}
       <header className="sticky top-0 z-50 border-b border-border/60 bg-background/95 backdrop-blur">
         <Container className="flex h-16 items-center justify-between">
-          <a href="#" className="flex items-center gap-3">
+          <a
+            href="#"
+            className="flex items-center gap-3"
+            onClick={closeMobileMenu}
+          >
             <div className="flex size-10 items-center justify-center rounded-xl bg-primary text-sm font-bold text-primary-foreground shadow-sm">
               S
             </div>
 
-            <div className="hidden sm:block">
+            <div>
               <p className="text-sm font-bold tracking-tight text-foreground">
                 SAMSOJ
               </p>
+
               <p className="text-[10px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
                 Computer Enterprise
               </p>
             </div>
           </a>
 
+          {/* DESKTOP NAVIGATION */}
           <nav className="hidden items-center gap-7 md:flex">
             <a
               href="#services"
@@ -131,17 +202,90 @@ export default function Home() {
             </a>
           </nav>
 
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden sm:block"
-          >
-            <Button variant="whatsapp" size="sm">
-              WhatsApp Us
-            </Button>
-          </a>
+          <div className="flex items-center gap-2">
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:block"
+            >
+              <Button variant="whatsapp" size="sm">
+                WhatsApp Us
+              </Button>
+            </a>
+
+            {/* MOBILE MENU BUTTON */}
+            <button
+              type="button"
+              aria-label="Toggle navigation menu"
+              aria-expanded={mobileMenuOpen}
+              onClick={() => setMobileMenuOpen((current) => !current)}
+              className="flex size-10 items-center justify-center rounded-xl border border-border text-xl transition hover:bg-muted md:hidden"
+            >
+              {mobileMenuOpen ? "✕" : "☰"}
+            </button>
+          </div>
         </Container>
+
+        {/* MOBILE NAVIGATION */}
+        {mobileMenuOpen && (
+          <div className="border-t border-border bg-background md:hidden">
+            <Container className="py-4">
+              <nav className="flex flex-col gap-1">
+                <a
+                  href="#services"
+                  onClick={closeMobileMenu}
+                  className="rounded-xl px-4 py-3 text-sm font-medium transition hover:bg-muted"
+                >
+                  Services
+                </a>
+
+                <a
+                  href="#products"
+                  onClick={closeMobileMenu}
+                  className="rounded-xl px-4 py-3 text-sm font-medium transition hover:bg-muted"
+                >
+                  Products
+                </a>
+
+                <a
+                  href="#why-samsoj"
+                  onClick={closeMobileMenu}
+                  className="rounded-xl px-4 py-3 text-sm font-medium transition hover:bg-muted"
+                >
+                  Why SAMSOJ
+                </a>
+
+                <a
+                  href="#contact"
+                  onClick={closeMobileMenu}
+                  className="rounded-xl px-4 py-3 text-sm font-medium transition hover:bg-muted"
+                >
+                  Contact
+                </a>
+
+                <a
+                  href="#enquire"
+                  onClick={closeMobileMenu}
+                  className="mt-2"
+                >
+                  <Button className="w-full">Make an Enquiry</Button>
+                </a>
+
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-1"
+                >
+                  <Button variant="whatsapp" className="w-full">
+                    Chat on WhatsApp
+                  </Button>
+                </a>
+              </nav>
+            </Container>
+          </div>
+        )}
       </header>
 
       {/* HERO */}
@@ -249,6 +393,7 @@ export default function Home() {
                       className="rounded-2xl border border-border bg-background p-4 transition-transform hover:-translate-y-1"
                     >
                       <div className="text-2xl">{icon}</div>
+
                       <p className="mt-3 text-sm font-semibold">{label}</p>
                     </div>
                   ))}
@@ -378,10 +523,7 @@ export default function Home() {
                       rel="noopener noreferrer"
                       className="flex-1"
                     >
-                      <Button
-                        variant="whatsapp"
-                        className="w-full"
-                      >
+                      <Button variant="whatsapp" className="w-full">
                         WhatsApp
                       </Button>
                     </a>
@@ -436,7 +578,7 @@ export default function Home() {
         <Container>
           <div
             id="contact"
-            className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between"
+            className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start"
           >
             <div className="max-w-2xl">
               <p className="text-sm font-semibold uppercase tracking-[0.14em] text-emerald-300">
@@ -448,43 +590,261 @@ export default function Home() {
               </h2>
 
               <p className="mt-4 text-primary-foreground/70">
-                Contact SAMSOJ COMPUTER ENTERPRISE through WhatsApp or email
-                and tell us what you need. We&apos;ll be happy to help.
+                Tell SAMSOJ what you need. Complete the quick enquiry form and
+                we&apos;ll prepare your enquiry for WhatsApp.
               </p>
+
+              <div className="mt-7 space-y-3">
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 rounded-xl border border-primary-foreground/20 bg-primary-foreground/10 px-4 py-3 text-sm font-semibold transition hover:bg-primary-foreground/15"
+                >
+                  <span className="text-xl">💬</span>
+                  Chat directly on WhatsApp
+                </a>
+
+                <a
+                  href={`mailto:${business.email}`}
+                  className="flex items-center gap-3 text-sm text-primary-foreground/80 hover:text-primary-foreground"
+                >
+                  <span>✉️</span>
+                  {business.email}
+                </a>
+              </div>
             </div>
 
-            <div className="flex flex-col gap-3 sm:flex-row">
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto"
-              >
+            <form
+              onSubmit={handleSubmit}
+              className="rounded-3xl border border-primary-foreground/15 bg-background p-5 text-foreground shadow-2xl sm:p-7"
+            >
+              <div className="mb-6">
+                <p className="text-sm font-semibold uppercase tracking-[0.14em] text-accent">
+                  Make an enquiry
+                </p>
+
+                <h3 className="mt-2 text-2xl font-bold">
+                  Tell us what you need
+                </h3>
+
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Your enquiry will be prepared for WhatsApp so you can send it
+                  directly to SAMSOJ.
+                </p>
+              </div>
+
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div>
+                  <label htmlFor="name" className="text-sm font-medium">
+                    Name *
+                  </label>
+
+                  <input
+                    id="name"
+                    name="name"
+                    value={form.name}
+                    onChange={handleChange}
+                    required
+                    placeholder="Your full name"
+                    className="mt-2 h-11 w-full rounded-xl border border-border bg-background px-4 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="phone" className="text-sm font-medium">
+                    Phone / WhatsApp *
+                  </label>
+
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    value={form.phone}
+                    onChange={handleChange}
+                    required
+                    placeholder="080..."
+                    className="mt-2 h-11 w-full rounded-xl border border-border bg-background px-4 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="email" className="text-sm font-medium">
+                    Email
+                  </label>
+
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    placeholder="you@example.com"
+                    className="mt-2 h-11 w-full rounded-xl border border-border bg-background px-4 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="need" className="text-sm font-medium">
+                    What do you need? *
+                  </label>
+
+                  <select
+                    id="need"
+                    name="need"
+                    value={form.need}
+                    onChange={handleChange}
+                    required
+                    className="mt-2 h-11 w-full rounded-xl border border-border bg-background px-4 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
+                  >
+                    <option value="">Select an option</option>
+
+                    {enquiryTypes.map((type) => (
+                      <option key={type} value={type}>
+                        {type}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div className="mt-4">
+                <label htmlFor="message" className="text-sm font-medium">
+                  Message *
+                </label>
+
+                <textarea
+                  id="message"
+                  name="message"
+                  value={form.message}
+                  onChange={handleChange}
+                  required
+                  rows={5}
+                  placeholder="Tell us more about what you need..."
+                  className="mt-2 w-full resize-y rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
+                />
+              </div>
+
+              <div className="mt-5 flex flex-col gap-3 sm:flex-row">
                 <Button
-                  variant="whatsapp"
+                  type="submit"
                   size="lg"
+                  className="w-full sm:flex-1"
+                >
+                  Send Enquiry on WhatsApp
+                </Button>
+
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-full sm:w-auto"
                 >
-                  Chat on WhatsApp
-                </Button>
-              </a>
-
-              <a
-                href={`mailto:${business.email}`}
-                className="w-full sm:w-auto"
-              >
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="w-full border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground hover:text-primary sm:w-auto"
-                >
-                  Send us an email
-                </Button>
-              </a>
-            </div>
+                  <Button
+                    type="button"
+                    variant="whatsapp"
+                    size="lg"
+                    className="w-full"
+                  >
+                    WhatsApp
+                  </Button>
+                </a>
+              </div>
+            </form>
           </div>
         </Container>
       </Section>
+
+      {/* FOOTER */}
+      <footer className="border-t border-border bg-background">
+        <Container className="py-12">
+          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+            <div className="lg:col-span-2">
+              <div className="flex items-center gap-3">
+                <div className="flex size-11 items-center justify-center rounded-xl bg-primary text-sm font-bold text-primary-foreground">
+                  S
+                </div>
+
+                <div>
+                  <p className="font-bold tracking-tight">SAMSOJ</p>
+
+                  <p className="text-[10px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
+                    Computer Enterprise
+                  </p>
+                </div>
+              </div>
+
+              <p className="mt-5 max-w-md text-sm leading-6 text-muted-foreground">
+                Reliable technology solutions for businesses and everyday
+                needs — including computer sales, repairs, networking, CCTV,
+                IT support, and professional web design.
+              </p>
+
+              <div className="mt-5 flex flex-col gap-2 text-sm">
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-accent hover:underline"
+                >
+                  WhatsApp: {business.whatsApp}
+                </a>
+
+                <a
+                  href={`mailto:${business.email}`}
+                  className="text-muted-foreground hover:text-foreground"
+                >
+                  {business.email}
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="font-semibold">Quick Links</h3>
+
+              <nav className="mt-4 flex flex-col gap-3 text-sm text-muted-foreground">
+                <a href="#services" className="hover:text-foreground">
+                  Services
+                </a>
+
+                <a href="#products" className="hover:text-foreground">
+                  Products
+                </a>
+
+                <a href="#why-samsoj" className="hover:text-foreground">
+                  Why SAMSOJ
+                </a>
+
+                <a href="#enquire" className="hover:text-foreground">
+                  Make an Enquiry
+                </a>
+              </nav>
+            </div>
+
+            <div>
+              <h3 className="font-semibold">Our Services</h3>
+
+              <div className="mt-4 flex flex-col gap-3 text-sm text-muted-foreground">
+                <span>Computer Sales</span>
+                <span>Repairs & Support</span>
+                <span>Web Design</span>
+                <span>Networking</span>
+                <span>CCTV & Security</span>
+                <span>IT Solutions</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-10 flex flex-col gap-3 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+            <p>
+              © {new Date().getFullYear()} SAMSOJ COMPUTER ENTERPRISE. All
+              rights reserved.
+            </p>
+
+            <p>Technology solutions you can rely on.</p>
+          </div>
+        </Container>
+      </footer>
     </main>
   );
 }
