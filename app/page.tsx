@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import Image from "next/image";
@@ -17,42 +17,42 @@ const whatsappUrl = `https://wa.me/${whatsappNumber}`;
 
 const services = [
   {
-    icon: "💻",
+    icon: "ðŸ’»",
     title: "Computer Sales",
     description:
       "Get reliable computers and IT equipment suitable for personal, educational, and business needs.",
     action: "Explore our products",
   },
   {
-    icon: "🔧",
+    icon: "ðŸ”§",
     title: "Repairs & Support",
     description:
       "Reliable technical assistance for computer faults, software issues, maintenance, and troubleshooting.",
     action: "Request technical support",
   },
   {
-    icon: "🌐",
+    icon: "ðŸŒ",
     title: "Web Design & Development",
     description:
       "Professional, responsive websites designed to help businesses, organisations, and individuals establish a strong online presence.",
     action: "Discuss your website",
   },
   {
-    icon: "📡",
+    icon: "ðŸ“¡",
     title: "Networking Solutions",
     description:
       "Networking equipment and installation solutions designed for reliable connectivity at home, school, and business.",
     action: "Discuss your network",
   },
   {
-    icon: "📹",
+    icon: "ðŸ“¹",
     title: "CCTV & Security",
     description:
       "Practical CCTV and security technology solutions to help protect homes, offices, shops, and organisations.",
     action: "Enquire about security",
   },
   {
-    icon: "⚙️",
+    icon: "âš™ï¸",
     title: "IT Solutions",
     description:
       "Technology solutions tailored to your specific business, personal, or organisational needs.",
@@ -222,7 +222,7 @@ export default function Home() {
               onClick={() => setMobileMenuOpen((current) => !current)}
               className="flex size-10 items-center justify-center rounded-xl border border-border text-xl transition hover:bg-muted md:hidden"
             >
-              {mobileMenuOpen ? "✕" : "☰"}
+              {mobileMenuOpen ? "âœ•" : "â˜°"}
             </button>
           </div>
         </Container>
@@ -381,12 +381,12 @@ export default function Home() {
 
                 <div className="grid grid-cols-2 gap-4 pt-6">
                   {[
-                    ["💻", "Computers"],
-                    ["🔧", "Repairs"],
-                    ["🌐", "Web Design"],
-                    ["📡", "Networking"],
-                    ["📹", "CCTV"],
-                    ["⚙️", "IT Support"],
+                    ["ðŸ’»", "Computers"],
+                    ["ðŸ”§", "Repairs"],
+                    ["ðŸŒ", "Web Design"],
+                    ["ðŸ“¡", "Networking"],
+                    ["ðŸ“¹", "CCTV"],
+                    ["âš™ï¸", "IT Support"],
                   ].map(([icon, label]) => (
                     <div
                       key={label}
@@ -453,7 +453,7 @@ export default function Home() {
                     href="#enquire"
                     className="mt-5 inline-flex text-sm font-semibold text-accent transition-colors hover:underline"
                   >
-                    {service.action} →
+                    {service.action} â†’
                   </a>
                 </CardContent>
               </Card>
@@ -601,7 +601,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-3 rounded-xl border border-primary-foreground/20 bg-primary-foreground/10 px-4 py-3 text-sm font-semibold transition hover:bg-primary-foreground/15"
                 >
-                  <span className="text-xl">💬</span>
+                  <span className="text-xl">ðŸ’¬</span>
                   Chat directly on WhatsApp
                 </a>
 
@@ -609,7 +609,7 @@ export default function Home() {
                   href={`mailto:${business.email}`}
                   className="flex items-center gap-3 text-sm text-primary-foreground/80 hover:text-primary-foreground"
                 >
-                  <span>✉️</span>
+                  <span>âœ‰ï¸</span>
                   {business.email}
                 </a>
               </div>
@@ -776,7 +776,7 @@ export default function Home() {
 
               <p className="mt-5 max-w-md text-sm leading-6 text-muted-foreground">
                 Reliable technology solutions for businesses and everyday
-                needs — including computer sales, repairs, networking, CCTV,
+                needs â€” including computer sales, repairs, networking, CCTV,
                 IT support, and professional web design.
               </p>
 
@@ -837,7 +837,7 @@ export default function Home() {
 
           <div className="mt-10 flex flex-col gap-3 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
             <p>
-              © {new Date().getFullYear()} SAMSOJ COMPUTER ENTERPRISE. All
+              Â© {new Date().getFullYear()} SAMSOJ COMPUTER ENTERPRISE. All
               rights reserved.
             </p>
 

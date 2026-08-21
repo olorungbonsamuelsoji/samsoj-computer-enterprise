@@ -23,24 +23,19 @@ export function Header() {
   return (
     <>
       <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
-        <Container className="flex h-16 items-center justify-between">
+        <Container className="flex h-20 items-center justify-between">
           <Link
             href="/"
-            className="flex min-w-0 items-center gap-3 rounded-md focus-visible:ring-2 focus-visible:ring-ring"
+            className="flex shrink-0 items-center rounded-md focus-visible:ring-2 focus-visible:ring-ring"
             aria-label={business.name}
           >
-            <span className="flex size-9 shrink-0 items-center justify-center rounded-md bg-primary text-sm font-bold text-primary-foreground">
-              S
-            </span>
-
-            <span className="hidden min-w-0 sm:block">
-              <span className="block truncate text-sm font-bold tracking-tight text-foreground">
-                SAMSOJ
-              </span>
-              <span className="block truncate text-[10px] font-medium tracking-[0.12em] text-muted-foreground">
-                COMPUTER ENTERPRISE
-              </span>
-            </span>
+            <img
+              src="/logo.png"
+              alt="SAMSOJ COMPUTER ENTERPRISE"
+              width={180}
+              height={60}
+              className="h-14 w-auto object-contain"
+            />
           </Link>
 
           <nav
