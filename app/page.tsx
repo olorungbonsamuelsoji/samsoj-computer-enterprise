@@ -17,42 +17,42 @@ const whatsappUrl = `https://wa.me/${whatsappNumber}`;
 
 const services = [
   {
-    icon: "ðŸ’»",
+    icon: "COMPUTER",
     title: "Computer Sales",
     description:
       "Get reliable computers and IT equipment suitable for personal, educational, and business needs.",
     action: "Explore our products",
   },
   {
-    icon: "ðŸ”§",
+    icon: "REPAIR",
     title: "Repairs & Support",
     description:
       "Reliable technical assistance for computer faults, software issues, maintenance, and troubleshooting.",
     action: "Request technical support",
   },
   {
-    icon: "ðŸŒ",
+    icon: "WEB",
     title: "Web Design & Development",
     description:
       "Professional, responsive websites designed to help businesses, organisations, and individuals establish a strong online presence.",
     action: "Discuss your website",
   },
   {
-    icon: "ðŸ“¡",
+    icon: "NETWORK",
     title: "Networking Solutions",
     description:
       "Networking equipment and installation solutions designed for reliable connectivity at home, school, and business.",
     action: "Discuss your network",
   },
   {
-    icon: "ðŸ“¹",
+    icon: "CCTV",
     title: "CCTV & Security",
     description:
       "Practical CCTV and security technology solutions to help protect homes, offices, shops, and organisations.",
     action: "Enquire about security",
   },
   {
-    icon: "âš™ï¸",
+    icon: "IT",
     title: "IT Solutions",
     description:
       "Technology solutions tailored to your specific business, personal, or organisational needs.",
@@ -156,9 +156,7 @@ export default function Home() {
             className="flex items-center gap-3"
             onClick={closeMobileMenu}
           >
-            <div className="flex size-10 items-center justify-center rounded-xl bg-primary text-sm font-bold text-primary-foreground shadow-sm">
-              S
-            </div>
+            <div className="relative size-14 overflow-hidden rounded-xl"><Image src="/logo.png" alt="SAMSOJ Computer Enterprise logo" fill className="object-contain" sizes="56px" /></div>
 
             <div>
               <p className="text-sm font-bold tracking-tight text-foreground">
@@ -374,29 +372,26 @@ export default function Home() {
                     </h2>
                   </div>
 
-                  <div className="flex size-12 items-center justify-center rounded-2xl bg-primary text-xl text-primary-foreground">
-                    S
-                  </div>
+                  <div className="relative size-12 overflow-hidden rounded-2xl"><Image src="/logo.png" alt="SAMSOJ Computer Enterprise logo" fill className="object-contain" sizes="48px" /></div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4 pt-6">
                   {[
-                    ["ðŸ’»", "Computers"],
-                    ["ðŸ”§", "Repairs"],
-                    ["ðŸŒ", "Web Design"],
-                    ["ðŸ“¡", "Networking"],
-                    ["ðŸ“¹", "CCTV"],
-                    ["âš™ï¸", "IT Support"],
-                  ].map(([icon, label]) => (
-                    <div
-                      key={label}
-                      className="rounded-2xl border border-border bg-background p-4 transition-transform hover:-translate-y-1"
-                    >
-                      <div className="text-2xl">{icon}</div>
-
-                      <p className="mt-3 text-sm font-semibold">{label}</p>
-                    </div>
-                  ))}
+  ["💻", "Computers"],
+  ["🔧", "Repairs"],
+  ["🌐", "Web Design"],
+  ["📡", "Networking"],
+  ["📹", "CCTV"],
+  ["⚙️", "IT Support"],
+].map(([icon, label]) => (
+  <div
+    key={label}
+    className="rounded-2xl border border-border bg-background p-4 transition-transform hover:-translate-y-1"
+  >
+    <div className="text-2xl">{icon}</div>
+    <p className="mt-3 text-sm font-semibold">{label}</p>
+  </div>
+))}
                 </div>
 
                 <div className="mt-6 rounded-2xl bg-primary p-5 text-primary-foreground">
@@ -761,9 +756,7 @@ export default function Home() {
           <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
             <div className="lg:col-span-2">
               <div className="flex items-center gap-3">
-                <div className="flex size-11 items-center justify-center rounded-xl bg-primary text-sm font-bold text-primary-foreground">
-                  S
-                </div>
+                <div className="relative size-11 overflow-hidden rounded-xl"><Image src="/logo.png" alt="SAMSOJ Computer Enterprise logo" fill className="object-contain" sizes="44px" /></div>
 
                 <div>
                   <p className="font-bold tracking-tight">SAMSOJ</p>
@@ -848,3 +841,7 @@ export default function Home() {
     </main>
   );
 }
+
+
+
+
