@@ -4,7 +4,7 @@ export type Product = {
   category: string;
   description: string;
   price?: number;
-  image?: string;
+  image: string;
   available: boolean;
 };
 
@@ -15,6 +15,7 @@ export const products: Product[] = [
     category: "Computers",
     description:
       "Reliable laptops, desktop computers, and systems for work, school, business, and everyday use.",
+    image: "/products/laptops.jpg",
     available: true,
   },
   {
@@ -23,6 +24,7 @@ export const products: Product[] = [
     category: "Office Equipment",
     description:
       "Practical printing and office technology solutions for homes, businesses, and organisations.",
+    image: "/products/printers.jpg",
     available: true,
   },
   {
@@ -31,6 +33,7 @@ export const products: Product[] = [
     category: "Accessories",
     description:
       "Keyboards, mice, flash drives, chargers, cables, and other essential computer accessories.",
+    image: "/products/accessories.jpg",
     available: true,
   },
   {
@@ -39,6 +42,7 @@ export const products: Product[] = [
     category: "Networking",
     description:
       "Routers, switches, network cables, access points, and other connectivity equipment.",
+    image: "/products/networking.jpg",
     available: true,
   },
   {
@@ -47,6 +51,7 @@ export const products: Product[] = [
     category: "Computer Hardware",
     description:
       "Hard drives, SSDs, memory, replacement components, and other computer hardware.",
+    image: "/products/storage.jpg",
     available: true,
   },
   {
@@ -55,6 +60,7 @@ export const products: Product[] = [
     category: "Business Equipment",
     description:
       "Point-of-sale equipment and technology solutions for shops and businesses.",
+    image: "/products/pos.jpg",
     available: true,
   },
 ];
