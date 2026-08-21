@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
@@ -342,32 +343,49 @@ export default function Home() {
 
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {products.map((product) => (
-              <Card key={product.id} interactive>
-                <CardContent className="p-6">
-                  <div className="mb-5 flex size-12 items-center justify-center rounded-xl bg-primary/10 text-2xl">
-                    💻
-                  </div>
+              <Card key={product.id} interactive className="overflow-hidden">
+                <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted">
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    className="object-cover transition-transform duration-300 hover:scale-105"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+                </div>
 
-                  <div className="mb-2">
+                <CardContent className="p-6">
+                  <div className="mb-3">
                     <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
                       {product.category}
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-semibold">
-                    {product.name}
-                  </h3>
+                  <h3 className="text-lg font-semibold">{product.name}</h3>
 
                   <p className="mt-2 text-sm leading-6 text-muted-foreground">
                     {product.description}
                   </p>
 
-                  <a
-                    href="#enquire"
-                    className="mt-5 inline-flex text-sm font-semibold text-accent hover:underline"
-                  >
-                    Enquire about this →
-                  </a>
+                  <div className="mt-5 flex flex-col gap-3 sm:flex-row">
+                    <a href="#enquire" className="flex-1">
+                      <Button className="w-full">Enquire Now</Button>
+                    </a>
+
+                    <a
+                      href={whatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1"
+                    >
+                      <Button
+                        variant="whatsapp"
+                        className="w-full"
+                      >
+                        WhatsApp
+                      </Button>
+                    </a>
+                  </div>
                 </CardContent>
               </Card>
             ))}
