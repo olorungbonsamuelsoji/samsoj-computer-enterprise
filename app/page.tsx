@@ -17,42 +17,42 @@ const whatsappUrl = `https://wa.me/${whatsappNumber}`;
 
 const services = [
   {
-    icon: "COMPUTER",
+    icon: "💻",
     title: "Computer Sales",
     description:
       "Get reliable computers and IT equipment suitable for personal, educational, and business needs.",
     action: "Explore our products",
   },
   {
-    icon: "REPAIR",
+    icon: "🔧",
     title: "Repairs & Support",
     description:
       "Reliable technical assistance for computer faults, software issues, maintenance, and troubleshooting.",
     action: "Request technical support",
   },
   {
-    icon: "WEB",
+    icon: "🌐",
     title: "Web Design & Development",
     description:
       "Professional, responsive websites designed to help businesses, organisations, and individuals establish a strong online presence.",
     action: "Discuss your website",
   },
   {
-    icon: "NETWORK",
+    icon: "📡",
     title: "Networking Solutions",
     description:
       "Networking equipment and installation solutions designed for reliable connectivity at home, school, and business.",
     action: "Discuss your network",
   },
   {
-    icon: "CCTV",
+    icon: "📹",
     title: "CCTV & Security",
     description:
       "Practical CCTV and security technology solutions to help protect homes, offices, shops, and organisations.",
     action: "Enquire about security",
   },
   {
-    icon: "IT",
+    icon: "⚙️",
     title: "IT Solutions",
     description:
       "Technology solutions tailored to your specific business, personal, or organisational needs.",
@@ -150,13 +150,22 @@ export default function Home() {
     <main>
       {/* HEADER */}
       <header className="sticky top-0 z-50 border-b border-border/60 bg-background/95 backdrop-blur">
-        <Container className="flex h-16 items-center justify-between">
+        <Container className="flex h-20 items-center justify-between">
           <a
             href="#"
             className="flex items-center gap-3"
             onClick={closeMobileMenu}
           >
-            <div className="relative size-14 overflow-hidden rounded-xl"><Image src="/logo.png" alt="SAMSOJ Computer Enterprise logo" fill className="object-contain" sizes="56px" /></div>
+            <div className="relative size-16 overflow-hidden rounded-xl">
+              <Image
+                src="/logo.png"
+                alt="SAMSOJ Computer Enterprise logo"
+                fill
+                className="object-contain"
+                sizes="64px"
+                priority
+              />
+            </div>
 
             <div>
               <p className="text-sm font-bold tracking-tight text-foreground">
@@ -169,7 +178,6 @@ export default function Home() {
             </div>
           </a>
 
-          {/* DESKTOP NAVIGATION */}
           <nav className="hidden items-center gap-7 md:flex">
             <a
               href="#services"
@@ -212,7 +220,6 @@ export default function Home() {
               </Button>
             </a>
 
-            {/* MOBILE MENU BUTTON */}
             <button
               type="button"
               aria-label="Toggle navigation menu"
@@ -220,12 +227,11 @@ export default function Home() {
               onClick={() => setMobileMenuOpen((current) => !current)}
               className="flex size-10 items-center justify-center rounded-xl border border-border text-xl transition hover:bg-muted md:hidden"
             >
-              {mobileMenuOpen ? "âœ•" : "â˜°"}
+              {mobileMenuOpen ? "×" : "☰"}
             </button>
           </div>
         </Container>
 
-        {/* MOBILE NAVIGATION */}
         {mobileMenuOpen && (
           <div className="border-t border-border bg-background md:hidden">
             <Container className="py-4">
@@ -290,7 +296,7 @@ export default function Home() {
       <section className="relative overflow-hidden border-b border-border bg-background">
         <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/10 via-background to-accent/10" />
 
-        <Container className="relative flex min-h-[calc(100vh-4rem)] items-center py-20 sm:py-24 lg:py-28">
+        <Container className="relative flex min-h-[calc(100vh-5rem)] items-center py-20 sm:py-24 lg:py-28">
           <div className="grid w-full items-center gap-14 lg:grid-cols-[1.1fr_0.9fr]">
             <div className="max-w-3xl">
               <div className="mb-6 inline-flex items-center rounded-full border border-border bg-background/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-accent shadow-sm">
@@ -372,26 +378,35 @@ export default function Home() {
                     </h2>
                   </div>
 
-                  <div className="relative size-12 overflow-hidden rounded-2xl"><Image src="/logo.png" alt="SAMSOJ Computer Enterprise logo" fill className="object-contain" sizes="48px" /></div>
+                  <div className="relative size-16 overflow-hidden rounded-2xl">
+                    <Image
+                      src="/logo.png"
+                      alt="SAMSOJ Computer Enterprise logo"
+                      fill
+                      className="object-contain"
+                      sizes="64px"
+                    />
+                  </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4 pt-6">
                   {[
-  ["💻", "Computers"],
-  ["🔧", "Repairs"],
-  ["🌐", "Web Design"],
-  ["📡", "Networking"],
-  ["📹", "CCTV"],
-  ["⚙️", "IT Support"],
-].map(([icon, label]) => (
-  <div
-    key={label}
-    className="rounded-2xl border border-border bg-background p-4 transition-transform hover:-translate-y-1"
-  >
-    <div className="text-2xl">{icon}</div>
-    <p className="mt-3 text-sm font-semibold">{label}</p>
-  </div>
-))}
+                    ["💻", "Computers"],
+                    ["🔧", "Repairs"],
+                    ["🌐", "Web Design"],
+                    ["📡", "Networking"],
+                    ["📹", "CCTV"],
+                    ["⚙️", "IT Support"],
+                  ].map(([icon, label]) => (
+                    <div
+                      key={label}
+                      className="rounded-2xl border border-border bg-background p-4 transition-transform hover:-translate-y-1"
+                    >
+                      <div className="text-3xl">{icon}</div>
+
+                      <p className="mt-3 text-sm font-semibold">{label}</p>
+                    </div>
+                  ))}
                 </div>
 
                 <div className="mt-6 rounded-2xl bg-primary p-5 text-primary-foreground">
@@ -432,7 +447,7 @@ export default function Home() {
             {services.map((service) => (
               <Card key={service.title} interactive>
                 <CardContent className="p-6">
-                  <div className="mb-5 flex size-12 items-center justify-center rounded-xl bg-primary/10 text-2xl">
+                  <div className="mb-5 flex size-12 items-center justify-center rounded-xl bg-primary/10 text-3xl">
                     {service.icon}
                   </div>
 
@@ -448,7 +463,7 @@ export default function Home() {
                     href="#enquire"
                     className="mt-5 inline-flex text-sm font-semibold text-accent transition-colors hover:underline"
                   >
-                    {service.action} â†’
+                    {service.action} →
                   </a>
                 </CardContent>
               </Card>
@@ -596,7 +611,7 @@ export default function Home() {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-3 rounded-xl border border-primary-foreground/20 bg-primary-foreground/10 px-4 py-3 text-sm font-semibold transition hover:bg-primary-foreground/15"
                 >
-                  <span className="text-xl">ðŸ’¬</span>
+                  <span className="text-xl">💬</span>
                   Chat directly on WhatsApp
                 </a>
 
@@ -604,7 +619,7 @@ export default function Home() {
                   href={`mailto:${business.email}`}
                   className="flex items-center gap-3 text-sm text-primary-foreground/80 hover:text-primary-foreground"
                 >
-                  <span>âœ‰ï¸</span>
+                  <span>✉️</span>
                   {business.email}
                 </a>
               </div>
@@ -756,7 +771,15 @@ export default function Home() {
           <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
             <div className="lg:col-span-2">
               <div className="flex items-center gap-3">
-                <div className="relative size-11 overflow-hidden rounded-xl"><Image src="/logo.png" alt="SAMSOJ Computer Enterprise logo" fill className="object-contain" sizes="44px" /></div>
+                <div className="relative size-14 overflow-hidden rounded-xl">
+                  <Image
+                    src="/logo.png"
+                    alt="SAMSOJ Computer Enterprise logo"
+                    fill
+                    className="object-contain"
+                    sizes="56px"
+                  />
+                </div>
 
                 <div>
                   <p className="font-bold tracking-tight">SAMSOJ</p>
@@ -769,7 +792,7 @@ export default function Home() {
 
               <p className="mt-5 max-w-md text-sm leading-6 text-muted-foreground">
                 Reliable technology solutions for businesses and everyday
-                needs â€” including computer sales, repairs, networking, CCTV,
+                needs — including computer sales, repairs, networking, CCTV,
                 IT support, and professional web design.
               </p>
 
@@ -830,7 +853,7 @@ export default function Home() {
 
           <div className="mt-10 flex flex-col gap-3 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
             <p>
-              Â© {new Date().getFullYear()} SAMSOJ COMPUTER ENTERPRISE. All
+              © {new Date().getFullYear()} SAMSOJ COMPUTER ENTERPRISE. All
               rights reserved.
             </p>
 
@@ -841,7 +864,3 @@ export default function Home() {
     </main>
   );
 }
-
-
-
-
