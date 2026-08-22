@@ -50,7 +50,7 @@ export default function Home() {
               </h1>
 
               <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg lg:text-xl">
-                Explore brand-certified laptops, custom desktop PCs, printers, high-speed networking, CCTV security, and expert computer repairs from SAMSOJ COMPUTER ENTERPRISE.
+                Explore brand-certified laptops, custom desktop PCs, printers, high-speed networking, CCTV security, professional web design & development, and expert computer repairs from SAMSOJ COMPUTER ENTERPRISE.
               </p>
 
               {/* Action Buttons */}
@@ -109,62 +109,102 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right Interactive Hub Card */}
+            {/* Right Brand Showcase Card */}
             <div className="relative hidden lg:block">
-              <div className="absolute -inset-6 rounded-[2.5rem] bg-gradient-to-tr from-primary/20 to-accent/20 blur-2xl" />
+              <div className="absolute -inset-6 rounded-[2.5rem] bg-gradient-to-tr from-primary/20 via-blue-500/10 to-accent/20 blur-2xl" />
 
               <div className="relative overflow-hidden rounded-3xl border border-border bg-card p-8 shadow-2xl backdrop-blur-sm">
-                <div className="flex items-center justify-between border-b border-border pb-6">
-                  <div>
-                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-accent">
-                      SAMSOJ Technology
-                    </p>
-                    <h2 className="mt-1 text-2xl font-extrabold text-foreground">
-                      Solutions Center
-                    </h2>
-                  </div>
-
-                  <div className="relative size-16 overflow-hidden rounded-2xl bg-background border border-border p-1 shadow-sm">
+                {/* Logo & Identity Showcase */}
+                <div className="flex flex-col items-center text-center border-b border-border pb-6">
+                  <div className="relative size-28 overflow-hidden rounded-3xl bg-background border-2 border-primary/20 p-2 shadow-xl shadow-primary/10">
                     <Image
                       src="/logo.png"
                       alt="SAMSOJ Logo"
                       fill
-                      className="object-contain"
-                      sizes="64px"
+                      className="object-contain p-1"
+                      sizes="112px"
+                      priority
                     />
+                  </div>
+
+                  <div className="mt-4">
+                    <div className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-[11px] font-bold text-accent">
+                      <span className="size-1.5 rounded-full bg-accent animate-pulse" />
+                      <span>Verified IT & Hardware Partner</span>
+                    </div>
+
+                    <h2 className="mt-2 text-2xl font-extrabold text-foreground tracking-tight">
+                      SAMSOJ
+                    </h2>
+                    <p className="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">
+                      Computer Enterprise
+                    </p>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-3.5 pt-6">
-                  {business.services.slice(0, 4).map((svc) => (
-                    <div
-                      key={svc.id}
-                      className="group rounded-2xl border border-border bg-background/80 p-4 transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-md"
-                    >
-                      <div className="text-3xl transition-transform group-hover:scale-110">
-                        {svc.icon}
-                      </div>
-                      <p className="mt-3 text-sm font-bold text-foreground">
-                        {svc.title}
+                {/* Trust & Capability Pillars (Non-repeating) */}
+                <div className="mt-6 space-y-3">
+                  <div className="flex items-center gap-3.5 rounded-2xl border border-border/80 bg-background/60 p-3.5 transition-colors hover:border-primary/40">
+                    <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-xl">
+                      🛡️
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold text-foreground">
+                        Certified & Tested Hardware
+                      </p>
+                      <p className="text-[11px] text-muted-foreground">
+                        Quality-verified laptops, desktops, and accessories
                       </p>
                     </div>
-                  ))}
+                  </div>
+
+                  <div className="flex items-center gap-3.5 rounded-2xl border border-border/80 bg-background/60 p-3.5 transition-colors hover:border-primary/40">
+                    <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-xl">
+                      ⚡
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold text-foreground">
+                        Rapid Diagnosis & Repairs
+                      </p>
+                      <p className="text-[11px] text-muted-foreground">
+                        Fast turnaround for motherboard, screen & SSD fixes
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-3.5 rounded-2xl border border-border/80 bg-background/60 p-3.5 transition-colors hover:border-primary/40">
+                    <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-emerald-500/10 text-xl">
+                      📍
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold text-foreground">
+                        Nationwide Service & Support
+                      </p>
+                      <p className="text-[11px] text-muted-foreground">
+                        Safe delivery and onsite network/CCTV installation
+                      </p>
+                    </div>
+                  </div>
                 </div>
 
-                <div className="mt-6 rounded-2xl bg-gradient-to-r from-primary to-blue-900 p-5 text-primary-foreground shadow-md">
-                  <p className="text-sm font-bold">
-                    Need Custom Hardware or IT Maintenance?
-                  </p>
-                  <p className="mt-1 text-xs text-primary-foreground/80 leading-relaxed">
-                    Contact SAMSOJ directly for swift diagnostic advice and tailored corporate technology setups.
-                  </p>
+                {/* Quick Action Footer */}
+                <div className="mt-6 flex gap-2.5">
+                  <a href="#products" className="flex-1">
+                    <Button variant="outline" size="sm" className="w-full text-xs font-bold">
+                      View Catalog
+                    </Button>
+                  </a>
+
                   <a
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="mt-3 inline-flex items-center gap-1.5 text-xs font-bold text-emerald-300 hover:underline"
+                    className="flex-1"
                   >
-                    <span>💬</span> Message Lead Consultant →
+                    <Button variant="whatsapp" size="sm" className="w-full text-xs font-bold gap-1.5">
+                      <span>💬</span>
+                      <span>Chat Support</span>
+                    </Button>
                   </a>
                 </div>
               </div>
