@@ -1,325 +1,63 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { business } from "@/lib/config";
+import { Product } from "@/types/product";
+import { getGeneralWhatsAppUrl, getServiceWhatsAppUrl } from "@/lib/whatsapp";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
-import { business } from "@/lib/config";
-import { products } from "@/lib/products";
-
-const whatsappNumber = business.whatsApp
-  .replace(/\D/g, "")
-  .replace(/^0/, "234");
-
-const whatsappUrl = `https://wa.me/${whatsappNumber}`;
-
-const services = [
-  {
-    icon: "💻",
-    title: "Computer Sales",
-    description:
-      "Get reliable computers and IT equipment suitable for personal, educational, and business needs.",
-    action: "Explore our products",
-  },
-  {
-    icon: "🔧",
-    title: "Repairs & Support",
-    description:
-      "Reliable technical assistance for computer faults, software issues, maintenance, and troubleshooting.",
-    action: "Request technical support",
-  },
-  {
-    icon: "🌐",
-    title: "Web Design & Development",
-    description:
-      "Professional, responsive websites designed to help businesses, organisations, and individuals establish a strong online presence.",
-    action: "Discuss your website",
-  },
-  {
-    icon: "📡",
-    title: "Networking Solutions",
-    description:
-      "Networking equipment and installation solutions designed for reliable connectivity at home, school, and business.",
-    action: "Discuss your network",
-  },
-  {
-    icon: "📹",
-    title: "CCTV & Security",
-    description:
-      "Practical CCTV and security technology solutions to help protect homes, offices, shops, and organisations.",
-    action: "Enquire about security",
-  },
-  {
-    icon: "⚙️",
-    title: "IT Solutions",
-    description:
-      "Technology solutions tailored to your specific business, personal, or organisational needs.",
-    action: "Discuss your IT needs",
-  },
-];
-
-const reasons = [
-  {
-    title: "Quality Products",
-    description:
-      "We focus on practical and dependable technology products that meet your needs.",
-  },
-  {
-    title: "Expert Repairs",
-    description:
-      "We provide careful technical support to help diagnose and resolve computer problems.",
-  },
-  {
-    title: "Reliable Support",
-    description:
-      "We aim to make getting technology assistance simple, clear, and dependable.",
-  },
-  {
-    title: "Business Solutions",
-    description:
-      "From networking to websites, we provide technology solutions that support business growth.",
-  },
-];
-
-const enquiryTypes = [
-  "Computer / Laptop",
-  "Printer",
-  "Accessories",
-  "Computer Repair",
-  "Networking",
-  "CCTV / Security",
-  "Web Design",
-  "Other IT Service",
-];
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { ProductCatalog } from "@/components/products/product-catalog";
+import { EnquirySection } from "@/components/enquiry/enquiry-section";
+import { CustomerAssistant } from "@/components/ai/customer-assistant";
 
 export default function Home() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const whatsappUrl = getGeneralWhatsAppUrl();
 
-  const [form, setForm] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    need: "",
-    message: "",
-  });
-
-  const handleChange = (
-    event: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => {
-    const { name, value } = event.target;
-
-    setForm((current) => ({
-      ...current,
-      [name]: value,
-    }));
+  const handleSelectProduct = (product: Product) => {
+    setSelectedProduct(product);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    const message = [
-      "Hello SAMSOJ COMPUTER ENTERPRISE,",
-      "",
-      "I would like to make an enquiry.",
-      "",
-      `Name: ${form.name}`,
-      `Phone/WhatsApp: ${form.phone}`,
-      `Email: ${form.email || "Not provided"}`,
-      `What I need: ${form.need}`,
-      "",
-      "Message:",
-      form.message,
-    ].join("\n");
-
-    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-      message
-    )}`;
-
-    window.open(url, "_blank", "noopener,noreferrer");
-  };
-
-  const closeMobileMenu = () => {
-    setMobileMenuOpen(false);
+  const handleClearProduct = () => {
+    setSelectedProduct(null);
   };
 
   return (
-    <main>
-      {/* HEADER */}
-      <header className="sticky top-0 z-50 border-b border-border/60 bg-background/95 backdrop-blur">
-        <Container className="flex h-20 items-center justify-between">
-          <a
-            href="#"
-            className="flex items-center gap-3"
-            onClick={closeMobileMenu}
-          >
-            <div className="relative size-16 overflow-hidden rounded-xl">
-              <Image
-                src="/logo.png"
-                alt="SAMSOJ Computer Enterprise logo"
-                fill
-                className="object-contain"
-                sizes="64px"
-                priority
-              />
-            </div>
-
-            <div>
-              <p className="text-sm font-bold tracking-tight text-foreground">
-                SAMSOJ
-              </p>
-
-              <p className="text-[10px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
-                Computer Enterprise
-              </p>
-            </div>
-          </a>
-
-          <nav className="hidden items-center gap-7 md:flex">
-            <a
-              href="#services"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              Services
-            </a>
-
-            <a
-              href="#products"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              Products
-            </a>
-
-            <a
-              href="#why-samsoj"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              Why SAMSOJ
-            </a>
-
-            <a
-              href="#contact"
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-            >
-              Contact
-            </a>
-          </nav>
-
-          <div className="flex items-center gap-2">
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden sm:block"
-            >
-              <Button variant="whatsapp" size="sm">
-                WhatsApp Us
-              </Button>
-            </a>
-
-            <button
-              type="button"
-              aria-label="Toggle navigation menu"
-              aria-expanded={mobileMenuOpen}
-              onClick={() => setMobileMenuOpen((current) => !current)}
-              className="flex size-10 items-center justify-center rounded-xl border border-border text-xl transition hover:bg-muted md:hidden"
-            >
-              {mobileMenuOpen ? "×" : "☰"}
-            </button>
-          </div>
-        </Container>
-
-        {mobileMenuOpen && (
-          <div className="border-t border-border bg-background md:hidden">
-            <Container className="py-4">
-              <nav className="flex flex-col gap-1">
-                <a
-                  href="#services"
-                  onClick={closeMobileMenu}
-                  className="rounded-xl px-4 py-3 text-sm font-medium transition hover:bg-muted"
-                >
-                  Services
-                </a>
-
-                <a
-                  href="#products"
-                  onClick={closeMobileMenu}
-                  className="rounded-xl px-4 py-3 text-sm font-medium transition hover:bg-muted"
-                >
-                  Products
-                </a>
-
-                <a
-                  href="#why-samsoj"
-                  onClick={closeMobileMenu}
-                  className="rounded-xl px-4 py-3 text-sm font-medium transition hover:bg-muted"
-                >
-                  Why SAMSOJ
-                </a>
-
-                <a
-                  href="#contact"
-                  onClick={closeMobileMenu}
-                  className="rounded-xl px-4 py-3 text-sm font-medium transition hover:bg-muted"
-                >
-                  Contact
-                </a>
-
-                <a
-                  href="#enquire"
-                  onClick={closeMobileMenu}
-                  className="mt-2"
-                >
-                  <Button className="w-full">Make an Enquiry</Button>
-                </a>
-
-                <a
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-1"
-                >
-                  <Button variant="whatsapp" className="w-full">
-                    Chat on WhatsApp
-                  </Button>
-                </a>
-              </nav>
-            </Container>
-          </div>
-        )}
-      </header>
-
-      {/* HERO */}
-      <section className="relative overflow-hidden border-b border-border bg-background">
+    <main className="relative min-h-screen">
+      {/* 1. HERO SECTION */}
+      <section className="relative overflow-hidden border-b border-border/80 bg-background pt-12 pb-20 lg:pt-20 lg:pb-28">
+        {/* Background ambient lighting */}
         <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/10 via-background to-accent/10" />
+        <div className="absolute top-1/4 left-1/2 -z-10 -translate-x-1/2 -translate-y-1/2 size-[600px] rounded-full bg-primary/5 blur-3xl" />
 
-        <Container className="relative flex min-h-[calc(100vh-5rem)] items-center py-20 sm:py-24 lg:py-28">
-          <div className="grid w-full items-center gap-14 lg:grid-cols-[1.1fr_0.9fr]">
+        <Container>
+          <div className="grid w-full items-center gap-12 lg:grid-cols-[1.15fr_0.85fr]">
+            {/* Left Content */}
             <div className="max-w-3xl">
-              <div className="mb-6 inline-flex items-center rounded-full border border-border bg-background/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-accent shadow-sm">
-                Technology solutions you can rely on
+              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.15em] text-accent shadow-sm">
+                <span className="flex size-2 rounded-full bg-accent animate-pulse" />
+                <span>{business.tagline}</span>
               </div>
 
-              <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl xl:text-7xl">
-                Reliable technology solutions for your{" "}
-                <span className="text-primary">
-                  business and everyday needs.
+              <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl xl:text-7xl leading-[1.1]">
+                Empowering your work with{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-600 to-accent">
+                  reliable technology.
                 </span>
               </h1>
 
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground sm:text-xl">
-                Explore IT equipment, computer services, repairs, networking,
-                security solutions, and professional web design from SAMSOJ
-                COMPUTER ENTERPRISE.
+              <p className="mt-6 max-w-2xl text-base leading-8 text-muted-foreground sm:text-lg lg:text-xl">
+                Explore brand-certified laptops, custom desktop PCs, printers, high-speed networking, CCTV security, and expert computer repairs from SAMSOJ COMPUTER ENTERPRISE.
               </p>
 
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <a href="#enquire" className="w-full sm:w-auto">
-                  <Button size="lg" className="w-full sm:w-auto">
-                    Make an Enquiry
+              {/* Action Buttons */}
+              <div className="mt-8 flex flex-col gap-3.5 sm:flex-row sm:items-center">
+                <a href="#products" className="w-full sm:w-auto">
+                  <Button size="lg" className="w-full sm:w-auto text-base font-bold shadow-lg shadow-primary/20">
+                    Explore Products
                   </Button>
                 </a>
 
@@ -332,56 +70,64 @@ export default function Home() {
                   <Button
                     variant="whatsapp"
                     size="lg"
-                    className="w-full sm:w-auto"
+                    className="w-full sm:w-auto text-base font-bold gap-2 shadow-lg shadow-emerald-500/10"
                   >
-                    Chat on WhatsApp
+                    <span>💬</span>
+                    <span>Chat on WhatsApp</span>
+                  </Button>
+                </a>
+
+                <a href="#enquire" className="w-full sm:w-auto">
+                  <Button variant="outline" size="lg" className="w-full sm:w-auto text-base font-semibold">
+                    Request a Quote
                   </Button>
                 </a>
               </div>
 
-              <div className="mt-10 grid max-w-xl grid-cols-3 gap-5 border-t border-border pt-7">
+              {/* Metrics Grid */}
+              <div className="mt-12 grid max-w-xl grid-cols-3 gap-6 border-t border-border/80 pt-8">
                 <div>
-                  <p className="text-lg font-bold text-foreground">IT</p>
-                  <p className="mt-1 text-xs text-muted-foreground">
-                    Equipment
+                  <p className="text-2xl font-extrabold text-foreground">100%</p>
+                  <p className="mt-1 text-xs font-medium text-muted-foreground">
+                    Tested Hardware
                   </p>
                 </div>
 
                 <div>
-                  <p className="text-lg font-bold text-foreground">24/7</p>
-                  <p className="mt-1 text-xs text-muted-foreground">
-                    Enquiry access
+                  <p className="text-2xl font-extrabold text-foreground">24/7</p>
+                  <p className="mt-1 text-xs font-medium text-muted-foreground">
+                    Enquiry Access
                   </p>
                 </div>
 
                 <div>
-                  <p className="text-lg font-bold text-foreground">Web</p>
-                  <p className="mt-1 text-xs text-muted-foreground">
-                    Development
+                  <p className="text-2xl font-extrabold text-foreground">Rapid</p>
+                  <p className="mt-1 text-xs font-medium text-muted-foreground">
+                    Technical Support
                   </p>
                 </div>
               </div>
             </div>
 
+            {/* Right Interactive Hub Card */}
             <div className="relative hidden lg:block">
-              <div className="absolute -inset-8 rounded-[2rem] bg-primary/10 blur-3xl" />
+              <div className="absolute -inset-6 rounded-[2.5rem] bg-gradient-to-tr from-primary/20 to-accent/20 blur-2xl" />
 
-              <div className="relative overflow-hidden rounded-3xl border border-border bg-card p-7 shadow-2xl">
-                <div className="flex items-center justify-between border-b border-border pb-5">
+              <div className="relative overflow-hidden rounded-3xl border border-border bg-card p-8 shadow-2xl backdrop-blur-sm">
+                <div className="flex items-center justify-between border-b border-border pb-6">
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.15em] text-accent">
-                      SAMSOJ
+                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-accent">
+                      SAMSOJ Technology
                     </p>
-
-                    <h2 className="mt-1 text-xl font-bold">
-                      Technology Hub
+                    <h2 className="mt-1 text-2xl font-extrabold text-foreground">
+                      Solutions Center
                     </h2>
                   </div>
 
-                  <div className="relative size-16 overflow-hidden rounded-2xl">
+                  <div className="relative size-16 overflow-hidden rounded-2xl bg-background border border-border p-1 shadow-sm">
                     <Image
                       src="/logo.png"
-                      alt="SAMSOJ Computer Enterprise logo"
+                      alt="SAMSOJ Logo"
                       fill
                       className="object-contain"
                       sizes="64px"
@@ -389,34 +135,37 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 pt-6">
-                  {[
-                    ["💻", "Computers"],
-                    ["🔧", "Repairs"],
-                    ["🌐", "Web Design"],
-                    ["📡", "Networking"],
-                    ["📹", "CCTV"],
-                    ["⚙️", "IT Support"],
-                  ].map(([icon, label]) => (
+                <div className="grid grid-cols-2 gap-3.5 pt-6">
+                  {business.services.slice(0, 4).map((svc) => (
                     <div
-                      key={label}
-                      className="rounded-2xl border border-border bg-background p-4 transition-transform hover:-translate-y-1"
+                      key={svc.id}
+                      className="group rounded-2xl border border-border bg-background/80 p-4 transition-all duration-200 hover:-translate-y-1 hover:border-primary/40 hover:shadow-md"
                     >
-                      <div className="text-3xl">{icon}</div>
-
-                      <p className="mt-3 text-sm font-semibold">{label}</p>
+                      <div className="text-3xl transition-transform group-hover:scale-110">
+                        {svc.icon}
+                      </div>
+                      <p className="mt-3 text-sm font-bold text-foreground">
+                        {svc.title}
+                      </p>
                     </div>
                   ))}
                 </div>
 
-                <div className="mt-6 rounded-2xl bg-primary p-5 text-primary-foreground">
-                  <p className="text-sm font-semibold">
-                    Need a technology solution?
+                <div className="mt-6 rounded-2xl bg-gradient-to-r from-primary to-blue-900 p-5 text-primary-foreground shadow-md">
+                  <p className="text-sm font-bold">
+                    Need Custom Hardware or IT Maintenance?
                   </p>
-
-                  <p className="mt-1 text-xs text-primary-foreground/70">
-                    Talk to SAMSOJ today and let&apos;s find the right solution.
+                  <p className="mt-1 text-xs text-primary-foreground/80 leading-relaxed">
+                    Contact SAMSOJ directly for swift diagnostic advice and tailored corporate technology setups.
                   </p>
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-3 inline-flex items-center gap-1.5 text-xs font-bold text-emerald-300 hover:underline"
+                  >
+                    <span>💬</span> Message Lead Consultant →
+                  </a>
                 </div>
               </div>
             </div>
@@ -424,443 +173,108 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* SERVICES */}
-      <Section id="services">
+      {/* 2. SERVICES SECTION */}
+      <Section id="services" className="bg-muted/30">
         <Container>
           <div className="max-w-2xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.14em] text-accent">
-              What we do
-            </p>
-
-            <h2 className="mt-2 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Technology services built around your needs
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.15em] text-accent">
+              <span>⚙️</span> Professional IT Capabilities
+            </div>
+            <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+              Technology services built for your success
             </h2>
-
-            <p className="mt-4 leading-7 text-muted-foreground">
-              From computer sales and repairs to networking, security, and web
-              design, we provide practical technology solutions designed around
-              your needs.
+            <p className="mt-3 text-base leading-7 text-muted-foreground sm:text-lg">
+              From individual computer maintenance to enterprise office network installations, we deliver dependable IT solutions tailored to your operational requirements.
             </p>
           </div>
 
-          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((service) => (
-              <Card key={service.title} interactive>
-                <CardContent className="p-6">
-                  <div className="mb-5 flex size-12 items-center justify-center rounded-xl bg-primary/10 text-3xl">
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {business.services.map((service) => (
+              <Card
+                key={service.id}
+                interactive
+                className="flex flex-col justify-between border border-border/80 bg-card p-6 transition-all duration-300 hover:shadow-xl hover:border-primary/40"
+              >
+                <div>
+                  <div className="mb-5 flex size-14 items-center justify-center rounded-2xl bg-primary/10 text-3xl">
                     {service.icon}
                   </div>
 
-                  <h3 className="text-lg font-semibold text-foreground">
+                  <h3 className="text-lg font-bold text-foreground">
                     {service.title}
                   </h3>
 
-                  <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                  <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground">
                     {service.description}
                   </p>
-
-                  <a
-                    href="#enquire"
-                    className="mt-5 inline-flex text-sm font-semibold text-accent transition-colors hover:underline"
-                  >
-                    {service.action} →
-                  </a>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </Container>
-      </Section>
-
-      {/* PRODUCTS */}
-      <Section id="products" className="bg-muted/30">
-        <Container>
-          <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
-            <div className="max-w-2xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.14em] text-accent">
-                Products
-              </p>
-
-              <h2 className="mt-2 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-                Technology equipment for every need
-              </h2>
-
-              <p className="mt-4 leading-7 text-muted-foreground">
-                Tell us what you need and we can help you find the right
-                equipment for your budget and purpose.
-              </p>
-            </div>
-
-            <a href="#enquire">
-              <Button variant="outline">Request a product</Button>
-            </a>
-          </div>
-
-          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {products.map((product) => (
-              <Card key={product.id} interactive className="overflow-hidden">
-                <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted">
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    fill
-                    className="object-cover transition-transform duration-300 hover:scale-105"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
                 </div>
 
-                <CardContent className="p-6">
-                  <div className="mb-3">
-                    <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
-                      {product.category}
-                    </span>
-                  </div>
-
-                  <h3 className="text-lg font-semibold">{product.name}</h3>
-
-                  <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                    {product.description}
-                  </p>
-
-                  <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-                    <a href="#enquire" className="flex-1">
-                      <Button className="w-full">Enquire Now</Button>
-                    </a>
-
-                    <a
-                      href={whatsappUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1"
-                    >
-                      <Button variant="whatsapp" className="w-full">
-                        WhatsApp
-                      </Button>
-                    </a>
-                  </div>
-                </CardContent>
+                <div className="mt-6 border-t border-border/60 pt-4">
+                  <a
+                    href={getServiceWhatsAppUrl(service.title)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-sm font-bold text-accent transition-colors hover:underline"
+                  >
+                    <span>{service.action}</span>
+                    <span>→</span>
+                  </a>
+                </div>
               </Card>
             ))}
           </div>
         </Container>
       </Section>
 
-      {/* WHY SAMSOJ */}
-      <Section id="why-samsoj">
+      {/* 3. PRODUCT CATALOG COMPONENT */}
+      <ProductCatalog onSelectProductForEnquiry={handleSelectProduct} />
+
+      {/* 4. WHY CHOOSE SAMSOJ */}
+      <Section id="why-samsoj" className="bg-muted/40 border-t border-border/80">
         <Container>
           <div className="max-w-2xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.14em] text-accent">
-              Why SAMSOJ
-            </p>
-
-            <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
-              A simple, dependable technology experience
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-3.5 py-1.5 text-xs font-bold uppercase tracking-[0.15em] text-accent">
+              <span>⭐</span> Our Commitment
+            </div>
+            <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+              Why partner with SAMSOJ
             </h2>
-
-            <p className="mt-4 leading-7 text-muted-foreground">
-              We combine practical technology knowledge with responsive
-              customer support to help you get the solution you actually need.
+            <p className="mt-3 text-base leading-7 text-muted-foreground sm:text-lg">
+              We eliminate guesswork by delivering tested IT hardware, transparent pricing, and responsive support.
             </p>
           </div>
 
-          <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {reasons.map((reason, index) => (
-              <Card key={reason.title}>
-                <CardContent className="p-6">
-                  <div className="mb-5 flex size-10 items-center justify-center rounded-full bg-primary text-sm font-bold text-primary-foreground">
-                    {index + 1}
-                  </div>
+          <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {business.reasons.map((reason, index) => (
+              <Card
+                key={reason.title}
+                className="border border-border/80 bg-card p-6 transition-all duration-200 hover:border-primary/30"
+              >
+                <div className="mb-5 flex size-11 items-center justify-center rounded-xl bg-primary text-base font-extrabold text-primary-foreground shadow-md">
+                  0{index + 1}
+                </div>
 
-                  <h3 className="font-semibold">{reason.title}</h3>
+                <h3 className="text-base font-bold text-foreground">
+                  {reason.title}
+                </h3>
 
-                  <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                    {reason.description}
-                  </p>
-                </CardContent>
+                <p className="mt-2.5 text-xs leading-relaxed text-muted-foreground">
+                  {reason.description}
+                </p>
               </Card>
             ))}
           </div>
         </Container>
       </Section>
 
-      {/* CONTACT / ENQUIRY */}
-      <Section id="enquire" className="bg-primary text-primary-foreground">
-        <Container>
-          <div
-            id="contact"
-            className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start"
-          >
-            <div className="max-w-2xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.14em] text-emerald-300">
-                Get in touch
-              </p>
+      {/* 5. DUAL-MODE ENQUIRY SECTION */}
+      <EnquirySection
+        selectedProduct={selectedProduct}
+        onClearSelectedProduct={handleClearProduct}
+      />
 
-              <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
-                Have a technology need? Let&apos;s talk.
-              </h2>
-
-              <p className="mt-4 text-primary-foreground/70">
-                Tell SAMSOJ what you need. Complete the quick enquiry form and
-                we&apos;ll prepare your enquiry for WhatsApp.
-              </p>
-
-              <div className="mt-7 space-y-3">
-                <a
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 rounded-xl border border-primary-foreground/20 bg-primary-foreground/10 px-4 py-3 text-sm font-semibold transition hover:bg-primary-foreground/15"
-                >
-                  <span className="text-xl">💬</span>
-                  Chat directly on WhatsApp
-                </a>
-
-                <a
-                  href={`mailto:${business.email}`}
-                  className="flex items-center gap-3 text-sm text-primary-foreground/80 hover:text-primary-foreground"
-                >
-                  <span>✉️</span>
-                  {business.email}
-                </a>
-              </div>
-            </div>
-
-            <form
-              onSubmit={handleSubmit}
-              className="rounded-3xl border border-primary-foreground/15 bg-background p-5 text-foreground shadow-2xl sm:p-7"
-            >
-              <div className="mb-6">
-                <p className="text-sm font-semibold uppercase tracking-[0.14em] text-accent">
-                  Make an enquiry
-                </p>
-
-                <h3 className="mt-2 text-2xl font-bold">
-                  Tell us what you need
-                </h3>
-
-                <p className="mt-2 text-sm text-muted-foreground">
-                  Your enquiry will be prepared for WhatsApp so you can send it
-                  directly to SAMSOJ.
-                </p>
-              </div>
-
-              <div className="grid gap-4 sm:grid-cols-2">
-                <div>
-                  <label htmlFor="name" className="text-sm font-medium">
-                    Name *
-                  </label>
-
-                  <input
-                    id="name"
-                    name="name"
-                    value={form.name}
-                    onChange={handleChange}
-                    required
-                    placeholder="Your full name"
-                    className="mt-2 h-11 w-full rounded-xl border border-border bg-background px-4 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="phone" className="text-sm font-medium">
-                    Phone / WhatsApp *
-                  </label>
-
-                  <input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    value={form.phone}
-                    onChange={handleChange}
-                    required
-                    placeholder="080..."
-                    className="mt-2 h-11 w-full rounded-xl border border-border bg-background px-4 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="email" className="text-sm font-medium">
-                    Email
-                  </label>
-
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={form.email}
-                    onChange={handleChange}
-                    placeholder="you@example.com"
-                    className="mt-2 h-11 w-full rounded-xl border border-border bg-background px-4 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="need" className="text-sm font-medium">
-                    What do you need? *
-                  </label>
-
-                  <select
-                    id="need"
-                    name="need"
-                    value={form.need}
-                    onChange={handleChange}
-                    required
-                    className="mt-2 h-11 w-full rounded-xl border border-border bg-background px-4 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
-                  >
-                    <option value="">Select an option</option>
-
-                    {enquiryTypes.map((type) => (
-                      <option key={type} value={type}>
-                        {type}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              <div className="mt-4">
-                <label htmlFor="message" className="text-sm font-medium">
-                  Message *
-                </label>
-
-                <textarea
-                  id="message"
-                  name="message"
-                  value={form.message}
-                  onChange={handleChange}
-                  required
-                  rows={5}
-                  placeholder="Tell us more about what you need..."
-                  className="mt-2 w-full resize-y rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
-                />
-              </div>
-
-              <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full sm:flex-1"
-                >
-                  Send Enquiry on WhatsApp
-                </Button>
-
-                <a
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full sm:w-auto"
-                >
-                  <Button
-                    type="button"
-                    variant="whatsapp"
-                    size="lg"
-                    className="w-full"
-                  >
-                    WhatsApp
-                  </Button>
-                </a>
-              </div>
-            </form>
-          </div>
-        </Container>
-      </Section>
-
-      {/* FOOTER */}
-      <footer className="border-t border-border bg-background">
-        <Container className="py-12">
-          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
-            <div className="lg:col-span-2">
-              <div className="flex items-center gap-3">
-                <div className="relative size-14 overflow-hidden rounded-xl">
-                  <Image
-                    src="/logo.png"
-                    alt="SAMSOJ Computer Enterprise logo"
-                    fill
-                    className="object-contain"
-                    sizes="56px"
-                  />
-                </div>
-
-                <div>
-                  <p className="font-bold tracking-tight">SAMSOJ</p>
-
-                  <p className="text-[10px] font-medium uppercase tracking-[0.16em] text-muted-foreground">
-                    Computer Enterprise
-                  </p>
-                </div>
-              </div>
-
-              <p className="mt-5 max-w-md text-sm leading-6 text-muted-foreground">
-                Reliable technology solutions for businesses and everyday
-                needs — including computer sales, repairs, networking, CCTV,
-                IT support, and professional web design.
-              </p>
-
-              <div className="mt-5 flex flex-col gap-2 text-sm">
-                <a
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-medium text-accent hover:underline"
-                >
-                  WhatsApp: {business.whatsApp}
-                </a>
-
-                <a
-                  href={`mailto:${business.email}`}
-                  className="text-muted-foreground hover:text-foreground"
-                >
-                  {business.email}
-                </a>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="font-semibold">Quick Links</h3>
-
-              <nav className="mt-4 flex flex-col gap-3 text-sm text-muted-foreground">
-                <a href="#services" className="hover:text-foreground">
-                  Services
-                </a>
-
-                <a href="#products" className="hover:text-foreground">
-                  Products
-                </a>
-
-                <a href="#why-samsoj" className="hover:text-foreground">
-                  Why SAMSOJ
-                </a>
-
-                <a href="#enquire" className="hover:text-foreground">
-                  Make an Enquiry
-                </a>
-              </nav>
-            </div>
-
-            <div>
-              <h3 className="font-semibold">Our Services</h3>
-
-              <div className="mt-4 flex flex-col gap-3 text-sm text-muted-foreground">
-                <span>Computer Sales</span>
-                <span>Repairs & Support</span>
-                <span>Web Design</span>
-                <span>Networking</span>
-                <span>CCTV & Security</span>
-                <span>IT Solutions</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-10 flex flex-col gap-3 border-t border-border pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-            <p>
-              © {new Date().getFullYear()} SAMSOJ COMPUTER ENTERPRISE. All
-              rights reserved.
-            </p>
-
-            <p>Technology solutions you can rely on.</p>
-          </div>
-        </Container>
-      </footer>
+      {/* 6. FLOATING AI ASSISTANT WIDGET */}
+      <CustomerAssistant />
     </main>
   );
 }

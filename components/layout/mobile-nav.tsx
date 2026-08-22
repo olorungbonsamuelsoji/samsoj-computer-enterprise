@@ -1,126 +1,105 @@
 "use client";
 
-import { useEffect } from "react";
+import Image from "next/image";
 import { business } from "@/lib/config";
+import { Button } from "@/components/ui/button";
+import { getGeneralWhatsAppUrl } from "@/lib/whatsapp";
+
+interface NavigationItem {
+  label: string;
+  href: string;
+}
 
 interface MobileNavProps {
   open: boolean;
   onClose: () => void;
+  navigation: NavigationItem[];
 }
 
-const navigation = [
-  { label: "Products", href: "#products" },
-  { label: "Services", href: "#services" },
-  { label: "Contact", href: "#contact" },
-  { label: "Enquire", href: "#enquire" },
-];
+export function MobileNav({ open, onClose, navigation }: MobileNavProps) {
+  if (!open) return null;
 
-const whatsappNumber = business.whatsApp.replace(/\D/g, "").replace(/^0/, "234");
-const whatsappUrl = `https://wa.me/${whatsappNumber}`;
-
-export function MobileNav({ open, onClose }: MobileNavProps) {
-  useEffect(() => {
-    if (!open) {
-      document.body.classList.remove("overflow-hidden");
-      return;
-    }
-
-    document.body.classList.add("overflow-hidden");
-
-    function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        onClose();
-      }
-    }
-
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      document.body.classList.remove("overflow-hidden");
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [open, onClose]);
-
-  if (!open) {
-    return null;
-  }
+  const whatsappUrl = getGeneralWhatsAppUrl();
 
   return (
-    <div
-      className="fixed inset-0 z-[100] lg:hidden"
-      role="dialog"
-      aria-modal="true"
-      aria-label="Mobile navigation"
-    >
-      <button
-        type="button"
-        className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-        aria-label="Close navigation"
+    <div className="fixed inset-0 z-50 md:hidden">
+      {/* Backdrop */}
+      <div
+        className="fixed inset-0 bg-background/80 backdrop-blur-sm transition-opacity"
         onClick={onClose}
+        aria-hidden="true"
       />
 
-      <aside className="absolute right-0 top-0 flex h-full w-[min(90%,24rem)] flex-col border-l border-border bg-background shadow-2xl">
-        <div className="flex h-16 items-center justify-between border-b border-border px-4">
-          <span className="font-semibold tracking-tight text-foreground">
-            Menu
-          </span>
+      {/* Drawer */}
+      <div className="fixed inset-y-0 right-0 z-50 w-full max-w-xs border-l border-border bg-card p-6 shadow-2xl transition-transform animate-in slide-in-from-right duration-200">
+        <div className="flex items-center justify-between border-b border-border/80 pb-4">
+          <div className="flex items-center gap-3">
+            <div className="relative size-11 overflow-hidden rounded-xl bg-background border border-border p-1">
+              <Image
+                src="/logo.png"
+                alt="SAMSOJ Logo"
+                fill
+                className="object-contain"
+                sizes="44px"
+              />
+            </div>
+            <div>
+              <p className="text-sm font-bold text-foreground">SAMSOJ</p>
+              <p className="text-[9px] uppercase tracking-wider text-muted-foreground">
+                Computer Enterprise
+              </p>
+            </div>
+          </div>
 
           <button
             type="button"
             onClick={onClose}
-            className="inline-flex size-10 items-center justify-center rounded-md text-foreground hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring"
-            aria-label="Close navigation"
+            className="flex size-9 items-center justify-center rounded-lg border border-border text-foreground hover:bg-muted"
+            aria-label="Close menu"
           >
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              className="size-5"
-              aria-hidden="true"
-            >
-              <path d="M6 6l12 12M18 6L6 18" />
-            </svg>
+            <span className="text-lg leading-none">✕</span>
           </button>
         </div>
 
-        <nav className="flex flex-1 flex-col p-4" aria-label="Mobile navigation">
+        <nav className="mt-6 flex flex-col gap-1.5" aria-label="Mobile Navigation">
           {navigation.map((item) => (
             <a
               key={item.href}
               href={item.href}
               onClick={onClose}
-              className="flex min-h-11 items-center border-b border-border px-2 py-4 text-lg font-medium text-foreground transition-colors hover:text-accent"
+              className="rounded-xl px-4 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-muted active:bg-muted"
             >
               {item.label}
             </a>
           ))}
         </nav>
 
-        <div className="border-t border-border p-4">
-          <p className="mb-3 text-sm text-muted-foreground">
-            Contact {business.name}
-          </p>
+        <div className="mt-8 flex flex-col gap-3 border-t border-border/80 pt-6">
+          <a href="#enquire" onClick={onClose}>
+            <Button className="w-full" size="lg">
+              Make an Enquiry
+            </Button>
+          </a>
 
-          <div className="space-y-2">
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex min-h-11 items-center rounded-md bg-whatsapp px-4 py-3 font-medium text-whatsapp-foreground transition-colors hover:bg-whatsapp/90"
-            >
-              Chat on WhatsApp
-            </a>
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={onClose}
+          >
+            <Button variant="whatsapp" className="w-full gap-2" size="lg">
+              <span>💬</span>
+              <span>Chat on WhatsApp</span>
+            </Button>
+          </a>
 
-            <a
-              href={`mailto:${business.email}`}
-              className="flex min-h-11 items-center rounded-md border border-border px-4 py-3 font-medium text-foreground transition-colors hover:bg-muted"
-            >
-              Send us an email
-            </a>
+          <div className="mt-4 rounded-xl bg-muted/60 p-4 text-xs text-muted-foreground">
+            <p className="font-semibold text-foreground">Direct Contact:</p>
+            <p className="mt-1">📞 {business.phoneDisplay}</p>
+            <p className="mt-1 break-all">✉️ {business.email}</p>
           </div>
         </div>
-      </aside>
+      </div>
     </div>
   );
 }
