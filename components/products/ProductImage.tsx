@@ -32,7 +32,7 @@ export function ProductImage({
 }: ProductImageProps) {
   const [imgError, setImgError] = useState(false);
 
-  const src = product.imageUrl && !imgError ? product.imageUrl : null;
+  const src = product.image && !imgError ? product.image : product.imageUrl;
   const emoji = categoryEmoji[product.categoryId] ?? "📦";
 
   return (
@@ -55,7 +55,7 @@ export function ProductImage({
       ) : (
         <div className="flex flex-col items-center justify-center gap-1 select-none">
           <span className={`${large ? "text-7xl" : "text-6xl"} opacity-55`}>{emoji}</span>
-          {!product.imageUrl && (
+          {!product.image && (
             <span className="text-[9px] font-bold uppercase tracking-wider text-muted-foreground/50 mt-1 px-2 text-center">
               Photo Pending
             </span>

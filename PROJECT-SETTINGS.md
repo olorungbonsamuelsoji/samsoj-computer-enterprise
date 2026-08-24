@@ -87,7 +87,7 @@ SAMSOJ COMPUTER ENTERPRISE Website
 - **Admin URL**: `http://localhost:3000/admin` (or `https://your-domain.com/admin`)
 - **Admin Passkey**: `samsoj2026!`
 - **What You Can Manage in Admin Panel**:
-  - **Products**: Add new products, update prices, change stock status, update direct image URLs (`imageUrl`), edit specifications, update manufacturer datasheet links.
+  - **Products**: Add new products, update prices, change stock status, update local product image paths (`image`), edit specifications, update manufacturer datasheet links. External image URLs (`imageUrl`) are optional fallbacks only.
   - **Services**: Edit service descriptions, pricing, and maintenance items.
   - **Enquiries**: View and manage customer submissions.
   - **Settings**: Change business phone, email, and notification settings.

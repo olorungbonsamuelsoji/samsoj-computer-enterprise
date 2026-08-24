@@ -24,7 +24,6 @@
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/laptops.jpg",
-    "imageUrl": "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/knowledgebase/c06262350.png",
     "featured": true,
     "badge": "Top Corporate Choice",
     "sourceInfo": {
@@ -59,7 +58,6 @@
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/laptops.jpg",
-    "imageUrl": "https://i.dell.com/is/image/DellContent/content/dam/ss2/product-images/dell-client-products/notebooks/latitude-notebooks/latitude-14-7490/dellemc-latitude-7490-nt-mlk-cam-cor-01.psd?fmt=png-alpha&wid=402&hei=402",
     "featured": true,
     "badge": "High Performance",
     "sourceInfo": {
@@ -93,7 +91,6 @@
     "pricingType": "contact",
     "status": "available_on_request",
     "image": "/products/laptops.jpg",
-    "imageUrl": "https://p1.lencnd.com/2020/20200729/a2e96fcc0edfc082ecf2c47df78a9fec.png",
     "featured": false,
     "badge": "Mil-Spec Tested",
     "sourceInfo": {
@@ -160,7 +157,6 @@
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/printers.jpg",
-    "imageUrl": "https://www.canon-europe.com/media/PIXMA-G3411-Main-Image_tcm14-1477001.jpg",
     "featured": true,
     "badge": "Continuous Ink Tank",
     "sourceInfo": {
@@ -195,7 +191,6 @@
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/printers.jpg",
-    "imageUrl": "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/knowledgebase/c06417958.png",
     "featured": true,
     "badge": "Fast Office Laser",
     "sourceInfo": {
@@ -228,7 +223,6 @@
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/networking.jpg",
-    "imageUrl": "https://static.tp-link.com/res/images/products/TL-WR841N_un_v14_00_1510013425316t.jpg",
     "featured": false,
     "badge": "Home & Small Office",
     "sourceInfo": {
@@ -261,7 +255,6 @@
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/networking.jpg",
-    "imageUrl": "https://static.tp-link.com/Deco-M4_US_1.0_01_large_1527127874361w.jpg",
     "featured": true,
     "badge": "Mesh Roaming",
     "sourceInfo": {
@@ -292,7 +285,6 @@
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/networking.jpg",
-    "imageUrl": "https://www.tendacn.com/userfiles/2020/20200901155124_8952.png",
     "featured": false,
     "badge": "Budget Wi-Fi",
     "sourceInfo": {
@@ -326,7 +318,6 @@
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/storage.jpg",
-    "imageUrl": "https://www.seagate.com/content/dam/seagate/assets/direct-store/products/expansion-portable-drives/expansion/amer/STKM1000400-top.png",
     "featured": true,
     "badge": "Plug & Play Backup",
     "sourceInfo": {
@@ -361,7 +352,6 @@
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/storage.jpg",
-    "imageUrl": "https://images.samsung.com/is/image/samsung/p6pim/global/mz-v7s500bw/gallery/global-970-evo-plus-mz-v7s500bw-530819531?$684_547_PNG$",
     "featured": false,
     "badge": "NVMe Speed Upgrade",
     "sourceInfo": {
@@ -395,7 +385,6 @@
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/cctv.jpg",
-    "imageUrl": "https://www.hikvision.com/content/dam/hikvision/products/S000000001/S000000003/S000000003/S000000232/OFR002039/M000037878/images/DS-2CE56D0T-IRPF_1.png",
     "featured": false,
     "badge": "Indoor Full HD",
     "sourceInfo": {
@@ -427,7 +416,6 @@
     "pricingType": "contact",
     "status": "enquire_for_availability",
     "image": "/products/cctv.jpg",
-    "imageUrl": "https://www.hikvision.com/content/dam/hikvision/products/S000000001/S000000011/S000000013/S000000058/OFR000505/M000009411/images/DS-7204HGHI-K1_1.png",
     "featured": true,
     "badge": "Complete Kit",
     "sourceInfo": {
@@ -489,7 +477,6 @@
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/pos.jpg",
-    "imageUrl": "https://www.zkteco.com/uploads/images/products/20200506/ZK-D050_01.png",
     "featured": false,
     "badge": "High-Speed Laser",
     "sourceInfo": {
@@ -521,7 +508,6 @@
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/accessories.jpg",
-    "imageUrl": "https://resource.logitech.com/w_692,c_lpad,ar_4:3,q_auto,f_auto,dpr_1.0/d_transparent.gif/content/dam/logitech/en/products/combos/mk270/gallery/mk270-gallery-1-new.png",
     "featured": false,
     "badge": "Genuine Logitech",
     "sourceInfo": {
@@ -554,7 +540,6 @@
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/printers.jpg",
-    "imageUrl": "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/knowledgebase/c07313783.png",
     "featured": false,
     "badge": "Home & Student",
     "sourceInfo": {
@@ -587,7 +572,6 @@
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/networking.jpg",
-    "imageUrl": "https://static.tp-link.com/TL-SG108_un_V3_01_large_1528971498491m.jpg",
     "featured": false,
     "badge": "Plug & Play Gigabit",
     "sourceInfo": {
@@ -619,7 +603,6 @@
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/storage.jpg",
-    "imageUrl": "https://www.westerndigital.com/content/dam/store/en-us/assets/products/usb-flash-drives/sandisk-ultra-usb-3-0/gallery/sandisk-ultra-usb-3-0-front.png.thumb.1280.1280.png",
     "featured": false,
     "badge": "100MB/s Speed",
     "sourceInfo": {
@@ -652,7 +635,6 @@
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/storage.jpg",
-    "imageUrl": "https://www.kingston.com/images/products/memory/valueram-sodimm-hero.png",
     "featured": false,
     "badge": "Laptop RAM Upgrade",
     "sourceInfo": {
@@ -684,7 +666,6 @@
     "pricingType": "contact",
     "status": "enquire_for_availability",
     "image": "/products/cctv.jpg",
-    "imageUrl": "https://www.hikvision.com/content/dam/hikvision/products/S000000001/S000000002/S000000002/S000000012/OFR000018/M000044569/images/DS-2CD2143G2-I_1.png",
     "featured": false,
     "badge": "4MP AcuSense AI",
     "sourceInfo": {
@@ -748,7 +729,6 @@
     "pricingType": "fixed",
     "status": "limited",
     "image": "/products/desktop.jpg",
-    "imageUrl": "https://i.dell.com/is/image/DellContent/content/dam/ss2/product-images/dell-client-products/desktops/optiplex-desktops/3060-micro/optiplex-3060-micro-hero-504x350-ng.psd?fmt=png-alpha&wid=504&hei=350",
     "featured": false,
     "badge": "Micro Form Factor",
     "sourceInfo": {
@@ -780,7 +760,6 @@
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/accessories.jpg",
-    "imageUrl": "https://ssl-product-images.www8-hp.com/digmedialib/prodimg/knowledgebase/c08170327.png",
     "featured": false,
     "badge": "Office Essential",
     "sourceInfo": {

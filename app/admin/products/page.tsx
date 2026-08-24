@@ -284,12 +284,12 @@ export default function AdminProductsPage() {
                   />
                 </div>
                 <div>
-                  <label className="text-xs font-bold uppercase text-muted-foreground">Direct Product Image URL</label>
+                  <label className="text-xs font-bold uppercase text-muted-foreground">External Image URL (fallback only)</label>
                   <input
                     type="url"
                     value={editingProduct.imageUrl || ""}
                     onChange={(e) => setEditingProduct({ ...editingProduct, imageUrl: e.target.value })}
-                    placeholder="https://... (Direct image link)"
+                    placeholder="https://... (optional fallback)"
                     className="mt-1 h-10 w-full rounded-xl border border-border bg-background px-3 text-xs text-foreground font-mono"
                   />
                 </div>
