@@ -9,6 +9,7 @@ import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { getGeneralWhatsAppUrl } from "@/lib/whatsapp";
 import { MobileNav } from "./mobile-nav";
+import { ThemeToggle } from "./theme-toggle";
 
 const navigation = [
   { label: "Home", href: "/" },
@@ -102,6 +103,8 @@ export function Header() {
                 <span>WhatsApp Us</span>
               </Button>
             </a>
+
+            <ThemeToggle />
 
             {/* Mobile Menu Toggle Button */}
             <button

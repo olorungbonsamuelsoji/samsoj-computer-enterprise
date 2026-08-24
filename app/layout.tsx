@@ -72,6 +72,25 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
     >
+      {/*
+        Inline theme init to prevent flash of wrong theme before hydration.
+        Explicitly sets or removes the dark class based on localStorage
+        or system preference, so the first paint always matches the theme.
+      */}
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            (function() {
+              try {
+                var theme = localStorage.getItem('theme');
+                var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                var isDark = theme === 'dark' || (!theme && prefersDark);
+                document.documentElement.classList.toggle('dark', isDark);
+              } catch (e) {}
+            })();
+          `,
+        }}
+      />
       <body className="flex min-h-screen flex-col bg-background text-foreground selection:bg-primary selection:text-primary-foreground">
         <Header />
         <div className="flex-1">{children}</div>
