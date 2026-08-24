@@ -38,6 +38,23 @@ export async function POST(request: Request) {
       );
     }
 
+    // Log enquiry to persistent JSON database for Admin Inbox
+    try {
+      const { logEnquiry } = await import("@/lib/db/enquiries-repository");
+      await logEnquiry({
+        name: name.trim(),
+        phone: phone.trim(),
+        email: email?.trim() || undefined,
+        need: need.trim(),
+        message: message.trim(),
+        productId: productId || undefined,
+        productName: productName || undefined,
+        channel: "website_email",
+      });
+    } catch (logErr) {
+      console.warn("Failed to log enquiry to database:", logErr);
+    }
+
     if (!resend) {
       console.warn("RESEND_API_KEY is not configured. Simulating enquiry receipt in development.");
       return NextResponse.json({
@@ -54,6 +71,20 @@ export async function POST(request: Request) {
       ? `New Product Enquiry: ${productName} - ${name}`
       : `New Website Enquiry: ${need} - ${name}`;
 
+    // Format customer phone for WhatsApp reply link
+    const cleanPhoneDigits = phone.replace(/\D/g, "");
+    const formattedWaNumber = cleanPhoneDigits.startsWith("234")
+      ? cleanPhoneDigits
+      : cleanPhoneDigits.startsWith("0")
+      ? `234${cleanPhoneDigits.slice(1)}`
+      : `234${cleanPhoneDigits}`;
+
+    const replyWhatsAppText = encodeURIComponent(
+      `Hello ${name}, thank you for reaching out to SAMSOJ COMPUTER ENTERPRISE regarding "${need}". How may we assist you today?`
+    );
+    const customerWhatsAppLink = `https://wa.me/${formattedWaNumber}?text=${replyWhatsAppText}`;
+    const emailReplyLink = email?.trim() ? `mailto:${email.trim()}?subject=RE: ${encodeURIComponent(subjectLine)}` : "";
+
     const textContent = `
 New enquiry received from the SAMSOJ COMPUTER ENTERPRISE website.
 
@@ -69,6 +100,12 @@ Customer Message:
 -----------------
 ${message}
 
+Quick Actions:
+--------------
+• Reply via WhatsApp: ${customerWhatsAppLink}
+${emailReplyLink ? `• Reply via Email: ${emailReplyLink}` : ""}
+• Call Customer: tel:${phone}
+
 Time: ${new Date().toLocaleString("en-GB", { timeZone: "Africa/Lagos" })} (WAT)
     `.trim();
 
@@ -78,15 +115,21 @@ Time: ${new Date().toLocaleString("en-GB", { timeZone: "Africa/Lagos" })} (WAT)
 <head>
   <style>
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #1e293b; line-height: 1.5; }
-    .card { max-width: 600px; margin: 0 auto; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; }
+    .card { max-width: 600px; margin: 0 auto; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; background: #ffffff; }
     .header { background: #0f172a; color: #ffffff; padding: 20px 24px; }
-    .header h2 { margin: 0; font-size: 20px; }
-    .badge { display: inline-block; background: #10b981; color: #ffffff; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: bold; margin-top: 6px; }
+    .header h2 { margin: 0; font-size: 20px; color: #ffffff; }
+    .badge { display: inline-block; background: #22c55e; color: #ffffff; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: bold; margin-top: 6px; }
     .body { padding: 24px; background: #ffffff; }
-    .field { margin-bottom: 16px; }
-    .label { font-size: 12px; text-transform: uppercase; color: #64748b; font-weight: bold; }
+    .field { margin-bottom: 14px; }
+    .label { font-size: 11px; text-transform: uppercase; color: #64748b; font-weight: bold; letter-spacing: 0.05em; }
     .value { font-size: 15px; color: #0f172a; margin-top: 2px; }
-    .message-box { background: #f8fafc; border-left: 4px solid #2563eb; padding: 14px 16px; border-radius: 6px; margin-top: 16px; }
+    .message-box { background: #f8fafc; border-left: 4px solid #2563eb; padding: 14px 16px; border-radius: 6px; margin-top: 14px; color: #334155; font-size: 14px; line-height: 1.6; }
+    .actions { margin-top: 24px; padding: 18px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; }
+    .action-title { font-size: 13px; font-weight: bold; color: #166534; margin-bottom: 12px; }
+    .btn { display: inline-block; padding: 10px 18px; border-radius: 8px; font-weight: bold; text-decoration: none; font-size: 14px; margin-right: 8px; margin-bottom: 8px; }
+    .btn-wa { background: #25D366; color: #ffffff !important; }
+    .btn-email { background: #2563eb; color: #ffffff !important; }
+    .btn-call { background: #0f172a; color: #ffffff !important; }
     .footer { background: #f1f5f9; padding: 14px 24px; font-size: 12px; color: #64748b; text-align: center; }
   </style>
 </head>
@@ -103,7 +146,7 @@ Time: ${new Date().toLocaleString("en-GB", { timeZone: "Africa/Lagos" })} (WAT)
       </div>
       <div class="field">
         <div class="label">Phone / WhatsApp</div>
-        <div class="value"><a href="https://wa.me/234${phone.replace(/\D/g, "").replace(/^0/, "")}">${phone}</a></div>
+        <div class="value"><a href="${customerWhatsAppLink}"><strong>${phone}</strong></a></div>
       </div>
       <div class="field">
         <div class="label">Email</div>
@@ -125,6 +168,14 @@ Time: ${new Date().toLocaleString("en-GB", { timeZone: "Africa/Lagos" })} (WAT)
       <div class="field">
         <div class="label">Customer Message</div>
         <div class="message-box">${message.replace(/\n/g, "<br/>")}</div>
+      </div>
+
+      <!-- Quick Reply Actions for SAMSOJ -->
+      <div class="actions">
+        <div class="action-title">⚡ Instant Reply Actions:</div>
+        <a href="${customerWhatsAppLink}" class="btn btn-wa" target="_blank">💬 Reply to Customer on WhatsApp</a>
+        ${email?.trim() ? `<a href="mailto:${email.trim()}?subject=RE: ${encodeURIComponent(subjectLine)}" class="btn btn-email">✉️ Reply via Email</a>` : ""}
+        <a href="tel:${phone}" class="btn btn-call">📞 Call Customer</a>
       </div>
     </div>
     <div class="footer">
@@ -158,6 +209,7 @@ Time: ${new Date().toLocaleString("en-GB", { timeZone: "Africa/Lagos" })} (WAT)
     return NextResponse.json({
       success: true,
       id: data?.id,
+      customerWhatsAppLink,
       message: "Your enquiry has been successfully delivered to SAMSOJ!",
     });
   } catch (error) {

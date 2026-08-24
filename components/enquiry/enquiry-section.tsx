@@ -8,9 +8,12 @@ import { Button } from "@/components/ui/button";
 import { buildWhatsAppUrl } from "@/lib/whatsapp";
 
 const enquiryOptions = [
-  "Laptops & Computers",
+  "Computer Maintenance & Diagnostics",
+  "Computer Formatting / Resetting (From ₦10,000)",
+  "Remote IT Support (AnyDesk / Online)",
+  "Hardware Repairs & Screen/Battery Fix",
+  "Laptops & Computers Sales",
   "Printers & Scanners",
-  "Computer Repairs & Maintenance",
   "Networking & Structured Cabling",
   "CCTV & Security Surveillance",
   "POS & Business Software",
@@ -34,6 +37,8 @@ export function EnquirySection({
     type: "success" | "error";
     text: string;
   } | null>(null);
+
+  const [whatsappFollowUp, setWhatsappFollowUp] = useState<string | null>(null);
 
   const [form, setForm] = useState({
     name: "",
@@ -92,6 +97,20 @@ export function EnquirySection({
     e.preventDefault();
     setIsSubmitting(true);
     setStatusMessage(null);
+    setWhatsappFollowUp(null);
+
+    // Pre-calculate fallback WhatsApp link in case customer also wants to chat
+    const waLines = [
+      `Hello ${business.name},`,
+      "I just submitted an enquiry on your website:",
+      `• Customer Name: ${form.name}`,
+      `• Phone: ${form.phone}`,
+      `• Need: ${activeCategory}`,
+      "",
+      "Message:",
+      form.message,
+    ];
+    const instantWaUrl = buildWhatsAppUrl(waLines.join("\n"));
 
     try {
       const payload = {
@@ -116,8 +135,9 @@ export function EnquirySection({
       if (data.success) {
         setStatusMessage({
           type: "success",
-          text: data.message || "Thank you! Your enquiry has been sent. We will respond promptly.",
+          text: data.message || "Thank you! Your enquiry has been delivered to SAMSOJ.",
         });
+        setWhatsappFollowUp(instantWaUrl);
         setForm({
           name: "",
           phone: "",
@@ -130,7 +150,7 @@ export function EnquirySection({
       } else {
         setStatusMessage({
           type: "error",
-          text: data.message || "Failed to submit enquiry. Please try via WhatsApp.",
+          text: data.message || "Failed to submit enquiry. Please reach out directly on WhatsApp.",
         });
       }
     } catch {
@@ -303,7 +323,23 @@ export function EnquirySection({
                     : "bg-red-500/10 border-red-500/30 text-red-700 dark:text-red-300"
                 }`}
               >
-                {statusMessage.text}
+                <p>{statusMessage.text}</p>
+                {whatsappFollowUp && (
+                  <div className="mt-3 pt-3 border-t border-emerald-500/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+                    <span className="font-semibold text-emerald-800 dark:text-emerald-200">
+                      Want an instant reply on your phone?
+                    </span>
+                    <a
+                      href={whatsappFollowUp}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 rounded-lg bg-whatsapp px-3 py-1.5 text-xs font-bold text-whatsapp-foreground shadow-sm hover:brightness-105 transition"
+                    >
+                      <span>💬</span>
+                      <span>Chat on WhatsApp now</span>
+                    </a>
+                  </div>
+                )}
               </div>
             )}
 

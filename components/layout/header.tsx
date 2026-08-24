@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { business } from "@/lib/config";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
@@ -10,27 +11,29 @@ import { getGeneralWhatsAppUrl } from "@/lib/whatsapp";
 import { MobileNav } from "./mobile-nav";
 
 const navigation = [
-  { label: "Services", href: "#services" },
-  { label: "Products", href: "#products" },
-  { label: "Why SAMSOJ", href: "#why-samsoj" },
-  { label: "Enquire", href: "#enquire" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "🛠️ Computer Maintenance", href: "/maintenance" },
+  { label: "🛒 Products", href: "/products" },
+  { label: "💰 Pricing", href: "/pricing" },
+  { label: "📞 Contact & Enquire", href: "/contact" },
 ];
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
   const whatsappUrl = getGeneralWhatsAppUrl();
 
   return (
     <>
-      <header className="sticky top-0 z-40 border-b border-border/80 bg-background/90 backdrop-blur-md transition-all">
+      <header className="sticky top-0 z-40 border-b border-border/80 bg-background/95 backdrop-blur-md shadow-sm transition-all">
         <Container className="flex h-20 items-center justify-between">
+          {/* Prominent SAMSOJ Business Logo Identity */}
           <Link
             href="/"
-            className="flex items-center gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-xl"
+            className="flex items-center gap-3.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-2xl p-1.5 transition-all"
             aria-label={`${business.name} Home`}
           >
-            <div className="relative size-14 overflow-hidden rounded-xl bg-card border border-border/60 p-1 shadow-sm transition-transform duration-200 group-hover:scale-105">
+            <div className="relative size-14 overflow-hidden rounded-2xl bg-gradient-to-br from-card via-background to-primary/5 border-2 border-primary/30 p-1 shadow-md shadow-primary/10 transition-all duration-300 group-hover:scale-105 group-hover:border-primary/60">
               <Image
                 src="/logo.png"
                 alt="SAMSOJ Computer Enterprise Logo"
@@ -41,13 +44,16 @@ export function Header() {
               />
             </div>
 
-            <div>
-              <p className="text-base font-extrabold tracking-tight text-foreground sm:text-lg">
-                SAMSOJ
-              </p>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-accent">
+            <div className="flex flex-col">
+              <span className="text-lg font-black tracking-tight text-foreground sm:text-xl flex items-center gap-1.5">
+                <span className="bg-gradient-to-r from-primary via-blue-600 to-accent bg-clip-text text-transparent">
+                  SAMSOJ
+                </span>
+                <span className="size-2 rounded-full bg-accent animate-pulse hidden sm:inline-block" />
+              </span>
+              <span className="text-[9px] font-extrabold uppercase tracking-[0.22em] text-accent bg-accent/10 px-2 py-0.5 rounded-full border border-accent/20 w-fit">
                 Computer Enterprise
-              </p>
+              </span>
             </div>
           </Link>
 
@@ -56,27 +62,34 @@ export function Header() {
             className="hidden items-center gap-1 md:flex"
             aria-label="Main navigation"
           >
-            {navigation.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="rounded-lg px-3.5 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-              >
-                {item.label}
-              </a>
-            ))}
+            {navigation.map((item) => {
+              const isActive = pathname === item.href;
+              return (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className={`rounded-xl px-3.5 py-2 text-sm font-semibold transition-all ${
+                    isActive
+                      ? "bg-primary/10 text-primary border border-primary/20 shadow-sm font-bold"
+                      : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Action Buttons */}
           <div className="flex items-center gap-3">
-            <a
-              href="#enquire"
+            <Link
+              href="/contact"
               className="hidden lg:inline-flex"
             >
-              <Button variant="outline" size="sm">
+              <Button variant="outline" size="sm" className="font-bold">
                 Get a Quote
               </Button>
-            </a>
+            </Link>
 
             <a
               href={whatsappUrl}

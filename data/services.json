@@ -1,0 +1,283 @@
+[
+  {
+    "id": "computer-maintenance-remote-support",
+    "slug": "computer-maintenance-remote-support",
+    "title": "Computer Maintenance & Remote IT Support",
+    "shortDescription": "Comprehensive hardware maintenance, performance tuning, and instant remote desktop troubleshooting for individuals and business workstations.",
+    "fullDescription": "Keep your computer running smoothly with dependable maintenance, troubleshooting, and technical support from SAMSOJ COMPUTER ENTERPRISE. Whether you need physical maintenance or remote assistance, we help diagnose and resolve computer-related problems efficiently.",
+    "icon": "🛠️",
+    "category": "maintenance",
+    "pricing": {
+      "type": "diagnostic_variable",
+      "priceLabel": "Price varies based on specification & issue",
+      "priceSubtitle": "Cost depends on hardware specs, nature/severity of problem, and required components"
+    },
+    "deliveryMode": "physical_and_remote",
+    "features": [
+      "Computer diagnostics & fault troubleshooting",
+      "Remote computer support (AnyDesk / TeamViewer)",
+      "System optimization & performance tuning",
+      "Windows installation & configuration",
+      "Driver and system software updates",
+      "Thermal cleaning & cooling fan servicing",
+      "Office IT maintenance retainers for businesses"
+    ],
+    "isFeatured": true,
+    "isPublished": true,
+    "isCoreMaintenance": true,
+    "ctaLabel": "Request Maintenance",
+    "ctaAction": "whatsapp_maintenance",
+    "sortOrder": 1
+  },
+  {
+    "id": "computer-formatting-os-install",
+    "slug": "computer-formatting-os-install",
+    "title": "Windows 7 to 11 Pro Installation & Formatting",
+    "shortDescription": "Genuine Windows 7, 8, 10, or 11 Pro installation, custom disk partitioning & configuration, complete with pre-installation data backup protection.",
+    "fullDescription": "Professional computer formatting, custom disk partitioning, and genuine Windows 7 to 11 Pro installation complete with essential driver setup, performance tuning, and activation.",
+    "icon": "🪟",
+    "category": "maintenance",
+    "pricing": {
+      "type": "starting_from",
+      "basePrice": 10000,
+      "priceLabel": "Starting from ₦10,000",
+      "priceSubtitle": "Price depends on Windows version, drive partition backup needs, and system specifications"
+    },
+    "deliveryMode": "physical_and_remote",
+    "features": [
+      "Genuine Windows 7 to 11 Pro Setup & Activation",
+      "Custom Disk Partitioning & Drive Allocation",
+      "Complete data backup & safe migration",
+      "Full chipset, graphics & audio driver pack",
+      "SSD boot & system performance optimization"
+    ],
+    "isFeatured": true,
+    "isPublished": true,
+    "isCoreMaintenance": true,
+    "ctaLabel": "Book Windows Setup",
+    "ctaAction": "whatsapp_maintenance",
+    "sortOrder": 2
+  },
+  {
+    "id": "remote-computer-support",
+    "slug": "remote-computer-support",
+    "title": "Remote Computer Troubleshooting & Assistance",
+    "shortDescription": "Fast, secure remote desktop troubleshooting — resolve software conflicts, printer driver bugs, slow speeds, and errors without leaving your home or office.",
+    "fullDescription": "Instant online technical assistance using secure remote desktop software (AnyDesk, TeamViewer, Remote Desktop). No need to bring your PC down physically — we resolve software issues remotely across Nigeria.",
+    "icon": "🌐",
+    "category": "remote_it",
+    "pricing": {
+      "type": "diagnostic_variable",
+      "priceLabel": "Price depends on nature & complexity of issue",
+      "priceSubtitle": "Affordable session rates based on diagnosis and estimated resolution time"
+    },
+    "deliveryMode": "remote_only",
+    "features": [
+      "100% remote — no physical travel needed",
+      "Software installation & glitch resolution",
+      "Printer, scanner & Wi-Fi driver fixes",
+      "Virus, popup & malware removal",
+      "Real-time screen-sharing guidance"
+    ],
+    "isFeatured": true,
+    "isPublished": true,
+    "isCoreMaintenance": true,
+    "ctaLabel": "Get Remote Support",
+    "ctaAction": "whatsapp_remote",
+    "sortOrder": 3
+  },
+  {
+    "id": "software-installation-suite",
+    "slug": "software-installation-suite",
+    "title": "Multi-Category Software & App Setup",
+    "shortDescription": "Installation and configuration of PC Games, Educational software, Security & Antivirus, Utility tools, Media editors/players, and Productivity apps.",
+    "fullDescription": "We install and configure software of different kinds for home, office, school, and gaming PCs — including games, educational suites, antivirus & security protection, system utilities, media players/codecs, and office tools.",
+    "icon": "📦",
+    "category": "maintenance",
+    "pricing": {
+      "type": "starting_from",
+      "basePrice": 5000,
+      "priceLabel": "Starting from ₦5,000",
+      "priceSubtitle": "Price depends on software package size, quantity, and licensing"
+    },
+    "deliveryMode": "physical_and_remote",
+    "features": [
+      "PC Games & Gaming Software Setup",
+      "Educational & E-Learning Software Suites",
+      "Security, Antivirus & Malware Protection",
+      "System Utility & Optimization Tools",
+      "Media Players, Video/Audio Editors & Codec Packs",
+      "Office & Graphic Design Applications"
+    ],
+    "isFeatured": true,
+    "isPublished": true,
+    "isCoreMaintenance": true,
+    "ctaLabel": "Install Software",
+    "ctaAction": "whatsapp_maintenance",
+    "sortOrder": 4
+  },
+  {
+    "id": "hardware-repairs-diagnostics",
+    "slug": "hardware-repairs-diagnostics",
+    "title": "Hardware Diagnostics & Component Repairs",
+    "shortDescription": "Expert board-level diagnosis, laptop screen replacements, battery fixes, power port repairs, keyboard replacements, and motherboard servicing.",
+    "fullDescription": "Certified technician repair services for desktop PCs and laptops. We diagnose dead systems, flickering screens, liquid spill damage, charging issues, and damaged ports using high-precision diagnostic tools.",
+    "icon": "🔧",
+    "category": "repairs",
+    "pricing": {
+      "type": "diagnostic_variable",
+      "priceLabel": "Price varies based on PC specification and issue",
+      "priceSubtitle": "Quotation provided after physical diagnosis & assessment of required replacement parts"
+    },
+    "deliveryMode": "physical_only",
+    "features": [
+      "Motherboard component-level repairs",
+      "Laptop screen, hinge & chassis replacement",
+      "Charging port (DC jack) & battery replacement",
+      "RAM & NVMe SSD hardware upgrades",
+      "Overheating & thermal paste renewal"
+    ],
+    "isFeatured": true,
+    "isPublished": true,
+    "isCoreMaintenance": true,
+    "ctaLabel": "Book Hardware Repair",
+    "ctaAction": "whatsapp_maintenance",
+    "sortOrder": 4
+  },
+  {
+    "id": "computer-sales",
+    "slug": "computer-sales",
+    "title": "Computer & Laptop Sales",
+    "shortDescription": "Brand-certified laptops, custom Core i5/i7 desktop PCs, monitors, and accessories tailored for business, school, and heavy workloads.",
+    "fullDescription": "High-performance brand-new and certified desktop computers, laptops, and workstations tailored for office, school, and professional use with verified specifications and warranties.",
+    "icon": "💻",
+    "category": "general",
+    "pricing": {
+      "type": "custom_quote",
+      "priceLabel": "Catalog & Custom Quotes",
+      "priceSubtitle": "Explore fixed-price products in our catalog or request a custom build quotation"
+    },
+    "deliveryMode": "physical_only",
+    "features": [
+      "100% tested genuine hardware",
+      "HP, Dell, Lenovo business series",
+      "Custom Core i5 / i7 desktop towers",
+      "Nationwide secure dispatch"
+    ],
+    "isFeatured": true,
+    "isPublished": true,
+    "isCoreMaintenance": false,
+    "ctaLabel": "Explore Computers",
+    "ctaAction": "enquiry_form",
+    "sortOrder": 5
+  },
+  {
+    "id": "web-development",
+    "slug": "web-development",
+    "title": "Web Design & Development",
+    "shortDescription": "Modern, fast, SEO-ready websites, eCommerce platforms, and custom business software tailored to scale your brand presence online.",
+    "fullDescription": "Professional web design and development services using modern, high-speed technologies. Fully mobile-responsive, WhatsApp-integrated, and optimized for search engine visibility.",
+    "icon": "🚀",
+    "category": "web_dev",
+    "pricing": {
+      "type": "starting_from",
+      "basePrice": 85000,
+      "priceLabel": "Starting from ₦85,000",
+      "priceSubtitle": "Cost depends on number of pages, custom features, integrations, and database requirements"
+    },
+    "deliveryMode": "remote_only",
+    "features": [
+      "Custom responsive design (Mobile, Tablet, PC)",
+      "WhatsApp & Direct Enquiry integration",
+      "SEO & Google Search optimization",
+      "High-speed cloud hosting setup"
+    ],
+    "isFeatured": true,
+    "isPublished": true,
+    "isCoreMaintenance": false,
+    "ctaLabel": "Discuss Website Project",
+    "ctaAction": "whatsapp_general",
+    "sortOrder": 6
+  },
+  {
+    "id": "networking-solutions",
+    "slug": "networking-solutions",
+    "title": "Networking & Structured Cabling",
+    "shortDescription": "Enterprise LAN/WAN design, long-range Wi-Fi access points, router/switch setup, and structured network cabling for homes and offices.",
+    "fullDescription": "Complete network infrastructure design and deployment. We handle Cat6 structured cabling, PoE switch setup, router firewalls, and mesh Wi-Fi to keep your workplace connected seamlessly.",
+    "icon": "📡",
+    "category": "networking",
+    "pricing": {
+      "type": "custom_quote",
+      "priceLabel": "Site Assessment & Quote",
+      "priceSubtitle": "Quote generated based on building layout, cable meters, and network capacity needed"
+    },
+    "deliveryMode": "onsite_visit",
+    "features": [
+      "Cat6 structured cabling & patch panels",
+      "Managed PoE switches & router firewalls",
+      "High-power indoor & outdoor Wi-Fi APs",
+      "Network bandwidth optimization"
+    ],
+    "isFeatured": false,
+    "isPublished": true,
+    "isCoreMaintenance": false,
+    "ctaLabel": "Plan Network Setup",
+    "ctaAction": "whatsapp_general",
+    "sortOrder": 7
+  },
+  {
+    "id": "cctv-security",
+    "slug": "cctv-security",
+    "title": "CCTV & Security Surveillance",
+    "shortDescription": "4K Ultra HD night-vision cameras, DVR/NVR surveillance setup, and 24/7 mobile live streaming for commercial and residential properties.",
+    "fullDescription": "Professional CCTV security surveillance design and installation. High-definition night-vision cameras with remote phone viewing, motion detection alarms, and tamper-resistant NVR storage.",
+    "icon": "📹",
+    "category": "cctv",
+    "pricing": {
+      "type": "custom_quote",
+      "priceLabel": "Custom Security Packages",
+      "priceSubtitle": "Package pricing based on 4, 8, or 16 camera channels and storage drive size"
+    },
+    "deliveryMode": "onsite_visit",
+    "features": [
+      "4K Ultra HD day & night vision cameras",
+      "Real-time mobile phone live streaming",
+      "NVR / DVR surveillance storage hard drives",
+      "Professional cabling & neat installation"
+    ],
+    "isFeatured": false,
+    "isPublished": true,
+    "isCoreMaintenance": false,
+    "ctaLabel": "Get Security Quote",
+    "ctaAction": "whatsapp_general",
+    "sortOrder": 8
+  },
+  {
+    "id": "pos-it-solutions",
+    "slug": "pos-it-solutions",
+    "title": "POS Systems & Retail Solutions",
+    "shortDescription": "Touchscreen POS terminals, thermal receipt printers, laser barcode scanners, and inventory software for retail stores and supermarkets.",
+    "fullDescription": "Complete retail hardware and software solutions to streamline checkout, monitor inventory, prevent stock loss, and automate receipts for retail shops, supermarkets, and pharmacies.",
+    "icon": "🧾",
+    "category": "pos",
+    "pricing": {
+      "type": "custom_quote",
+      "priceLabel": "Retail Setup Quote",
+      "priceSubtitle": "Pricing varies based on POS hardware combination and inventory software licensing"
+    },
+    "deliveryMode": "physical_and_remote",
+    "features": [
+      "All-in-one touchscreen POS terminals",
+      "High-speed 80mm thermal receipt printers",
+      "1D / 2D laser barcode scanners",
+      "Inventory & accounting software setup"
+    ],
+    "isFeatured": false,
+    "isPublished": true,
+    "isCoreMaintenance": false,
+    "ctaLabel": "Consult on POS Setup",
+    "ctaAction": "whatsapp_general",
+    "sortOrder": 9
+  }
+]

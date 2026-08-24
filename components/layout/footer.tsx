@@ -1,4 +1,5 @@
-﻿import Image from "next/image";
+import Link from "next/link";
+import Image from "next/image";
 import { business } from "@/lib/config";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
@@ -9,43 +10,44 @@ export function Footer() {
   const whatsappUrl = getGeneralWhatsAppUrl();
 
   return (
-    <footer className="border-t border-border bg-card/60 backdrop-blur-md">
+    <footer className="border-t border-border/80 bg-card text-card-foreground">
       <Container className="py-12 lg:py-16">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-5">
-          <div className="lg:col-span-2">
-            <div className="flex items-center gap-3">
-              <div className="relative size-14 overflow-hidden rounded-xl bg-background border border-border p-1 shadow-sm">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="space-y-4">
+            <Link href="/" className="flex items-center gap-3">
+              <div className="relative size-12 overflow-hidden rounded-xl bg-background border border-border p-1">
                 <Image
                   src="/logo.png"
                   alt="SAMSOJ Logo"
                   fill
                   className="object-contain"
-                  sizes="56px"
+                  sizes="48px"
                 />
               </div>
 
               <div>
-                <p className="text-base font-extrabold tracking-tight text-foreground">
+                <p className="text-base font-extrabold text-foreground">
                   SAMSOJ
                 </p>
-                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-accent">
+                <p className="text-[10px] font-semibold uppercase tracking-wider text-accent">
                   Computer Enterprise
                 </p>
               </div>
-            </div>
+            </Link>
 
-            <p className="mt-4 max-w-sm text-sm leading-6 text-muted-foreground">
-              {business.description}
+            <p className="text-xs leading-relaxed text-muted-foreground">
+              Your trusted partner for computer maintenance, remote IT support, tested hardware sales, networking, CCTV, and web development.
             </p>
 
-            <div className="mt-6 flex flex-wrap gap-2">
+            <div className="flex gap-2.5 pt-2">
               <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button variant="whatsapp" size="sm" className="gap-2 text-xs">
-                  <span>WhatsApp: {business.whatsApp}</span>
+                <Button variant="whatsapp" size="sm" className="text-xs gap-1.5">
+                  <span>💬</span>
+                  <span>WhatsApp</span>
                 </Button>
               </a>
 
@@ -63,44 +65,39 @@ export function Footer() {
             </h3>
             <ul className="mt-4 space-y-2.5 text-sm text-muted-foreground">
               <li>
-                <a href="#services" className="transition-colors hover:text-primary">
-                  Our Services
-                </a>
+                <Link href="/maintenance" className="transition-colors hover:text-primary">
+                  Computer Maintenance
+                </Link>
               </li>
               <li>
-                <a href="#products" className="transition-colors hover:text-primary">
-                  Product Catalogue
-                </a>
+                <Link href="/products" className="transition-colors hover:text-primary">
+                  Products Catalogue
+                </Link>
               </li>
               <li>
-                <a href="#why-samsoj" className="transition-colors hover:text-primary">
-                  Why Choose SAMSOJ
-                </a>
+                <Link href="/pricing" className="transition-colors hover:text-primary">
+                  Transparent Pricing
+                </Link>
               </li>
               <li>
-                <a href="#enquire" className="transition-colors hover:text-primary">
-                  Request a Quotation
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="transition-colors hover:text-primary">
-                  Contact & Support
-                </a>
+                <Link href="/contact" className="transition-colors hover:text-primary">
+                  Contact & Enquiry Desk
+                </Link>
               </li>
             </ul>
           </div>
 
           <div>
             <h3 className="text-sm font-bold uppercase tracking-wider text-foreground">
-              Services
+              Core Services
             </h3>
             <ul className="mt-4 space-y-2.5 text-sm text-muted-foreground">
-              <li>Computers & Laptops</li>
-              <li>Repairs & Maintenance</li>
-              <li>Web Design & Development</li>
-              <li>Networking & Cabling</li>
-              <li>CCTV & Security Systems</li>
-              <li>POS & Business Software</li>
+              <li><Link href="/maintenance" className="hover:text-primary transition">🛠️ Computer Maintenance</Link></li>
+              <li><Link href="/maintenance" className="hover:text-primary transition">🌐 Remote IT Support</Link></li>
+              <li><Link href="/pricing" className="hover:text-primary transition">💎 Transparent Pricing</Link></li>
+              <li><Link href="/products" className="hover:text-primary transition">💻 Hardware Catalog</Link></li>
+              <li><Link href="/contact" className="hover:text-primary transition">🚀 Web Design & Dev</Link></li>
+              <li><Link href="/contact" className="hover:text-primary transition">📡 Networking & CCTV</Link></li>
             </ul>
           </div>
 
@@ -126,9 +123,14 @@ export function Footer() {
           <p>
             (C) {currentYear} {business.name}. All rights reserved.
           </p>
-          <p className="font-medium text-foreground/80">
-            {business.tagline}
-          </p>
+          <div className="flex items-center gap-4">
+            <p className="font-medium text-foreground/80">
+              {business.tagline}
+            </p>
+            <a href="/admin" className="text-muted-foreground/60 hover:text-accent font-semibold transition">
+              🔐 Admin CMS
+            </a>
+          </div>
         </div>
       </Container>
     </footer>

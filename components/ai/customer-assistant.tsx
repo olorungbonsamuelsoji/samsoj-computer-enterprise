@@ -15,53 +15,58 @@ const initialMessages: Message[] = [
   {
     id: "welcome",
     sender: "bot",
-    text: `Hello! 👋 I am the SAMSOJ Virtual Assistant. How can I assist you today?`,
+    text: `Hello! 👋 I am the SAMSOJ Virtual Assistant. How can I assist you with Computer Maintenance, Remote Support, or IT Equipment today?`,
     quickReplies: [
-      "Buy Laptops & PCs",
-      "Book Computer Repair",
-      "Networking & Wi-Fi",
-      "Web Design Quote",
-      "CCTV Installation",
+      "Computer Maintenance & Remote IT",
+      "Windows 7-11 Setup (From ₦10,000)",
+      "Software Installation Setup",
+      "How Remote Support Works",
+      "Hardware Diagnostics & Cost",
       "Chat with Human",
     ],
   },
 ];
 
 const knowledgeBase: Record<string, { reply: string; quickReplies?: string[] }> = {
+  "computer maintenance & remote it": {
+    reply:
+      "We specialize in computer maintenance and remote troubleshooting! Services include computer diagnostics, Windows installation, formatting/resetting, software error fixes, system optimization, driver updates, and remote desktop support. You can bring your device to us or we can connect to your PC remotely via AnyDesk/TeamViewer.",
+    quickReplies: ["Formatting Price (From ₦10,000)", "How Remote Support Works", "Chat with Human"],
+  },
+  "windows 7-11 setup (from ₦10,000)": {
+    reply:
+      "Genuine Windows 7, 8, 10, or 11 Pro installation starts from ₦10,000. It includes custom disk partitioning, complete driver configuration, and setup space for software of different kinds — including PC games, educational software, security & antivirus, system utilities, media players/editors, and office tools.",
+    quickReplies: ["Software Installation Setup", "How Remote Support Works", "Chat with Human"],
+  },
+  "software installation setup": {
+    reply:
+      "We install and configure software of all kinds for home, school, office, and gaming PCs: 🎮 PC Games, 📚 Educational & E-Learning software, 🛡️ Security & Antivirus protection, ⚙️ System Utilities, 🎥 Media Players & Audio/Video Editors, and 💼 Office & Graphic Design apps.",
+    quickReplies: ["Windows 7-11 Setup (From ₦10,000)", "Chat with Human"],
+  },
+  "how remote support works": {
+    reply:
+      "With Remote Support, you do NOT need to travel! We connect securely to your PC online using AnyDesk or TeamViewer with your permission. We troubleshoot software errors, printer drivers, virus popups, and slow performance while you watch on your screen in real time.",
+    quickReplies: ["Get Remote Support Now", "Chat with Human"],
+  },
+  "get remote support now": {
+    reply:
+      "Click below to launch an instant WhatsApp chat with our lead technician so we can connect to your PC remotely!",
+    quickReplies: ["Chat with Human"],
+  },
+  "hardware diagnostics & cost": {
+    reply:
+      "Hardware repair prices depend on: 1) Your PC specifications, 2) Severity of the fault, 3) Authentic replacement parts required (screen, SSD, battery), and 4) Labor bench time. We provide a transparent diagnosis before starting any repair work.",
+    quickReplies: ["Formatting Price (From ₦10,000)", "Chat with Human"],
+  },
   "buy laptops & pcs": {
     reply:
-      "We offer tested HP, Dell, and Lenovo business laptops as well as customized Core i5/i7 desktop workstations with warranties. You can browse our live catalogue above or request a specific brand on WhatsApp!",
+      "We offer tested HP, Dell, and Lenovo business laptops as well as customized Core i5/i7 desktop workstations with warranties. You can browse our live catalogue above or request a custom build on WhatsApp!",
     quickReplies: ["Laptops price range", "Custom Desktop Workstation", "Chat with Human"],
   },
   "laptops price range": {
     reply:
       "Our business laptops range from fast Core i5 models (from ₦350,000) to Core i7 high-performance models (₦485,000+). We also have budget student laptops available.",
     quickReplies: ["View Catalog", "Chat with Human"],
-  },
-  "book computer repair": {
-    reply:
-      "We diagnose and repair motherboard faults, broken laptop screens, slow hard drive issues (SSD upgrades), power faults, and Windows OS installations. Bring your device or chat with our technician!",
-    quickReplies: ["How fast is repair?", "Chat with Human"],
-  },
-  "how fast is repair?": {
-    reply:
-      "Standard software and SSD upgrades are completed within 24 hours. Hardware diagnostic and board-level repairs take 24-48 hours depending on component availability.",
-    quickReplies: ["Chat with Human"],
-  },
-  "networking & wi-fi": {
-    reply:
-      "We provide office LAN cabling, long-range Wi-Fi access points, router/firewall configuration, and multi-port Gigabit PoE switches for homes, offices, and cyber cafes.",
-    quickReplies: ["Request Network Site Visit", "Chat with Human"],
-  },
-  "web design quote": {
-    reply:
-      "We build modern, responsive, fast, and SEO-optimized business websites, eCommerce stores, and portals. Every site is mobile-friendly and tailored to your brand.",
-    quickReplies: ["Chat with Human"],
-  },
-  "cctv installation": {
-    reply:
-      "We install 4K Ultra HD night vision IP cameras with mobile phone live streaming, motion alarms, and secure NVR storage for homes, stores, and warehouses.",
-    quickReplies: ["Chat with Human"],
   },
   "chat with human": {
     reply:

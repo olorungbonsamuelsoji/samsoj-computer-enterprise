@@ -1,0 +1,25 @@
+﻿{
+  "name": "SAMSOJ COMPUTER ENTERPRISE",
+  "shortName": "SAMSOJ",
+  "tagline": "Technology Solutions You Can Rely On",
+  "description": "Your trusted technology partner for computer maintenance & remote IT support, computer diagnostics, hardware sales, networking solutions, CCTV security systems, POS equipment, and professional web design.",
+  "whatsApp": "08079570725",
+  "whatsAppInternational": "2348079570725",
+  "phone": "08079570725",
+  "phoneDisplay": "+234 807 957 0725",
+  "email": "samsojcomputerenterprise@gmail.com",
+  "country": "Nigeria",
+  "currency": "NGN",
+  "currencySymbol": "₦",
+  "hours": "Monday - Saturday: 8:00 AM - 6:00 PM",
+  "serviceAvailability": "24/7 WhatsApp Online & Remote Support Access",
+  "address": "Nigeria",
+  "remoteSupportAvailable": true,
+  "announcement": {
+    "enabled": true,
+    "badge": "Remote IT Support Ready",
+    "message": "Need quick PC troubleshooting without traveling? Connect with SAMSOJ via Remote Support!",
+    "linkText": "Get Remote Support",
+    "linkUrl": "#remote-support"
+  }
+}

@@ -1,0 +1,42 @@
+﻿[
+  {
+    "id": "faq-remote-support-how",
+    "question": "How does Remote IT Support work with SAMSOJ?",
+    "answer": "You do not need to bring your computer physically to our workshop. With your permission, we connect securely to your PC using tools like AnyDesk or TeamViewer. You can watch everything we do on your screen in real time as we diagnose and fix software bugs, install updates, configure printers, or remove viruses.",
+    "category": "remote_support",
+    "isPublished": true,
+    "sortOrder": 1
+  },
+  {
+    "id": "faq-formatting-cost",
+    "question": "How much does computer formatting and Windows installation cost?",
+    "answer": "Computer formatting and genuine Windows installation starts from ₦10,000. The final cost may vary slightly based on specific Windows edition requirements, data backup size, or additional specialized software configuration.",
+    "category": "pricing",
+    "isPublished": true,
+    "sortOrder": 2
+  },
+  {
+    "id": "faq-hardware-repair-cost",
+    "question": "Why do hardware repairs not have a single fixed price?",
+    "answer": "Hardware issues (such as broken screens, motherboards, dead batteries, or liquid damage) require physical diagnosis. The price depends on your PC model & specification, the severity of the fault, and the exact replacement components required. We always give you a transparent diagnosis and quotation before starting work.",
+    "category": "pricing",
+    "isPublished": true,
+    "sortOrder": 3
+  },
+  {
+    "id": "faq-turnaround-time",
+    "question": "How fast are maintenance and repair turnaround times?",
+    "answer": "Remote support sessions are handled instantly or scheduled within a few hours. System formatting and SSD upgrades are usually completed within 24 hours. Board-level hardware repairs take 24 to 48 hours depending on component availability.",
+    "category": "maintenance",
+    "isPublished": true,
+    "sortOrder": 4
+  },
+  {
+    "id": "faq-business-retainers",
+    "question": "Do you offer computer maintenance contracts for offices and schools?",
+    "answer": "Yes! We provide monthly and quarterly IT maintenance retainers for corporate offices, schools, and retail businesses. This includes regular system health checks, network optimization, antivirus updates, and priority on-call remote & on-site support.",
+    "category": "maintenance",
+    "isPublished": true,
+    "sortOrder": 5
+  }
+]

@@ -1,0 +1,446 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { Service, ServicePricingType, ServiceDeliveryMode } from "@/types/service";
+
+export default function AdminServicesPage() {
+  const [services, setServices] = useState<Service[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [editingService, setEditingService] = useState<Partial<Service> | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [message, setMessage] = useState<{ text: string; type: "success" | "error" } | null>(null);
+
+  const [refreshTrigger, setRefreshTrigger] = useState(0);
+
+  useEffect(() => {
+    let ignore = false;
+    fetch("/api/services?all=true")
+      .then((res) => res.json())
+      .then((data) => {
+        if (!ignore && data.success && data.services) {
+          setServices(data.services);
+          setLoading(false);
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        if (!ignore) setLoading(false);
+      });
+
+    return () => {
+      ignore = true;
+    };
+  }, [refreshTrigger]);
+
+  const handleEdit = (service: Service) => {
+    setEditingService({ ...service });
+    setIsModalOpen(true);
+  };
+
+  const handleAddNew = () => {
+    setEditingService({
+      id: "",
+      title: "",
+      shortDescription: "",
+      fullDescription: "",
+      icon: "🛠️",
+      category: "maintenance",
+      pricing: {
+        type: "starting_from",
+        basePrice: 10000,
+        priceLabel: "Starting from ₦10,000",
+        priceSubtitle: "Depends on PC specification and scope of service",
+      },
+      deliveryMode: "physical_and_remote",
+      features: ["Diagnostics", "Troubleshooting"],
+      isFeatured: true,
+      isPublished: true,
+      isCoreMaintenance: true,
+      ctaLabel: "Request Service",
+      sortOrder: services.length + 1,
+    });
+    setIsModalOpen(true);
+  };
+
+  const handleTogglePublish = async (service: Service) => {
+    try {
+      const updated = { ...service, isPublished: !service.isPublished };
+      const res = await fetch("/api/services", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(updated),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setServices((prev) => prev.map((s) => (s.id === service.id ? data.service : s)));
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleDelete = async (id: string, title: string) => {
+    if (!confirm(`Are you sure you want to delete "${title}"?`)) return;
+    try {
+      const res = await fetch(`/api/services?id=${encodeURIComponent(id)}`, {
+        method: "DELETE",
+      });
+      const data = await res.json();
+      if (data.success) {
+        setServices((prev) => prev.filter((s) => s.id !== id));
+        setMessage({ text: `Service "${title}" deleted successfully.`, type: "success" });
+      }
+    } catch {
+      setMessage({ text: "Failed to delete service.", type: "error" });
+    }
+  };
+
+  const handleSave = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!editingService?.title) return;
+    setSaving(true);
+    setMessage(null);
+
+    try {
+      const res = await fetch("/api/services", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(editingService),
+      });
+
+      const data = await res.json();
+      if (data.success) {
+        setMessage({ text: data.message || "Service saved successfully!", type: "success" });
+        setIsModalOpen(false);
+        setEditingService(null);
+        setRefreshTrigger((prev) => prev + 1);
+      } else {
+        setMessage({ text: data.message || "Failed to save.", type: "error" });
+      }
+    } catch {
+      setMessage({ text: "Network error saving service.", type: "error" });
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  return (
+    <div className="space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-border pb-5">
+        <div>
+          <h1 className="text-2xl font-extrabold text-foreground">Services & Transparent Pricing Manager</h1>
+          <p className="text-xs text-muted-foreground mt-0.5">
+            Add services, change starting rates (e.g. Formatting ₦10,000), update descriptions, and manage remote flags.
+          </p>
+        </div>
+        <button
+          type="button"
+          onClick={handleAddNew}
+          className="inline-flex items-center gap-1.5 rounded-xl bg-primary px-4 py-2.5 text-xs font-bold text-primary-foreground shadow-md hover:brightness-105 transition"
+        >
+          <span>+</span>
+          <span>Add New Service</span>
+        </button>
+      </div>
+
+      {message && (
+        <div
+          className={`rounded-xl p-3 text-xs font-bold ${
+            message.type === "success" ? "bg-emerald-500/10 text-emerald-600 border border-emerald-500/30" : "bg-red-500/10 text-red-600 border border-red-500/30"
+          }`}
+        >
+          {message.text}
+        </div>
+      )}
+
+      {loading ? (
+        <div className="text-center py-12 text-sm text-muted-foreground">Loading services catalog...</div>
+      ) : (
+        <div className="space-y-3">
+          {services.map((service) => (
+            <div
+              key={service.id}
+              className={`flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-2xl border p-4 transition ${
+                service.isPublished ? "bg-card border-border" : "bg-muted/40 border-dashed border-border opacity-70"
+              }`}
+            >
+              <div className="flex items-start sm:items-center gap-3.5">
+                <div className="flex size-11 items-center justify-center rounded-xl bg-primary/10 text-2xl shrink-0">
+                  {service.icon}
+                </div>
+                <div>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <h3 className="text-sm font-bold text-foreground">{service.title}</h3>
+                    {service.isCoreMaintenance && (
+                      <span className="rounded-full bg-primary/10 px-2 py-0.5 text-[10px] font-bold text-accent">
+                        Core Maintenance
+                      </span>
+                    )}
+                    {service.deliveryMode === "remote_only" && (
+                      <span className="rounded-full bg-blue-500/10 px-2 py-0.5 text-[10px] font-bold text-blue-600">
+                        🌐 100% Remote
+                      </span>
+                    )}
+                    {service.deliveryMode === "physical_and_remote" && (
+                      <span className="rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-bold text-emerald-600">
+                        ⚡ Remote & Physical
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-0.5 line-clamp-1">{service.shortDescription}</p>
+                  <p className="text-xs font-semibold text-accent mt-1">
+                    💰 {service.pricing?.priceLabel || "Price varies"}
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2 self-end sm:self-center shrink-0">
+                <button
+                  type="button"
+                  onClick={() => handleTogglePublish(service)}
+                  className={`rounded-lg px-2.5 py-1.5 text-xs font-bold transition ${
+                    service.isPublished
+                      ? "bg-emerald-500/10 text-emerald-600 hover:bg-emerald-500/20"
+                      : "bg-muted text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {service.isPublished ? "✓ Published" : "Draft (Hidden)"}
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => handleEdit(service)}
+                  className="rounded-lg bg-primary/10 px-3 py-1.5 text-xs font-bold text-primary hover:bg-primary/20 transition"
+                >
+                  Edit / Price
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => handleDelete(service.id, service.title)}
+                  className="rounded-lg bg-red-500/10 px-2.5 py-1.5 text-xs font-bold text-red-600 hover:bg-red-500/20 transition"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Edit / Add Modal */}
+      {isModalOpen && editingService && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 overflow-y-auto">
+          <div className="relative w-full max-w-2xl rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-2xl max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between border-b border-border pb-4">
+              <h2 className="text-lg font-bold text-foreground">
+                {editingService.id ? "Edit Service & Pricing" : "Add New Service"}
+              </h2>
+              <button
+                type="button"
+                onClick={() => setIsModalOpen(false)}
+                className="text-muted-foreground hover:text-foreground text-sm font-bold"
+              >
+                ✕
+              </button>
+            </div>
+
+            <form onSubmit={handleSave} className="mt-5 space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="sm:col-span-2">
+                  <label className="text-xs font-bold uppercase text-muted-foreground">Service Title *</label>
+                  <input
+                    type="text"
+                    value={editingService.title || ""}
+                    onChange={(e) => setEditingService({ ...editingService, title: e.target.value })}
+                    required
+                    placeholder="e.g. Computer Formatting & OS Setup"
+                    className="mt-1 h-10 w-full rounded-xl border border-border bg-background px-3 text-xs text-foreground outline-none focus:border-primary"
+                  />
+                </div>
+                <div>
+                  <label className="text-xs font-bold uppercase text-muted-foreground">Icon Emoji</label>
+                  <input
+                    type="text"
+                    value={editingService.icon || "🛠️"}
+                    onChange={(e) => setEditingService({ ...editingService, icon: e.target.value })}
+                    className="mt-1 h-10 w-full rounded-xl border border-border bg-background px-3 text-xs text-foreground outline-none focus:border-primary text-center text-lg"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="text-xs font-bold uppercase text-muted-foreground">Category</label>
+                  <select
+                    value={editingService.category || "maintenance"}
+                    onChange={(e) => setEditingService({ ...editingService, category: e.target.value as Service["category"] })}
+                    className="mt-1 h-10 w-full rounded-xl border border-border bg-background px-3 text-xs text-foreground outline-none focus:border-primary"
+                  >
+                    <option value="maintenance">Computer Maintenance</option>
+                    <option value="remote_it">Remote IT Support</option>
+                    <option value="repairs">Hardware Repairs</option>
+                    <option value="web_dev">Web Design & Dev</option>
+                    <option value="networking">Networking</option>
+                    <option value="cctv">CCTV Security</option>
+                    <option value="pos">POS Systems</option>
+                    <option value="general">General Technology</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label className="text-xs font-bold uppercase text-muted-foreground">Delivery Mode</label>
+                  <select
+                    value={editingService.deliveryMode || "physical_and_remote"}
+                    onChange={(e) => setEditingService({ ...editingService, deliveryMode: e.target.value as ServiceDeliveryMode })}
+                    className="mt-1 h-10 w-full rounded-xl border border-border bg-background px-3 text-xs text-foreground outline-none focus:border-primary"
+                  >
+                    <option value="physical_and_remote">Physical Workshop & Remote Available</option>
+                    <option value="remote_only">100% Remote Support (AnyDesk/Online)</option>
+                    <option value="physical_only">Physical Workshop Only</option>
+                    <option value="onsite_visit">On-site Location Visit</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Pricing settings */}
+              <div className="rounded-2xl border border-primary/20 bg-primary/5 p-4 space-y-3">
+                <p className="text-xs font-bold uppercase tracking-wider text-accent">Transparent Pricing Configuration</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label className="text-[11px] font-bold text-muted-foreground">Pricing Model</label>
+                    <select
+                      value={editingService.pricing?.type || "starting_from"}
+                      onChange={(e) =>
+                        setEditingService({
+                          ...editingService,
+                          pricing: {
+                            ...editingService.pricing,
+                            type: e.target.value as ServicePricingType,
+                          },
+                        })
+                      }
+                      className="mt-1 h-9 w-full rounded-lg border border-border bg-background px-2.5 text-xs text-foreground"
+                    >
+                      <option value="starting_from">Starting from (e.g. From ₦10,000)</option>
+                      <option value="diagnostic_variable">Diagnostic / Variable (Depends on Spec & Issue)</option>
+                      <option value="fixed">Fixed Price</option>
+                      <option value="custom_quote">Custom Quote Required</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="text-[11px] font-bold text-muted-foreground">Base Starting Price (₦ NGN)</label>
+                    <input
+                      type="number"
+                      value={editingService.pricing?.basePrice ?? 10000}
+                      onChange={(e) => {
+                        const val = parseInt(e.target.value, 10) || 0;
+                        setEditingService({
+                          ...editingService,
+                          pricing: {
+                            ...editingService.pricing,
+                            type: editingService.pricing?.type || "starting_from",
+                            basePrice: val,
+                            priceLabel: val > 0 ? `Starting from ₦${val.toLocaleString()}` : editingService.pricing?.priceLabel,
+                          },
+                        });
+                      }}
+                      className="mt-1 h-9 w-full rounded-lg border border-border bg-background px-2.5 text-xs text-foreground"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="text-[11px] font-bold text-muted-foreground">Custom Price Label</label>
+                  <input
+                    type="text"
+                    value={editingService.pricing?.priceLabel || ""}
+                    onChange={(e) =>
+                      setEditingService({
+                        ...editingService,
+                        pricing: {
+                          ...editingService.pricing,
+                          type: editingService.pricing?.type || "starting_from",
+                          priceLabel: e.target.value,
+                        },
+                      })
+                    }
+                    placeholder="e.g. Starting from ₦10,000 or Price depends on PC specification"
+                    className="mt-1 h-9 w-full rounded-lg border border-border bg-background px-2.5 text-xs text-foreground"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="text-xs font-bold uppercase text-muted-foreground">Short Description *</label>
+                <textarea
+                  rows={2}
+                  value={editingService.shortDescription || ""}
+                  onChange={(e) => setEditingService({ ...editingService, shortDescription: e.target.value })}
+                  required
+                  className="mt-1 w-full rounded-xl border border-border bg-background p-3 text-xs text-foreground outline-none focus:border-primary"
+                />
+              </div>
+
+              <div>
+                <label className="text-xs font-bold uppercase text-muted-foreground">Key Feature Bullets (one per line)</label>
+                <textarea
+                  rows={3}
+                  value={editingService.features ? editingService.features.join("\n") : ""}
+                  onChange={(e) =>
+                    setEditingService({
+                      ...editingService,
+                      features: e.target.value.split("\n").filter(Boolean),
+                    })
+                  }
+                  className="mt-1 w-full rounded-xl border border-border bg-background p-3 text-xs text-foreground outline-none focus:border-primary font-mono"
+                />
+              </div>
+
+              <div className="flex flex-wrap gap-4 pt-2">
+                <label className="flex items-center gap-2 text-xs font-bold text-foreground cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={editingService.isPublished ?? true}
+                    onChange={(e) => setEditingService({ ...editingService, isPublished: e.target.checked })}
+                    className="size-4 rounded"
+                  />
+                  <span>Published on Website</span>
+                </label>
+
+                <label className="flex items-center gap-2 text-xs font-bold text-foreground cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={editingService.isCoreMaintenance ?? false}
+                    onChange={(e) => setEditingService({ ...editingService, isCoreMaintenance: e.target.checked })}
+                    className="size-4 rounded"
+                  />
+                  <span>Featured in Core Maintenance Section</span>
+                </label>
+              </div>
+
+              <div className="flex justify-end gap-3 pt-4 border-t border-border">
+                <button
+                  type="button"
+                  onClick={() => setIsModalOpen(false)}
+                  className="rounded-xl border border-border px-4 py-2 text-xs font-bold text-foreground hover:bg-muted"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={saving}
+                  className="rounded-xl bg-primary px-5 py-2 text-xs font-bold text-primary-foreground hover:brightness-105 shadow-md disabled:opacity-50"
+                >
+                  {saving ? "Saving Changes..." : "Save Service & Price"}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}

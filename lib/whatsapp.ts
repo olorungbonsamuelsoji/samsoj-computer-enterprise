@@ -64,6 +64,39 @@ export function getRepairWhatsAppUrl(deviceType?: string): string {
 }
 
 /**
+ * WhatsApp message specifically for Computer Maintenance & Formatting.
+ */
+export function getMaintenanceWhatsAppUrl(serviceName = "Computer Maintenance / Formatting", details?: string): string {
+  const lines = [
+    `Hello ${business.name},`,
+    "",
+    `I would like to request *${serviceName}*.`,
+    details ? `• Details/Issue: ${details}` : "• Request: Diagnostics, formatting, optimization, or servicing",
+    "",
+    "Please provide the diagnosis schedule, requirements, and quote.",
+  ];
+
+  return buildWhatsAppUrl(lines.join("\n"));
+}
+
+/**
+ * WhatsApp message for Instant Remote Computer Support.
+ */
+export function getRemoteSupportWhatsAppUrl(issueDescription?: string, pcSpec?: string): string {
+  const lines = [
+    `Hello ${business.name},`,
+    "",
+    "I need *Instant Remote Computer Support* (AnyDesk / TeamViewer / Remote Desktop).",
+    pcSpec ? `• Computer Spec / OS: ${pcSpec}` : "",
+    issueDescription ? `• Problem Description: ${issueDescription}` : "• Problem: Software issue / system error / slow PC / driver bug",
+    "",
+    "Please let me know when a technician can connect remotely to assist me.",
+  ].filter(Boolean);
+
+  return buildWhatsAppUrl(lines.join("\n"));
+}
+
+/**
  * WhatsApp message for web design / networking / IT consultation.
  */
 export function getServiceWhatsAppUrl(serviceTitle: string): string {
@@ -77,3 +110,4 @@ export function getServiceWhatsAppUrl(serviceTitle: string): string {
 
   return buildWhatsAppUrl(lines.join("\n"));
 }
+

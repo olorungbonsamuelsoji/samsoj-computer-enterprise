@@ -3,7 +3,7 @@ export const business = {
   shortName: "SAMSOJ",
   tagline: "Technology Solutions You Can Rely On",
   description:
-    "Your trusted technology partner for IT equipment sales, computer repairs & maintenance, networking solutions, CCTV & security systems, POS equipment, and professional web design.",
+    "Your trusted technology partner for computer maintenance & remote IT support, computer diagnostics, IT equipment sales, networking solutions, CCTV security systems, POS equipment, and professional web design.",
   
   // Official Contact Channels
   whatsApp: "08079570725",
@@ -17,7 +17,16 @@ export const business = {
   currency: "NGN",
   currencySymbol: "₦",
   hours: "Monday - Saturday: 8:00 AM - 6:00 PM",
-  serviceAvailability: "24/7 Online & WhatsApp Enquiry Access",
+  serviceAvailability: "24/7 WhatsApp Online & Remote Support Access",
+
+  // Live Announcement
+  announcement: {
+    enabled: true,
+    badge: "Remote IT Support Ready",
+    message: "Need quick PC troubleshooting without traveling? Connect with SAMSOJ via Remote Support!",
+    linkText: "Get Remote Support",
+    linkUrl: "#maintenance",
+  },
   
   // Services List
   services: [
