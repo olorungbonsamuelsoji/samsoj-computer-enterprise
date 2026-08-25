@@ -40,6 +40,7 @@ export interface Product {
   image: string;
   imageUrl?: string;
   additionalImages?: string[];
+  updatedAt?: string;
   featured?: boolean;
   badge?: string;
   sourceInfo?: SourceInfo;

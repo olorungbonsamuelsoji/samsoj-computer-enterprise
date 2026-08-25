@@ -18,13 +18,13 @@ export async function saveProduct(productData: Product): Promise<Product> {
   const existingIndex = products.findIndex((p) => p.id === productData.id);
 
   if (existingIndex >= 0) {
-    products[existingIndex] = productData;
+    products[existingIndex] = { ...productData, updatedAt: new Date().toISOString() };
   } else {
-    products.push(productData);
+    products.push({ ...productData, updatedAt: new Date().toISOString() });
   }
 
   await writeJsonFile(FILE_NAME, products);
-  return productData;
+  return products[existingIndex >= 0 ? existingIndex : products.length - 1];
 }
 
 export async function deleteProduct(id: string): Promise<boolean> {

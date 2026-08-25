@@ -32,8 +32,12 @@ export function ProductImage({
 }: ProductImageProps) {
   const [imgError, setImgError] = useState(false);
 
-  const src = product.image && !imgError ? product.image : product.imageUrl;
+  const rawSrc = product.image && !imgError ? product.image : product.imageUrl;
   const emoji = categoryEmoji[product.categoryId] ?? "📦";
+
+  const src = rawSrc && product.updatedAt
+    ? `${rawSrc}${rawSrc.includes("?") ? "&" : "?"}v=${product.updatedAt}`
+    : rawSrc;
 
   return (
     <div
