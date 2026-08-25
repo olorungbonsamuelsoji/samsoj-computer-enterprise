@@ -23,7 +23,7 @@
     "price": 395000,
     "pricingType": "fixed",
     "status": "available",
-    "image": "/products/laptops.jpg",
+    "image": "/products/HP EliteBook 840 G6 Business Laptop.png",
     "featured": true,
     "badge": "Top Corporate Choice",
     "sourceInfo": {
@@ -31,7 +31,8 @@
       "retailerSource": "HP Official Technical Specification Datasheet",
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
-    }
+    },
+    "updatedAt": "2026-08-25T08:03:49.404Z"
   },
   {
     "id": "dell-latitude-7490",
@@ -57,7 +58,7 @@
     "price": 420000,
     "pricingType": "fixed",
     "status": "available",
-    "image": "/products/laptops.jpg",
+    "image": "/products/Dell Latitude 7490 Business Notebook.png",
     "featured": true,
     "badge": "High Performance",
     "sourceInfo": {
@@ -65,7 +66,8 @@
       "retailerSource": "Dell Latitude 7490 Owner's Manual & Specs",
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
-    }
+    },
+    "updatedAt": "2026-08-25T08:03:49.404Z"
   },
   {
     "id": "lenovo-thinkpad-t14-gen1",
@@ -90,7 +92,7 @@
     ],
     "pricingType": "contact",
     "status": "available_on_request",
-    "image": "/products/laptops.jpg",
+    "image": "/products/Lenovo ThinkPad T14 Gen 1 Laptop.jpg",
     "featured": false,
     "badge": "Mil-Spec Tested",
     "sourceInfo": {
@@ -98,7 +100,8 @@
       "retailerSource": "Lenovo PSREF Datasheet",
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
-    }
+    },
+    "updatedAt": "2026-08-25T08:03:49.404Z"
   },
   {
     "id": "samsoj-desktop-workstation-core-i7",
@@ -132,7 +135,8 @@
       "retailerSource": "SAMSOJ Enterprise Custom Hardware Assembly Guide",
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Chief Hardware Engineer"
-    }
+    },
+    "updatedAt": "2026-08-25T08:03:49.404Z"
   },
   {
     "id": "canon-pixma-g3411",
@@ -156,7 +160,7 @@
     "price": 210000,
     "pricingType": "fixed",
     "status": "available",
-    "image": "/products/printers.jpg",
+    "image": "/products/Canon PIXMA G3411 Wireless MegaTank All-In-One Printer.jpg",
     "featured": true,
     "badge": "Continuous Ink Tank",
     "sourceInfo": {
@@ -164,7 +168,8 @@
       "retailerSource": "Canon Europe Official Product Specifications",
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
-    }
+    },
+    "updatedAt": "2026-08-25T08:03:49.404Z"
   },
   {
     "id": "hp-laserjet-pro-m404dn",
@@ -190,7 +195,7 @@
     "price": 315000,
     "pricingType": "fixed",
     "status": "available",
-    "image": "/products/printers.jpg",
+    "image": "/products/HP LaserJet Pro M404dn Monochrome Laser Printer.jpg",
     "featured": true,
     "badge": "Fast Office Laser",
     "sourceInfo": {
@@ -198,7 +203,8 @@
       "retailerSource": "HP LaserJet Pro M404dn Datasheet",
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
-    }
+    },
+    "updatedAt": "2026-08-25T08:03:49.404Z"
   },
   {
     "id": "tp-link-tl-wr841n",
@@ -222,7 +228,7 @@
     "price": 18500,
     "pricingType": "fixed",
     "status": "available",
-    "image": "/products/networking.jpg",
+    "image": "/products/TP-Link TL-WR841N 300Mbps Wireless N Router.jpg",
     "featured": false,
     "badge": "Home & Small Office",
     "sourceInfo": {
@@ -230,7 +236,8 @@
       "retailerSource": "TP-Link Official Technical Datasheet",
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
-    }
+    },
+    "updatedAt": "2026-08-25T08:03:49.404Z"
   },
   {
     "id": "tp-link-deco-m4-2pack",
@@ -254,7 +261,7 @@
     "price": 85000,
     "pricingType": "fixed",
     "status": "available",
-    "image": "/products/networking.jpg",
+    "image": "/products/TP-Link Deco M4 AC1200 Whole Home Mesh Wi-Fi System (2-Pack).jpg",
     "featured": true,
     "badge": "Mesh Roaming",
     "sourceInfo": {
@@ -262,7 +269,8 @@
       "retailerSource": "TP-Link Deco Official Specification Sheet",
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
-    }
+    },
+    "updatedAt": "2026-08-25T08:03:49.404Z"
   },
   {
     "id": "tenda-f3-300mbps-router",
@@ -284,7 +292,7 @@
     "price": 16000,
     "pricingType": "fixed",
     "status": "available",
-    "image": "/products/networking.jpg",
+    "image": "/products/Tenda F3 300Mbps Wireless Wi-Fi Router.jpg",
     "featured": false,
     "badge": "Budget Wi-Fi",
     "sourceInfo": {
@@ -292,7 +300,8 @@
       "retailerSource": "Tenda Technology Official Spec Sheet",
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
-    }
+    },
+    "updatedAt": "2026-08-25T08:03:49.404Z"
   },
   {
     "id": "seagate-expansion-1tb-external-hdd",
@@ -317,7 +326,7 @@
     "price": 42000,
     "pricingType": "fixed",
     "status": "available",
-    "image": "/products/storage.jpg",
+    "image": "/products/Seagate Expansion 1TB USB 3.0 Portable External Hard Drive.jpg",
     "featured": true,
     "badge": "Plug & Play Backup",
     "sourceInfo": {
@@ -325,7 +334,8 @@
       "retailerSource": "Seagate Expansion Portable Data Sheet",
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
-    }
+    },
+    "updatedAt": "2026-08-25T08:03:49.404Z"
   },
   {
     "id": "samsung-970-evo-plus-500gb",
@@ -351,7 +361,7 @@
     "price": 58000,
     "pricingType": "fixed",
     "status": "available",
-    "image": "/products/storage.jpg",
+    "image": "/products/Samsung 970 EVO Plus 500GB NVMe M.2 SSD.jpg",
     "featured": false,
     "badge": "NVMe Speed Upgrade",
     "sourceInfo": {
@@ -359,7 +369,8 @@
       "retailerSource": "Samsung Semiconductor Official Specs",
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
-    }
+    },
+    "updatedAt": "2026-08-25T08:03:49.404Z"
   },
   {
     "id": "hikvision-ds-2ce56d0t-irpf-dome",
@@ -384,7 +395,7 @@
     "price": 14500,
     "pricingType": "fixed",
     "status": "available",
-    "image": "/products/cctv.jpg",
+    "image": "/products/Hikvision DS-2CE56D0T-IRPF 1080P Indoor Dome Camera.jpg",
     "featured": false,
     "badge": "Indoor Full HD",
     "sourceInfo": {
@@ -392,7 +403,8 @@
       "retailerSource": "Hikvision Official Product Datasheet",
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
-    }
+    },
+    "updatedAt": "2026-08-25T08:03:49.404Z"
   },
   {
     "id": "hikvision-4ch-cctv-kit-1080p",
@@ -415,7 +427,7 @@
     ],
     "pricingType": "contact",
     "status": "enquire_for_availability",
-    "image": "/products/cctv.jpg",
+    "image": "/products/Hikvision 4-Channel Turbo HD 1080P CCTV Surveillance Kit.jpg",
     "featured": true,
     "badge": "Complete Kit",
     "sourceInfo": {
@@ -423,7 +435,8 @@
       "retailerSource": "Hikvision Turbo HD Kit Technical Guide",
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
-    }
+    },
+    "updatedAt": "2026-08-25T08:03:49.404Z"
   },
   {
     "id": "samsoj-touchscreen-pos-system",
@@ -447,14 +460,15 @@
     "pricingType": "starting_from",
     "price": 380000,
     "status": "available",
-    "image": "/products/pos.jpg",
+    "image": "/products/SAMSOJ All-In-One Touchscreen POS System Terminal.jpg",
     "featured": true,
     "badge": "Supermarket & Shop Ready",
     "sourceInfo": {
       "retailerSource": "SAMSOJ Enterprise Retail POS Hardware Assembly Specs",
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Retail Technology Engineer"
-    }
+    },
+    "updatedAt": "2026-08-25T08:03:49.404Z"
   },
   {
     "id": "zkteco-zk-d050-barcode-scanner",
@@ -484,7 +498,8 @@
       "retailerSource": "ZKTeco POS Accessories Catalog",
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
-    }
+    },
+    "updatedAt": "2026-08-25T08:03:49.404Z"
   },
   {
     "id": "logitech-mk270-wireless-combo",
@@ -507,7 +522,7 @@
     "price": 24500,
     "pricingType": "fixed",
     "status": "available",
-    "image": "/products/accessories.jpg",
+    "image": "/products/Logitech MK270 Wireless Keyboard and Mouse Combo.jpg",
     "featured": false,
     "badge": "Genuine Logitech",
     "sourceInfo": {
@@ -515,7 +530,8 @@
       "retailerSource": "Logitech Official Product Datasheet",
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
-    }
+    },
+    "updatedAt": "2026-08-25T08:03:49.404Z"
   },
   {
     "id": "hp-deskjet-2720e-inkjet",
@@ -539,7 +555,7 @@
     "price": 75000,
     "pricingType": "fixed",
     "status": "available",
-    "image": "/products/printers.jpg",
+    "image": "/products/HP DeskJet 2720e All-In-One Wireless Inkjet Printer.jpg",
     "featured": false,
     "badge": "Home & Student",
     "sourceInfo": {
@@ -547,7 +563,8 @@
       "retailerSource": "HP Official Product Specifications",
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
-    }
+    },
+    "updatedAt": "2026-08-25T08:03:49.404Z"
   },
   {
     "id": "tp-link-tl-sg108-8port-switch",
@@ -571,7 +588,7 @@
     "price": 22000,
     "pricingType": "fixed",
     "status": "available",
-    "image": "/products/networking.jpg",
+    "image": "/products/TP-Link TL-SG108 8-Port Gigabit Unmanaged Network Switch.jpg",
     "featured": false,
     "badge": "Plug & Play Gigabit",
     "sourceInfo": {
@@ -579,7 +596,8 @@
       "retailerSource": "TP-Link Official Switch Datasheet",
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
-    }
+    },
+    "updatedAt": "2026-08-25T08:03:49.404Z"
   },
   {
     "id": "sandisk-ultra-128gb-flash-drive",
@@ -602,7 +620,7 @@
     "price": 12500,
     "pricingType": "fixed",
     "status": "available",
-    "image": "/products/storage.jpg",
+    "image": "/products/SanDisk Ultra 128GB USB 3.0 Flash Drive.jpg",
     "featured": false,
     "badge": "100MB/s Speed",
     "sourceInfo": {
@@ -610,7 +628,8 @@
       "retailerSource": "SanDisk / WD Official Product Specs",
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
-    }
+    },
+    "updatedAt": "2026-08-25T08:03:49.404Z"
   },
   {
     "id": "kingston-8gb-ddr4-sodimm-ram",
@@ -634,7 +653,7 @@
     "price": 28000,
     "pricingType": "fixed",
     "status": "available",
-    "image": "/products/storage.jpg",
+    "image": "/products/Kingston ValueRAM 8GB DDR4 2666MHz SODIMM Laptop RAM.jpg",
     "featured": false,
     "badge": "Laptop RAM Upgrade",
     "sourceInfo": {
@@ -642,7 +661,8 @@
       "retailerSource": "Kingston Technology Official Datasheet",
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
-    }
+    },
+    "updatedAt": "2026-08-25T08:03:49.404Z"
   },
   {
     "id": "hikvision-ds-2cd2143g2-i-outdoor-dome",
@@ -665,7 +685,7 @@
     ],
     "pricingType": "contact",
     "status": "enquire_for_availability",
-    "image": "/products/cctv.jpg",
+    "image": "/products/Hikvision DS-2CD2143G2-I 4MP AcuSense Outdoor Dome IP Camera.jpg",
     "featured": false,
     "badge": "4MP AcuSense AI",
     "sourceInfo": {
@@ -673,7 +693,8 @@
       "retailerSource": "Hikvision Official Product Datasheet",
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
-    }
+    },
+    "updatedAt": "2026-08-25T08:03:49.404Z"
   },
   {
     "id": "samsoj-cashier-thermal-printer-80mm",
@@ -697,14 +718,15 @@
     "price": 48000,
     "pricingType": "fixed",
     "status": "available",
-    "image": "/products/pos.jpg",
+    "image": "/products/SAMSOJ 80mm USB Thermal POS Receipt Printer.jpg",
     "featured": false,
     "badge": "POS Ready",
     "sourceInfo": {
       "retailerSource": "SAMSOJ Enterprise POS Peripheral Hardware Catalogue",
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Retail Technology Engineer"
-    }
+    },
+    "updatedAt": "2026-08-25T08:03:49.404Z"
   },
   {
     "id": "dell-optiplex-3060-core-i5-desktop",
@@ -728,7 +750,7 @@
     "price": 185000,
     "pricingType": "fixed",
     "status": "limited",
-    "image": "/products/desktop.jpg",
+    "image": "/products/Dell OptiPlex 3060 Micro Core i5 Business Desktop PC.jpg",
     "featured": false,
     "badge": "Micro Form Factor",
     "sourceInfo": {
@@ -736,7 +758,8 @@
       "retailerSource": "Dell OptiPlex 3060 Technical Spec Sheet",
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
-    }
+    },
+    "updatedAt": "2026-08-25T08:03:49.404Z"
   },
   {
     "id": "hp-wired-usb-optical-mouse",
@@ -759,7 +782,7 @@
     "price": 4500,
     "pricingType": "fixed",
     "status": "available",
-    "image": "/products/accessories.jpg",
+    "image": "/products/HP 100 Series Wired USB Optical Mouse.jpg",
     "featured": false,
     "badge": "Office Essential",
     "sourceInfo": {
@@ -767,7 +790,8 @@
       "retailerSource": "HP Accessories Official Specifications",
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
-    }
+    },
+    "updatedAt": "2026-08-25T08:03:49.404Z"
   },
   {
     "id": "samsoj-ups-850va-battery-backup",
@@ -791,13 +815,14 @@
     "pricingType": "starting_from",
     "price": 38000,
     "status": "available",
-    "image": "/products/accessories.jpg",
+    "image": "/products/SAMSOJ 850VA UPS Battery Backup Power Supply.jpg",
     "featured": false,
     "badge": "Power Protection",
     "sourceInfo": {
       "retailerSource": "SAMSOJ Power Protection Products Catalogue",
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
-    }
+    },
+    "updatedAt": "2026-08-25T08:03:49.404Z"
   }
 ]
