@@ -3,7 +3,12 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { business } from "@/lib/config";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { seedIfEmpty } from "@/lib/db/postgres";
 import "./globals.css";
+
+if (process.env.POSTGRES_URL) {
+  seedIfEmpty().catch((err) => console.error("Failed to seed database:", err));
+}
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

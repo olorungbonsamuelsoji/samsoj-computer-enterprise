@@ -22,7 +22,7 @@ export function validateEnv() {
   const missing = requiredEnv.filter((key) => !process.env[key]);
   if (missing.length > 0 && process.env.NODE_ENV === "production") {
     console.warn(
-      `Missing optional/recommended environment variables: ${missing.join(", ")}`
+      `Missing required environment variables: ${missing.join(", ")}`
     );
   }
 }

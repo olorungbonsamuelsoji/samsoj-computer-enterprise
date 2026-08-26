@@ -5,9 +5,12 @@ import { checkAdminSession } from "@/lib/auth/admin-auth";
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const includeUnpublished = searchParams.get("all") === "true";
-  
+
   const isAuthenticated = await checkAdminSession();
-  const services = await getAllServices(isAuthenticated && includeUnpublished);
+  let services = await getAllServices();
+  if (!isAuthenticated || !includeUnpublished) {
+    services = services.filter((s) => s.isPublished);
+  }
   return NextResponse.json({ success: true, services });
 }
 

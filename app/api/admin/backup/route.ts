@@ -1,5 +1,5 @@
 ﻿import { NextResponse } from "next/server";
-import { createDataSnapshot, listDataSnapshots, restoreDataSnapshot } from "@/lib/db/json-db";
+import { createSnapshot, listSnapshots, restoreSnapshot } from "@/lib/db/backups-repository";
 import { checkAdminSession } from "@/lib/auth/admin-auth";
 
 export async function GET() {
@@ -8,7 +8,7 @@ export async function GET() {
     return NextResponse.json({ success: false, message: "Unauthorized" }, { status: 401 });
   }
 
-  const snapshots = await listDataSnapshots();
+  const snapshots = await listSnapshots();
   return NextResponse.json({ success: true, snapshots });
 }
 
@@ -23,7 +23,7 @@ export async function POST(request: Request) {
     const { action, snapshotId, label } = body;
 
     if (action === "create") {
-      const id = await createDataSnapshot(label || "Manual snapshot from Admin Panel");
+      const id = await createSnapshot(label || "Manual snapshot from Admin Panel");
       return NextResponse.json({ success: true, snapshotId: id, message: "Backup snapshot created successfully." });
     }
 
@@ -31,7 +31,7 @@ export async function POST(request: Request) {
       if (!snapshotId) {
         return NextResponse.json({ success: false, message: "Snapshot ID required for restore." }, { status: 400 });
       }
-      const restored = await restoreDataSnapshot(snapshotId);
+      const restored = await restoreSnapshot(snapshotId);
       if (!restored) {
         return NextResponse.json({ success: false, message: "Failed to restore snapshot." }, { status: 500 });
       }

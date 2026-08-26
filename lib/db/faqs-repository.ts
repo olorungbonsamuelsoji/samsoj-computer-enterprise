@@ -1,44 +1,84 @@
-﻿import { FAQItem } from "@/types/faq";
-import { readJsonFile, writeJsonFile, createDataSnapshot } from "./json-db";
+﻿import { sql, ensureInitialized } from "@/lib/db/postgres";
+import { FAQItem } from "@/types/faq";
+import {
+  jsonGetAllFaqs,
+  jsonGetPublishedFaqs,
+  jsonSaveFaq,
+  jsonDeleteFaq,
+} from "@/lib/db/json-fallback";
 
-const FILE_NAME = "faqs.json";
+const usePostgres = !!process.env.POSTGRES_URL;
 
-export async function getAllFAQs(includeUnpublished = false): Promise<FAQItem[]> {
-  const faqs = await readJsonFile<FAQItem[]>(FILE_NAME, []);
-  const list = includeUnpublished ? faqs : faqs.filter((f) => f.isPublished);
-  return list.sort((a, b) => a.sortOrder - b.sortOrder);
+export async function getAllFaqs(): Promise<FAQItem[]> {
+  if (usePostgres) {
+    await ensureInitialized();
+    const { rows } = await sql`
+      SELECT * FROM faqs ORDER BY sort_order ASC, question ASC
+    `;
+    return rows.map(rowToFaq);
+  }
+  return jsonGetAllFaqs();
 }
 
-export async function saveFAQ(faqData: Partial<FAQItem> & { question: string; answer: string }): Promise<FAQItem> {
-  await createDataSnapshot("Auto backup before FAQ save");
-  const faqs = await getAllFAQs(true);
-  const id = faqData.id || `faq-${Date.now()}`;
+export async function getPublishedFaqs(): Promise<FAQItem[]> {
+  if (usePostgres) {
+    await ensureInitialized();
+    const { rows } = await sql`
+      SELECT * FROM faqs WHERE is_published = true ORDER BY sort_order ASC, question ASC
+    `;
+    return rows.map(rowToFaq);
+  }
+  return jsonGetPublishedFaqs();
+}
 
-  const updated: FAQItem = {
-    id,
-    question: faqData.question,
-    answer: faqData.answer,
-    category: faqData.category || "general",
-    isPublished: faqData.isPublished ?? true,
-    sortOrder: faqData.sortOrder ?? (faqs.length + 1),
-  };
+export async function saveFaq(faq: Partial<FAQItem> & { id?: string }): Promise<FAQItem> {
+  if (usePostgres) {
+    await ensureInitialized();
+    if (faq.id) {
+      const { rows } = await sql`
+        UPDATE faqs SET
+          question = ${faq.question},
+          answer = ${faq.answer},
+          category = ${faq.category},
+          is_published = ${faq.isPublished ?? true},
+          sort_order = ${faq.sortOrder || 0}
+        WHERE id = ${faq.id}
+        RETURNING *
+      `;
+      return rowToFaq(rows[0]);
+    }
 
-  const existingIndex = faqs.findIndex((f) => f.id === id);
-  if (existingIndex >= 0) {
-    faqs[existingIndex] = updated;
-  } else {
-    faqs.push(updated);
+    const newId = faq.id || `faq_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`;
+    const { rows } = await sql`
+      INSERT INTO faqs (id, question, answer, category, is_published, sort_order)
+      VALUES (${newId}, ${faq.question}, ${faq.answer}, ${faq.category},
+              ${faq.isPublished ?? true}, ${faq.sortOrder || 0})
+      RETURNING *
+    `;
+    return rowToFaq(rows[0]);
   }
 
-  await writeJsonFile(FILE_NAME, faqs);
-  return updated;
+  return jsonSaveFaq(faq);
 }
 
-export async function deleteFAQ(id: string): Promise<boolean> {
-  await createDataSnapshot("Auto backup before FAQ delete");
-  const faqs = await getAllFAQs(true);
-  const filtered = faqs.filter((f) => f.id !== id);
-  if (filtered.length === faqs.length) return false;
-  await writeJsonFile(FILE_NAME, filtered);
-  return true;
+export async function deleteFaq(id: string): Promise<boolean> {
+  if (usePostgres) {
+    await ensureInitialized();
+    const { rowCount } = await sql`
+      DELETE FROM faqs WHERE id = ${id}
+    `;
+    return (rowCount ?? 0) > 0;
+  }
+  return jsonDeleteFaq(id);
+}
+
+function rowToFaq(row: Record<string, unknown>): FAQItem {
+  return {
+    id: row.id as string,
+    question: row.question as string,
+    answer: row.answer as string,
+    category: row.category as FAQItem["category"],
+    isPublished: row.is_published as boolean,
+    sortOrder: row.sort_order as number,
+  };
 }

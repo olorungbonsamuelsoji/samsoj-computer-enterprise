@@ -1,5 +1,5 @@
 ﻿import { NextResponse } from "next/server";
-import { getAllFAQs, saveFAQ, deleteFAQ } from "@/lib/db/faqs-repository";
+import { getAllFaqs, saveFaq, deleteFaq } from "@/lib/db/faqs-repository";
 import { checkAdminSession } from "@/lib/auth/admin-auth";
 
 export async function GET(request: Request) {
@@ -7,7 +7,10 @@ export async function GET(request: Request) {
   const includeUnpublished = searchParams.get("all") === "true";
 
   const isAuthenticated = await checkAdminSession();
-  const faqs = await getAllFAQs(isAuthenticated && includeUnpublished);
+  let faqs = await getAllFaqs();
+  if (!isAuthenticated || !includeUnpublished) {
+    faqs = faqs.filter((f) => f.isPublished);
+  }
   return NextResponse.json({ success: true, faqs });
 }
 
@@ -23,7 +26,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: false, message: "Question and Answer are required." }, { status: 400 });
     }
 
-    const saved = await saveFAQ(body);
+    const saved = await saveFaq(body);
     return NextResponse.json({ success: true, faq: saved, message: "FAQ saved successfully." });
   } catch (error) {
     console.error("Save FAQ error:", error);
@@ -43,7 +46,7 @@ export async function DELETE(request: Request) {
     return NextResponse.json({ success: false, message: "FAQ ID is required." }, { status: 400 });
   }
 
-  const deleted = await deleteFAQ(id);
+  const deleted = await deleteFaq(id);
   if (!deleted) {
     return NextResponse.json({ success: false, message: "FAQ not found." }, { status: 404 });
   }
