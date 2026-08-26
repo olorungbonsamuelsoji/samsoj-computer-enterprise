@@ -69,7 +69,7 @@ export default function AdminLoginPage() {
               className="mt-1.5 h-12 w-full rounded-xl border border-border bg-background px-4 text-sm text-foreground outline-none transition focus:border-primary focus:ring-2 focus:ring-primary/20"
             />
             <p className="mt-1.5 text-[11px] text-muted-foreground">
-              Initial default passkey: <code className="bg-muted px-1.5 py-0.5 rounded text-accent font-bold">samsoj2026!</code>
+              Enter the administrator passkey provided to you.
             </p>
           </div>
 

@@ -20,7 +20,7 @@
       "Ports: 1 Thunderbolt (USB Type-C connector), 2 USB 3.1 Gen 1 (1 charging), 1 HDMI 1.4b, 1 RJ-45 Ethernet, 1 headphone/microphone combo, 1 docking connector",
       "Security: HP Sure Start Gen5, HP Privacy Camera, Touch Fingerprint Sensor"
     ],
-    "price": 400000,
+    "price": 420000,
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/HP EliteBook 840 G6 Business Laptop.png",
@@ -55,7 +55,7 @@
       "Ports: 1 DisplayPort over USB Type-C, 3 USB 3.1 Gen 1 (one with PowerShare), 1 HDMI 1.4, 1 RJ-45 Ethernet, SD 4.0 Memory Card Reader",
       "Battery: 4-Cell 60Whr ExpressCharge Capable Battery"
     ],
-    "price": 425000,
+    "price": 450000,
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/Dell Latitude 7490 Business Notebook.png",
@@ -126,7 +126,7 @@
       "OS: Genuine Windows 11 Pro 64-Bit Pre-installed with Motherboard Driver Suite"
     ],
     "pricingType": "starting_from",
-    "price": 285000,
+    "price": 300000,
     "status": "available",
     "image": "/products/samsoj-desktop-workstation-core-i7.jpg",
     "featured": true,
@@ -157,7 +157,7 @@
       "Paper Support: 100-Sheet Rear Paper Feed",
       "Connectivity: Wi-Fi IEEE802.11 b/g/n, Hi-Speed USB Port (B Port), Mopria (Android), Apple AirPrint"
     ],
-    "price": 215000,
+    "price": 225000,
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/Canon PIXMA G3411 Wireless MegaTank All-In-One Printer.jpg",
@@ -192,7 +192,7 @@
       "Connectivity: 1 Hi-Speed USB 2.0, 1 host USB at rear, Gigabit Ethernet 10/100/1000BASE-T network",
       "Mobile Printing: Apple AirPrint, Google Cloud Print, HP ePrint, Mopria Certified"
     ],
-    "price": 320000,
+    "price": 330000,
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/HP LaserJet Pro M404dn Monochrome Laser Printer.jpg",
@@ -225,7 +225,7 @@
       "Security: WPA/WPA2, WPA-PSK/WPA2-PSK Encryption, SPI Firewall, IP/MAC Address Binding",
       "Buttons: WPS/Reset Button, Power On/Off Button"
     ],
-    "price": 23500,
+    "price": 40000,
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/TP-Link TL-WR841N 300Mbps Wireless N Router.jpg",
@@ -258,7 +258,7 @@
       "Protocols: Supports IPv4 and IPv6",
       "App Management: TP-Link Deco App setup on iOS & Android"
     ],
-    "price": 90000,
+    "price": 110000,
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/TP-Link Deco M4 AC1200 Whole Home Mesh Wi-Fi System (2-Pack).jpg",
@@ -289,7 +289,7 @@
       "Security: WPA Algorithm: AES, TKIP, WPA & WPA2-PSK",
       "Power Consumption: 1.9W (no load) to 3.3W (full load)"
     ],
-    "price": 21000,
+    "price": 25000,
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/Tenda F3 300Mbps Wireless Wi-Fi Router.jpg",
@@ -323,7 +323,7 @@
       "Dimensions: 115.3 mm x 80.0 mm x 12.6 mm",
       "Data Protection: Includes Rescue Data Recovery Services"
     ],
-    "price": 47000,
+    "price": 52000,
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/Seagate Expansion 1TB USB 3.0 Portable External Hard Drive.jpg",
@@ -358,7 +358,7 @@
       "Controller: Samsung Phoenix Controller",
       "Endurance: 300 Terabytes Written (TBW)"
     ],
-    "price": 63000,
+    "price": 68000,
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/Samsung 970 EVO Plus 500GB NVMe M.2 SSD.jpg",
@@ -392,7 +392,7 @@
       "Operating Conditions: -40 °C to 60 °C, Humidity 90% or less",
       "Power Supply: 12 VDC ± 15%, Max. 4 W"
     ],
-    "price": 19500,
+    "price": 25000,
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/Hikvision DS-2CE56D0T-IRPF 1080P Indoor Dome Camera.jpg",
@@ -458,7 +458,7 @@
       "OS & Compatibility: Compatible with Windows 10 IoT / Windows 11, QuickBooks, POSitive, Loyalverse, and custom web POS"
     ],
     "pricingType": "starting_from",
-    "price": 385000,
+    "price": 400000,
     "status": "available",
     "image": "/products/SAMSOJ All-In-One Touchscreen POS System Terminal.jpg",
     "featured": true,
@@ -487,7 +487,7 @@
       "Scan Speed: 300 scans per second",
       "Drop Resistance: Designed to withstand 1.5m drops to concrete"
     ],
-    "price": 33500,
+    "price": 38500,
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/ZKTeco ZK-D050 Handheld 1D2D Barcode Scanner.jpg",
@@ -519,7 +519,7 @@
       "Receiver: Plug-and-forget USB Nano Receiver stored inside mouse compartment",
       "Compatibility: Windows 11, Windows 10, Windows 8, Windows 7, ChromeOS"
     ],
-    "price": 29500,
+    "price": 34500,
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/Logitech MK270 Wireless Keyboard and Mouse Combo.jpg",
@@ -552,7 +552,7 @@
       "Connectivity: Wi-Fi, USB 2.0, Bluetooth 5.0 LE",
       "Mobile Printing: Apple AirPrint, HP Smart App, Mopria, Wi-Fi Direct"
     ],
-    "price": 80000,
+    "price": 85000,
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/HP DeskJet 2720e All-In-One Wireless Inkjet Printer.jpg",
@@ -585,7 +585,7 @@
       "Power: 6W max power consumption",
       "Casing: Desktop metal housing with wall-mount support"
     ],
-    "price": 27000,
+    "price": 40000,
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/TP-Link TL-SG108 8-Port Gigabit Unmanaged Network Switch.jpg",
@@ -617,7 +617,7 @@
       "OS Compatibility: Windows 10+, macOS 10.9+, ChromeOS",
       "Form Factor: Compact slider design with retractable connector"
     ],
-    "price": 17500,
+    "price": 22500,
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/SanDisk Ultra 128GB USB 3.0 Flash Drive.jpg",
@@ -650,7 +650,7 @@
       "Compatibility: HP, Dell, Lenovo, Acer, Asus laptops with DDR4 slot",
       "ECC: Non-ECC, Unbuffered"
     ],
-    "price": 33000,
+    "price": 38000,
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/Kingston ValueRAM 8GB DDR4 2666MHz SODIMM Laptop RAM.jpg",
@@ -715,7 +715,7 @@
       "Character Support: English, French, Arabic character sets",
       "Compatibility: Windows, Linux, Android POS apps"
     ],
-    "price": 53000,
+    "price": 58000,
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/SAMSOJ 80mm USB Thermal POS Receipt Printer.jpg",
@@ -747,7 +747,7 @@
       "Ports: 4 x USB 3.1, 2 x USB 2.0, 1 x HDMI, 1 x DisplayPort, 1 x VGA, RJ-45 Ethernet",
       "OS: Windows 11 Pro 64-bit Genuine"
     ],
-    "price": 190000,
+    "price": 200000,
     "pricingType": "fixed",
     "status": "limited",
     "image": "/products/Dell OptiPlex 3060 Micro Core i5 Business Desktop PC.jpg",
@@ -779,7 +779,7 @@
       "Compatibility: Windows 11, Windows 10, Windows 7, macOS, Linux",
       "Plug-and-Play: No driver installation required"
     ],
-    "price": 9500,
+    "price": 12000,
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/HP 100 Series Wired USB Optical Mouse.jpg",
@@ -813,7 +813,7 @@
       "Recharge Time: Approximately 6 hours to full charge"
     ],
     "pricingType": "starting_from",
-    "price": 43000,
+    "price": 48000,
     "status": "available",
     "image": "/products/SAMSOJ 850VA UPS Battery Backup Power Supply.jpg",
     "featured": false,
