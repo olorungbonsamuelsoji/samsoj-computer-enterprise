@@ -20,7 +20,7 @@
       "Ports: 1 Thunderbolt (USB Type-C connector), 2 USB 3.1 Gen 1 (1 charging), 1 HDMI 1.4b, 1 RJ-45 Ethernet, 1 headphone/microphone combo, 1 docking connector",
       "Security: HP Sure Start Gen5, HP Privacy Camera, Touch Fingerprint Sensor"
     ],
-    "price": 395000,
+    "price": 400000,
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/HP EliteBook 840 G6 Business Laptop.png",
@@ -32,7 +32,7 @@
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
     },
-    "updatedAt": "2026-08-25T08:03:49.404Z"
+    "updatedAt": "2026-08-26T08:51:16.575Z"
   },
   {
     "id": "dell-latitude-7490",
@@ -55,7 +55,7 @@
       "Ports: 1 DisplayPort over USB Type-C, 3 USB 3.1 Gen 1 (one with PowerShare), 1 HDMI 1.4, 1 RJ-45 Ethernet, SD 4.0 Memory Card Reader",
       "Battery: 4-Cell 60Whr ExpressCharge Capable Battery"
     ],
-    "price": 420000,
+    "price": 425000,
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/Dell Latitude 7490 Business Notebook.png",
@@ -67,7 +67,7 @@
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
     },
-    "updatedAt": "2026-08-25T08:03:49.404Z"
+    "updatedAt": "2026-08-26T08:51:16.575Z"
   },
   {
     "id": "lenovo-thinkpad-t14-gen1",
@@ -101,7 +101,7 @@
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
     },
-    "updatedAt": "2026-08-25T08:03:49.404Z"
+    "updatedAt": "2026-08-26T08:51:16.575Z"
   },
   {
     "id": "samsoj-desktop-workstation-core-i7",
@@ -126,9 +126,9 @@
       "OS: Genuine Windows 11 Pro 64-Bit Pre-installed with Motherboard Driver Suite"
     ],
     "pricingType": "starting_from",
-    "price": 280000,
+    "price": 285000,
     "status": "available",
-    "image": "/products/desktop.jpg",
+    "image": "/products/samsoj-desktop-workstation-core-i7.jpg",
     "featured": true,
     "badge": "Custom Assembly",
     "sourceInfo": {
@@ -136,7 +136,7 @@
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Chief Hardware Engineer"
     },
-    "updatedAt": "2026-08-25T08:03:49.404Z"
+    "updatedAt": "2026-08-26T08:51:16.575Z"
   },
   {
     "id": "canon-pixma-g3411",
@@ -157,7 +157,7 @@
       "Paper Support: 100-Sheet Rear Paper Feed",
       "Connectivity: Wi-Fi IEEE802.11 b/g/n, Hi-Speed USB Port (B Port), Mopria (Android), Apple AirPrint"
     ],
-    "price": 210000,
+    "price": 215000,
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/Canon PIXMA G3411 Wireless MegaTank All-In-One Printer.jpg",
@@ -169,7 +169,7 @@
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
     },
-    "updatedAt": "2026-08-25T08:03:49.404Z"
+    "updatedAt": "2026-08-26T08:51:16.575Z"
   },
   {
     "id": "hp-laserjet-pro-m404dn",
@@ -192,7 +192,7 @@
       "Connectivity: 1 Hi-Speed USB 2.0, 1 host USB at rear, Gigabit Ethernet 10/100/1000BASE-T network",
       "Mobile Printing: Apple AirPrint, Google Cloud Print, HP ePrint, Mopria Certified"
     ],
-    "price": 315000,
+    "price": 320000,
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/HP LaserJet Pro M404dn Monochrome Laser Printer.jpg",
@@ -204,7 +204,7 @@
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
     },
-    "updatedAt": "2026-08-25T08:03:49.404Z"
+    "updatedAt": "2026-08-26T08:51:16.575Z"
   },
   {
     "id": "tp-link-tl-wr841n",
@@ -225,7 +225,7 @@
       "Security: WPA/WPA2, WPA-PSK/WPA2-PSK Encryption, SPI Firewall, IP/MAC Address Binding",
       "Buttons: WPS/Reset Button, Power On/Off Button"
     ],
-    "price": 18500,
+    "price": 23500,
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/TP-Link TL-WR841N 300Mbps Wireless N Router.jpg",
@@ -237,7 +237,7 @@
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
     },
-    "updatedAt": "2026-08-25T08:03:49.404Z"
+    "updatedAt": "2026-08-26T08:51:16.575Z"
   },
   {
     "id": "tp-link-deco-m4-2pack",
@@ -258,7 +258,7 @@
       "Protocols: Supports IPv4 and IPv6",
       "App Management: TP-Link Deco App setup on iOS & Android"
     ],
-    "price": 85000,
+    "price": 90000,
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/TP-Link Deco M4 AC1200 Whole Home Mesh Wi-Fi System (2-Pack).jpg",
@@ -270,7 +270,7 @@
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
     },
-    "updatedAt": "2026-08-25T08:03:49.404Z"
+    "updatedAt": "2026-08-26T08:51:16.575Z"
   },
   {
     "id": "tenda-f3-300mbps-router",
@@ -289,7 +289,7 @@
       "Security: WPA Algorithm: AES, TKIP, WPA & WPA2-PSK",
       "Power Consumption: 1.9W (no load) to 3.3W (full load)"
     ],
-    "price": 16000,
+    "price": 21000,
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/Tenda F3 300Mbps Wireless Wi-Fi Router.jpg",
@@ -301,7 +301,7 @@
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
     },
-    "updatedAt": "2026-08-25T08:03:49.404Z"
+    "updatedAt": "2026-08-26T08:51:16.575Z"
   },
   {
     "id": "seagate-expansion-1tb-external-hdd",
@@ -323,7 +323,7 @@
       "Dimensions: 115.3 mm x 80.0 mm x 12.6 mm",
       "Data Protection: Includes Rescue Data Recovery Services"
     ],
-    "price": 42000,
+    "price": 47000,
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/Seagate Expansion 1TB USB 3.0 Portable External Hard Drive.jpg",
@@ -335,7 +335,7 @@
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
     },
-    "updatedAt": "2026-08-25T08:03:49.404Z"
+    "updatedAt": "2026-08-26T08:51:16.575Z"
   },
   {
     "id": "samsung-970-evo-plus-500gb",
@@ -358,7 +358,7 @@
       "Controller: Samsung Phoenix Controller",
       "Endurance: 300 Terabytes Written (TBW)"
     ],
-    "price": 58000,
+    "price": 63000,
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/Samsung 970 EVO Plus 500GB NVMe M.2 SSD.jpg",
@@ -370,7 +370,7 @@
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
     },
-    "updatedAt": "2026-08-25T08:03:49.404Z"
+    "updatedAt": "2026-08-26T08:51:16.575Z"
   },
   {
     "id": "hikvision-ds-2ce56d0t-irpf-dome",
@@ -392,7 +392,7 @@
       "Operating Conditions: -40 °C to 60 °C, Humidity 90% or less",
       "Power Supply: 12 VDC ± 15%, Max. 4 W"
     ],
-    "price": 14500,
+    "price": 19500,
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/Hikvision DS-2CE56D0T-IRPF 1080P Indoor Dome Camera.jpg",
@@ -404,7 +404,7 @@
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
     },
-    "updatedAt": "2026-08-25T08:03:49.404Z"
+    "updatedAt": "2026-08-26T08:51:16.575Z"
   },
   {
     "id": "hikvision-4ch-cctv-kit-1080p",
@@ -436,7 +436,7 @@
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
     },
-    "updatedAt": "2026-08-25T08:03:49.404Z"
+    "updatedAt": "2026-08-26T08:51:16.575Z"
   },
   {
     "id": "samsoj-touchscreen-pos-system",
@@ -458,7 +458,7 @@
       "OS & Compatibility: Compatible with Windows 10 IoT / Windows 11, QuickBooks, POSitive, Loyalverse, and custom web POS"
     ],
     "pricingType": "starting_from",
-    "price": 380000,
+    "price": 385000,
     "status": "available",
     "image": "/products/SAMSOJ All-In-One Touchscreen POS System Terminal.jpg",
     "featured": true,
@@ -468,7 +468,7 @@
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Retail Technology Engineer"
     },
-    "updatedAt": "2026-08-25T08:03:49.404Z"
+    "updatedAt": "2026-08-26T08:51:16.575Z"
   },
   {
     "id": "zkteco-zk-d050-barcode-scanner",
@@ -487,10 +487,10 @@
       "Scan Speed: 300 scans per second",
       "Drop Resistance: Designed to withstand 1.5m drops to concrete"
     ],
-    "price": 28500,
+    "price": 33500,
     "pricingType": "fixed",
     "status": "available",
-    "image": "/products/pos.jpg",
+    "image": "/products/ZKTeco ZK-D050 Handheld 1D2D Barcode Scanner.jpg",
     "featured": false,
     "badge": "High-Speed Laser",
     "sourceInfo": {
@@ -499,7 +499,7 @@
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
     },
-    "updatedAt": "2026-08-25T08:03:49.404Z"
+    "updatedAt": "2026-08-26T08:51:16.575Z"
   },
   {
     "id": "logitech-mk270-wireless-combo",
@@ -519,7 +519,7 @@
       "Receiver: Plug-and-forget USB Nano Receiver stored inside mouse compartment",
       "Compatibility: Windows 11, Windows 10, Windows 8, Windows 7, ChromeOS"
     ],
-    "price": 24500,
+    "price": 29500,
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/Logitech MK270 Wireless Keyboard and Mouse Combo.jpg",
@@ -531,7 +531,7 @@
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
     },
-    "updatedAt": "2026-08-25T08:03:49.404Z"
+    "updatedAt": "2026-08-26T08:51:16.575Z"
   },
   {
     "id": "hp-deskjet-2720e-inkjet",
@@ -552,7 +552,7 @@
       "Connectivity: Wi-Fi, USB 2.0, Bluetooth 5.0 LE",
       "Mobile Printing: Apple AirPrint, HP Smart App, Mopria, Wi-Fi Direct"
     ],
-    "price": 75000,
+    "price": 80000,
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/HP DeskJet 2720e All-In-One Wireless Inkjet Printer.jpg",
@@ -564,7 +564,7 @@
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
     },
-    "updatedAt": "2026-08-25T08:03:49.404Z"
+    "updatedAt": "2026-08-26T08:51:16.575Z"
   },
   {
     "id": "tp-link-tl-sg108-8port-switch",
@@ -585,7 +585,7 @@
       "Power: 6W max power consumption",
       "Casing: Desktop metal housing with wall-mount support"
     ],
-    "price": 22000,
+    "price": 27000,
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/TP-Link TL-SG108 8-Port Gigabit Unmanaged Network Switch.jpg",
@@ -597,7 +597,7 @@
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
     },
-    "updatedAt": "2026-08-25T08:03:49.404Z"
+    "updatedAt": "2026-08-26T08:51:16.575Z"
   },
   {
     "id": "sandisk-ultra-128gb-flash-drive",
@@ -617,7 +617,7 @@
       "OS Compatibility: Windows 10+, macOS 10.9+, ChromeOS",
       "Form Factor: Compact slider design with retractable connector"
     ],
-    "price": 12500,
+    "price": 17500,
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/SanDisk Ultra 128GB USB 3.0 Flash Drive.jpg",
@@ -629,7 +629,7 @@
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
     },
-    "updatedAt": "2026-08-25T08:03:49.404Z"
+    "updatedAt": "2026-08-26T08:51:16.575Z"
   },
   {
     "id": "kingston-8gb-ddr4-sodimm-ram",
@@ -650,7 +650,7 @@
       "Compatibility: HP, Dell, Lenovo, Acer, Asus laptops with DDR4 slot",
       "ECC: Non-ECC, Unbuffered"
     ],
-    "price": 28000,
+    "price": 33000,
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/Kingston ValueRAM 8GB DDR4 2666MHz SODIMM Laptop RAM.jpg",
@@ -662,7 +662,7 @@
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
     },
-    "updatedAt": "2026-08-25T08:03:49.404Z"
+    "updatedAt": "2026-08-26T08:51:16.575Z"
   },
   {
     "id": "hikvision-ds-2cd2143g2-i-outdoor-dome",
@@ -694,7 +694,7 @@
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
     },
-    "updatedAt": "2026-08-25T08:03:49.404Z"
+    "updatedAt": "2026-08-26T08:51:16.575Z"
   },
   {
     "id": "samsoj-cashier-thermal-printer-80mm",
@@ -715,7 +715,7 @@
       "Character Support: English, French, Arabic character sets",
       "Compatibility: Windows, Linux, Android POS apps"
     ],
-    "price": 48000,
+    "price": 53000,
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/SAMSOJ 80mm USB Thermal POS Receipt Printer.jpg",
@@ -726,7 +726,7 @@
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Retail Technology Engineer"
     },
-    "updatedAt": "2026-08-25T08:03:49.404Z"
+    "updatedAt": "2026-08-26T08:51:16.575Z"
   },
   {
     "id": "dell-optiplex-3060-core-i5-desktop",
@@ -747,7 +747,7 @@
       "Ports: 4 x USB 3.1, 2 x USB 2.0, 1 x HDMI, 1 x DisplayPort, 1 x VGA, RJ-45 Ethernet",
       "OS: Windows 11 Pro 64-bit Genuine"
     ],
-    "price": 185000,
+    "price": 190000,
     "pricingType": "fixed",
     "status": "limited",
     "image": "/products/Dell OptiPlex 3060 Micro Core i5 Business Desktop PC.jpg",
@@ -759,7 +759,7 @@
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
     },
-    "updatedAt": "2026-08-25T08:03:49.404Z"
+    "updatedAt": "2026-08-26T08:51:16.575Z"
   },
   {
     "id": "hp-wired-usb-optical-mouse",
@@ -779,7 +779,7 @@
       "Compatibility: Windows 11, Windows 10, Windows 7, macOS, Linux",
       "Plug-and-Play: No driver installation required"
     ],
-    "price": 4500,
+    "price": 9500,
     "pricingType": "fixed",
     "status": "available",
     "image": "/products/HP 100 Series Wired USB Optical Mouse.jpg",
@@ -791,7 +791,7 @@
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
     },
-    "updatedAt": "2026-08-25T08:03:49.404Z"
+    "updatedAt": "2026-08-26T08:51:16.575Z"
   },
   {
     "id": "samsoj-ups-850va-battery-backup",
@@ -813,7 +813,7 @@
       "Recharge Time: Approximately 6 hours to full charge"
     ],
     "pricingType": "starting_from",
-    "price": 38000,
+    "price": 43000,
     "status": "available",
     "image": "/products/SAMSOJ 850VA UPS Battery Backup Power Supply.jpg",
     "featured": false,
@@ -823,6 +823,6 @@
       "lastChecked": "2026-08-24",
       "checkedBy": "SAMSOJ Technical Verification Desk"
     },
-    "updatedAt": "2026-08-25T08:03:49.404Z"
+    "updatedAt": "2026-08-26T08:51:16.575Z"
   }
 ]
