@@ -4,6 +4,7 @@ import { business } from "@/lib/config";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { seedIfEmpty } from "@/lib/db/postgres";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 if (process.env.POSTGRES_URL) {
@@ -100,6 +101,7 @@ export default function RootLayout({
         <Header />
         <div className="flex-1">{children}</div>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
