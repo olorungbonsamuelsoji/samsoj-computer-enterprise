@@ -45,7 +45,7 @@ export async function saveFaq(faq: Partial<FAQItem> & { id?: string }): Promise<
         WHERE id = ${faq.id}
         RETURNING *
       `;
-      return rowToFaq(rows[0]);
+      if (rows.length > 0) return rowToFaq(rows[0]);
     }
 
     const newId = faq.id || `faq_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`;

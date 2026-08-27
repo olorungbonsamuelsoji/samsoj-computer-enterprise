@@ -68,7 +68,7 @@ export async function saveService(service: Partial<Service> & { id?: string }): 
         WHERE id = ${service.id}
         RETURNING *
       `;
-      return rowToService(rows[0]);
+      if (rows.length > 0) return rowToService(rows[0]);
     }
 
     const newId = service.id || `svc_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`;

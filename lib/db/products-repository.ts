@@ -58,7 +58,7 @@ export async function saveProduct(product: Partial<Product> & { id?: string }): 
         WHERE id = ${product.id}
         RETURNING *
       `;
-      return rowToProduct(rows[0]);
+      if (rows.length > 0) return rowToProduct(rows[0]);
     }
 
     const newId = product.id || `prod_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`;
