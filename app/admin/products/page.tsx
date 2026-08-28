@@ -15,7 +15,7 @@ export default function AdminProductsPage() {
 
   useEffect(() => {
     let ignore = false;
-    fetch("/api/products")
+    fetch("/api/products", { cache: "no-store" })
       .then((res) => res.json())
       .then((data) => {
         if (!ignore && data.success && data.products) {
@@ -89,6 +89,8 @@ export default function AdminProductsPage() {
         setIsModalOpen(false);
         setEditingProduct(null);
         setRefreshTrigger((prev) => prev + 1);
+      } else {
+        setMessage({ text: data.message || "Failed to save product.", type: "error" });
       }
     } catch {
       setMessage({ text: "Failed to save product.", type: "error" });

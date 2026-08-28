@@ -57,7 +57,7 @@ export function ProductCatalog({ onSelectProductForEnquiry }: ProductCatalogProp
   useEffect(() => {
     async function loadProducts() {
       try {
-        const res = await fetch("/api/products");
+        const res = await fetch("/api/products", { cache: "no-store" });
         const data = await res.json();
         if (data.success && data.products) {
           setProducts(data.products);

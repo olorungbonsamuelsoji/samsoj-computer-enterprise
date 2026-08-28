@@ -1,4 +1,4 @@
-﻿import { sql, ensureInitialized } from "@/lib/db/postgres";
+import { sql, ensureInitialized, isDatabaseConfigured } from "@/lib/db/postgres";
 import { Product } from "@/types/product";
 import {
   jsonGetAllProducts,
@@ -7,21 +7,32 @@ import {
   jsonDeleteProduct,
 } from "@/lib/db/json-fallback";
 
-const usePostgres = !!process.env.POSTGRES_URL;
+function isDatabaseEnabled() {
+  return isDatabaseConfigured();
+}
+
+function assertDatabaseConfiguredForProduction(operation: string) {
+  if (!isDatabaseEnabled() && process.env.NODE_ENV === "production") {
+    throw new Error(
+      `Database not configured (POSTGRES_URL missing). ${operation} cannot be completed.`
+    );
+  }
+}
 
 export async function getAllProducts(): Promise<Product[]> {
-  if (usePostgres) {
+  if (isDatabaseEnabled()) {
     await ensureInitialized();
     const { rows } = await sql`
       SELECT * FROM products ORDER BY featured DESC, name ASC
     `;
     return rows.map(rowToProduct);
   }
+  assertDatabaseConfiguredForProduction("Loading products");
   return jsonGetAllProducts();
 }
 
 export async function getProductById(id: string): Promise<Product | null> {
-  if (usePostgres) {
+  if (isDatabaseEnabled()) {
     await ensureInitialized();
     const { rows } = await sql`
       SELECT * FROM products WHERE id = ${id} LIMIT 1
@@ -29,11 +40,12 @@ export async function getProductById(id: string): Promise<Product | null> {
     if (rows.length === 0) return null;
     return rowToProduct(rows[0]);
   }
+  assertDatabaseConfiguredForProduction("Loading product");
   return jsonGetProductById(id);
 }
 
 export async function saveProduct(product: Partial<Product> & { id?: string }): Promise<Product> {
-  if (usePostgres) {
+  if (isDatabaseEnabled()) {
     await ensureInitialized();
     if (product.id) {
       const { rows } = await sql`
@@ -82,17 +94,23 @@ export async function saveProduct(product: Partial<Product> & { id?: string }): 
     return rowToProduct(rows[0]);
   }
 
-  return jsonSaveProduct(product);
+  if (process.env.NODE_ENV !== "production") {
+    return jsonSaveProduct(product);
+  }
+  throw new Error(
+    "Database not configured (POSTGRES_URL missing). Product changes cannot be saved."
+  );
 }
 
 export async function deleteProduct(id: string): Promise<boolean> {
-  if (usePostgres) {
+  if (isDatabaseEnabled()) {
     await ensureInitialized();
     const { rowCount } = await sql`
       DELETE FROM products WHERE id = ${id}
     `;
     return (rowCount ?? 0) > 0;
   }
+  assertDatabaseConfiguredForProduction("Deleting product");
   return jsonDeleteProduct(id);
 }
 

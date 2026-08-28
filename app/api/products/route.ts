@@ -2,9 +2,19 @@
 import { getAllProducts, saveProduct, deleteProduct } from "@/lib/db/products-repository";
 import { checkAdminSession } from "@/lib/auth/admin-auth";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
-  const products = await getAllProducts();
-  return NextResponse.json({ success: true, products });
+  try {
+    const products = await getAllProducts();
+    return NextResponse.json({ success: true, products });
+  } catch (error) {
+    console.error("Get products error:", error);
+    return NextResponse.json(
+      { success: false, message: "Failed to load products." },
+      { status: 500 }
+    );
+  }
 }
 
 export async function POST(request: Request) {
