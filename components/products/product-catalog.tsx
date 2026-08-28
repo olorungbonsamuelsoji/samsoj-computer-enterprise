@@ -7,8 +7,8 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { getProductWhatsAppUrl } from "@/lib/whatsapp";
-import { business } from "@/lib/config";
 import { ProductImage } from "@/components/products/ProductImage";
+import { useBusinessConfig } from "@/components/hooks/use-business-config";
 
 const categoryTabs = [
   { id: "all", label: "All Products" },
@@ -47,6 +47,7 @@ import { useSearchParams } from "next/navigation";
 
 export function ProductCatalog({ onSelectProductForEnquiry }: ProductCatalogProps) {
   const searchParams = useSearchParams();
+  const businessConfig = useBusinessConfig();
   const selectedParam = searchParams.get("selected");
   const [products, setProducts] = useState<Product[]>([]);
   const [activeTab, setActiveTab] = useState("all");
@@ -204,13 +205,13 @@ export function ProductCatalog({ onSelectProductForEnquiry }: ProductCatalogProp
                   <div className="mt-3 flex items-center justify-between">
                     {product.pricingType === "fixed" && product.price ? (
                       <p className="text-base font-extrabold text-foreground">
-                        {business.currencySymbol}{product.price.toLocaleString()}
+                            {businessConfig.currencySymbol}{product.price.toLocaleString()}
                       </p>
                     ) : product.pricingType === "starting_from" && product.price ? (
                       <div>
                         <p className="text-[10px] text-muted-foreground">Starting from</p>
                         <p className="text-sm font-extrabold text-foreground">
-                          {business.currencySymbol}{product.price.toLocaleString()}
+                        {businessConfig.currencySymbol}{product.price.toLocaleString()}
                         </p>
                       </div>
                     ) : (
@@ -237,7 +238,7 @@ export function ProductCatalog({ onSelectProductForEnquiry }: ProductCatalogProp
                       View Details
                     </Button>
                     <a
-                      href={getProductWhatsAppUrl(product)}
+                      href={getProductWhatsAppUrl(product, businessConfig)}
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
@@ -360,7 +361,7 @@ export function ProductCatalog({ onSelectProductForEnquiry }: ProductCatalogProp
                 <div>
                   <p className="text-xs text-muted-foreground">Price</p>
                   <p className="text-2xl font-extrabold text-foreground">
-                    {business.currencySymbol}{selectedProduct.price.toLocaleString()}
+                    {businessConfig.currencySymbol}{selectedProduct.price.toLocaleString()}
                   </p>
                 </div>
               ) : (
@@ -374,7 +375,7 @@ export function ProductCatalog({ onSelectProductForEnquiry }: ProductCatalogProp
             {/* Actions */}
             <div className="mt-5 flex flex-col gap-3 sm:flex-row">
               <a
-                href={getProductWhatsAppUrl(selectedProduct)}
+                href={getProductWhatsAppUrl(selectedProduct, businessConfig)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1"

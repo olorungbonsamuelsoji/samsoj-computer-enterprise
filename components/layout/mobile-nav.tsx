@@ -3,9 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { business } from "@/lib/config";
 import { Button } from "@/components/ui/button";
 import { getGeneralWhatsAppUrl } from "@/lib/whatsapp";
+import type { BusinessConfig } from "@/types/admin";
 
 interface NavigationItem {
   label: string;
@@ -16,13 +16,14 @@ interface MobileNavProps {
   open: boolean;
   onClose: () => void;
   navigation: NavigationItem[];
+  businessConfig: BusinessConfig;
 }
 
-export function MobileNav({ open, onClose, navigation }: MobileNavProps) {
+export function MobileNav({ open, onClose, navigation, businessConfig }: MobileNavProps) {
   const pathname = usePathname();
   if (!open) return null;
 
-  const whatsappUrl = getGeneralWhatsAppUrl();
+  const whatsappUrl = getGeneralWhatsAppUrl(businessConfig);
 
   return (
     <div className="fixed inset-0 z-50 md:hidden">
@@ -105,8 +106,8 @@ export function MobileNav({ open, onClose, navigation }: MobileNavProps) {
 
           <div className="mt-4 rounded-xl bg-muted/60 p-4 text-xs text-muted-foreground">
             <p className="font-semibold text-foreground">Direct Contact:</p>
-            <p className="mt-1">📞 {business.phoneDisplay}</p>
-            <p className="mt-1 break-all">✉️ {business.email}</p>
+            <p className="mt-1">📞 {businessConfig.phoneDisplay}</p>
+            <p className="mt-1 break-all">✉️ {businessConfig.email}</p>
           </div>
         </div>
       </div>

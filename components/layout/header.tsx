@@ -4,12 +4,12 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import { business } from "@/lib/config";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { getGeneralWhatsAppUrl } from "@/lib/whatsapp";
 import { MobileNav } from "./mobile-nav";
 import { ThemeToggle } from "./theme-toggle";
+import type { BusinessConfig } from "@/types/admin";
 
 const navigation = [
   { label: "Home", href: "/" },
@@ -19,10 +19,10 @@ const navigation = [
   { label: "📞 Contact & Enquire", href: "/contact" },
 ];
 
-export function Header() {
+export function Header({ businessConfig }: { businessConfig: BusinessConfig }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const pathname = usePathname();
-  const whatsappUrl = getGeneralWhatsAppUrl();
+  const whatsappUrl = getGeneralWhatsAppUrl(businessConfig);
 
   return (
     <>
@@ -32,7 +32,7 @@ export function Header() {
           <Link
             href="/"
             className="flex items-center gap-3.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-2xl p-1.5 transition-all"
-            aria-label={`${business.name} Home`}
+            aria-label={`${businessConfig.name} Home`}
           >
             <div className="relative size-14 overflow-hidden rounded-2xl bg-gradient-to-br from-card via-background to-primary/5 border-2 border-primary/30 p-1 shadow-md shadow-primary/10 transition-all duration-300 group-hover:scale-105 group-hover:border-primary/60">
               <Image
@@ -137,6 +137,7 @@ export function Header() {
         open={mobileOpen}
         onClose={() => setMobileOpen(false)}
         navigation={navigation}
+        businessConfig={businessConfig}
       />
     </>
   );

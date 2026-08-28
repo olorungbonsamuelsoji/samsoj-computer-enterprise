@@ -19,7 +19,9 @@ export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
   const [productsLoading, setProductsLoading] = useState(true);
 
-  const remoteSupportUrl = getRemoteSupportWhatsAppUrl();
+  const businessConfig = (settings ?? business) as unknown as BusinessConfig;
+
+  const remoteSupportUrl = getRemoteSupportWhatsAppUrl(undefined, undefined, businessConfig);
 
   useEffect(() => {
     async function loadData() {
@@ -45,7 +47,6 @@ export default function Home() {
     }
     loadData();
   }, []);
-
   const announcement = settings?.announcement || business.announcement;
 
   const departmentHubs = [
@@ -340,13 +341,13 @@ export default function Home() {
                     <div className="mt-3 flex items-center justify-between">
                       {product.pricingType === "fixed" && product.price ? (
                         <p className="text-base font-extrabold text-foreground">
-                          {business.currencySymbol}{product.price.toLocaleString()}
+                            {businessConfig.currencySymbol}{product.price.toLocaleString()}
                         </p>
                       ) : product.pricingType === "starting_from" && product.price ? (
                         <div>
                           <p className="text-[10px] text-muted-foreground">Starting from</p>
                           <p className="text-base font-extrabold text-foreground">
-                            {business.currencySymbol}{product.price.toLocaleString()}
+                          {businessConfig.currencySymbol}{product.price.toLocaleString()}
                           </p>
                         </div>
                       ) : (
@@ -376,7 +377,7 @@ export default function Home() {
                         </Button>
                       </Link>
                       <a
-                        href={getProductWhatsAppUrl(product)}
+                        href={getProductWhatsAppUrl(product, businessConfig)}
                         target="_blank"
                         rel="noopener noreferrer"
                       >

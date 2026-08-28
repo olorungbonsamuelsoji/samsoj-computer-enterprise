@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
-import { business } from "@/lib/config";
+import { getBusinessConfig } from "@/lib/db/settings-repository";
 
 const resendApiKey = process.env.RESEND_API_KEY;
 const resend = resendApiKey ? new Resend(resendApiKey) : null;
@@ -63,7 +63,7 @@ export async function POST(request: Request) {
       });
     }
 
-    const recipientEmail = business.email;
+    const recipientEmail = (await getBusinessConfig()).email;
     const fromAddress =
       process.env.EMAIL_FROM_ADDRESS || "SAMSOJ Website <onboarding@resend.dev>";
 

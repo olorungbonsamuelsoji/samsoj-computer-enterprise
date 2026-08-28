@@ -1,6 +1,6 @@
 "use client";
 
-import { business } from "@/lib/config";
+import { useBusinessConfig } from "@/components/hooks/use-business-config";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { getGeneralWhatsAppUrl } from "@/lib/whatsapp";
@@ -8,7 +8,8 @@ import { EnquirySection } from "@/components/enquiry/enquiry-section";
 import { CustomerAssistant } from "@/components/ai/customer-assistant";
 
 export default function ContactPage() {
-  const whatsappUrl = getGeneralWhatsAppUrl();
+  const businessConfig = useBusinessConfig();
+  const whatsappUrl = getGeneralWhatsAppUrl(businessConfig);
 
   return (
     <main className="relative min-h-screen">
@@ -47,7 +48,7 @@ export default function ContactPage() {
                 <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
                   Our primary channel! Instant quotes, remote support setup, or product availability.
                 </p>
-                <p className="mt-3 text-base font-extrabold text-foreground">{business.whatsApp}</p>
+                <p className="mt-3 text-base font-extrabold text-foreground">{businessConfig.whatsApp}</p>
               </div>
 
               <div className="mt-5 pt-3 border-t border-emerald-500/20">
@@ -70,11 +71,11 @@ export default function ContactPage() {
                 <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
                   Speak directly with our technical support team during business hours.
                 </p>
-                <p className="mt-3 text-base font-extrabold text-foreground">{business.phoneDisplay}</p>
+                <p className="mt-3 text-base font-extrabold text-foreground">{businessConfig.phoneDisplay}</p>
               </div>
 
               <div className="mt-5 pt-3 border-t border-border">
-                <a href={`tel:${business.phone}`} className="block w-full">
+                <a href={`tel:${businessConfig.phone}`} className="block w-full">
                   <Button variant="outline" className="w-full font-bold text-xs gap-2">
                     <span>📞</span>
                     <span>Call Desk</span>
@@ -93,12 +94,12 @@ export default function ContactPage() {
                 <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">
                   Official correspondence & invoice requests.
                 </p>
-                <p className="mt-2 text-xs font-bold text-foreground">{business.email}</p>
-                <p className="mt-2 text-xs font-semibold text-accent">{business.hours}</p>
+                <p className="mt-2 text-xs font-bold text-foreground">{businessConfig.email}</p>
+                <p className="mt-2 text-xs font-semibold text-accent">{businessConfig.hours}</p>
               </div>
 
               <div className="mt-5 pt-3 border-t border-border">
-                <a href={`mailto:${business.email}`} className="block w-full">
+                <a href={`mailto:${businessConfig.email}`} className="block w-full">
                   <Button variant="outline" className="w-full font-bold text-xs gap-2">
                     <span>📧</span>
                     <span>Send Email</span>

@@ -1,13 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
-import { business } from "@/lib/config";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
 import { getGeneralWhatsAppUrl } from "@/lib/whatsapp";
+import type { BusinessConfig } from "@/types/admin";
 
-export function Footer() {
+export function Footer({ businessConfig }: { businessConfig: BusinessConfig }) {
   const currentYear = new Date().getFullYear();
-  const whatsappUrl = getGeneralWhatsAppUrl();
+  const whatsappUrl = getGeneralWhatsAppUrl(businessConfig);
 
   return (
     <footer className="border-t border-border/80 bg-card text-card-foreground">
@@ -51,7 +51,7 @@ export function Footer() {
                 </Button>
               </a>
 
-              <a href={`mailto:${business.email}`}>
+              <a href={`mailto:${businessConfig.email}`}>
                 <Button variant="outline" size="sm" className="text-xs">
                   Email Us
                 </Button>
@@ -106,13 +106,13 @@ export function Footer() {
               Business Hours
             </h3>
             <div className="mt-4 space-y-2 text-sm text-muted-foreground">
-              <p className="font-medium text-foreground">{business.hours}</p>
+              <p className="font-medium text-foreground">{businessConfig.hours}</p>
               <p className="text-xs text-accent font-semibold">
-                {business.serviceAvailability}
+                {businessConfig.serviceAvailability}
               </p>
               <div className="mt-4 pt-3 border-t border-border">
                 <p className="text-xs text-muted-foreground">
-                  Location: <span className="text-foreground font-medium">{business.country}</span>
+                  Location: <span className="text-foreground font-medium">{businessConfig.country}</span>
                 </p>
               </div>
             </div>
@@ -121,11 +121,11 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col gap-4 border-t border-border/80 pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <p>
-            (C) {currentYear} {business.name}. All rights reserved.
+            (C) {currentYear} {businessConfig.name}. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
             <p className="font-medium text-foreground/80">
-              {business.tagline}
+              {businessConfig.tagline}
             </p>
             <a href="/admin" className="text-muted-foreground/60 hover:text-accent font-semibold transition">
               🔐 Admin CMS

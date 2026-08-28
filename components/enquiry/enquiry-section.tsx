@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { business } from "@/lib/config";
+import { useBusinessConfig } from "@/components/hooks/use-business-config";
 import { Product } from "@/types/product";
 import { Container } from "@/components/ui/container";
 import { Button } from "@/components/ui/button";
@@ -31,6 +31,7 @@ export function EnquirySection({
   selectedProduct,
   onClearSelectedProduct,
 }: EnquirySectionProps) {
+  const businessConfig = useBusinessConfig();
   const [formChannel, setFormChannel] = useState<"whatsapp" | "email">("whatsapp");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [statusMessage, setStatusMessage] = useState<{
@@ -71,7 +72,7 @@ export function EnquirySection({
     }
 
     const lines = [
-      `Hello ${business.name},`,
+      `Hello ${businessConfig.name},`,
       "",
       "I would like to make an enquiry:",
       `• Customer Name: ${form.name}`,
@@ -84,7 +85,7 @@ export function EnquirySection({
       form.message,
     ].filter(Boolean);
 
-    const url = buildWhatsAppUrl(lines.join("\n"));
+    const url = buildWhatsAppUrl(lines.join("\n"), businessConfig);
     window.open(url, "_blank", "noopener,noreferrer");
 
     setStatusMessage({
@@ -101,7 +102,7 @@ export function EnquirySection({
 
     // Pre-calculate fallback WhatsApp link in case customer also wants to chat
     const waLines = [
-      `Hello ${business.name},`,
+      `Hello ${businessConfig.name},`,
       "I just submitted an enquiry on your website:",
       `• Customer Name: ${form.name}`,
       `• Phone: ${form.phone}`,
@@ -110,7 +111,7 @@ export function EnquirySection({
       "Message:",
       form.message,
     ];
-    const instantWaUrl = buildWhatsAppUrl(waLines.join("\n"));
+    const instantWaUrl = buildWhatsAppUrl(waLines.join("\n"), businessConfig);
 
     try {
       const payload = {
@@ -188,7 +189,7 @@ export function EnquirySection({
             {/* Direct Contact Cards */}
             <div className="mt-8 space-y-4">
               <a
-                href={buildWhatsAppUrl("Hello SAMSOJ, I would like to chat directly with support.")}
+                href={buildWhatsAppUrl("Hello SAMSOJ, I would like to chat directly with support.", businessConfig)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-4 rounded-2xl border border-border bg-background p-4 shadow-sm transition hover:border-whatsapp hover:bg-whatsapp/5 group"
@@ -201,13 +202,13 @@ export function EnquirySection({
                     Instant WhatsApp Chat
                   </p>
                   <p className="text-base font-bold text-foreground">
-                    {business.whatsApp}
+                    {businessConfig.whatsApp}
                   </p>
                 </div>
               </a>
 
               <a
-                href={`tel:${business.phone}`}
+                href={`tel:${businessConfig.phone}`}
                 className="flex items-center gap-4 rounded-2xl border border-border bg-background p-4 shadow-sm transition hover:border-primary hover:bg-primary/5 group"
               >
                 <div className="flex size-12 items-center justify-center rounded-xl bg-primary/10 text-2xl group-hover:scale-110 transition-transform">
@@ -218,13 +219,13 @@ export function EnquirySection({
                     Direct Phone Support
                   </p>
                   <p className="text-base font-bold text-foreground">
-                    {business.phoneDisplay}
+                    {businessConfig.phoneDisplay}
                   </p>
                 </div>
               </a>
 
               <a
-                href={`mailto:${business.email}`}
+                href={`mailto:${businessConfig.email}`}
                 className="flex items-center gap-4 rounded-2xl border border-border bg-background p-4 shadow-sm transition hover:border-accent hover:bg-accent/5 group"
               >
                 <div className="flex size-12 items-center justify-center rounded-xl bg-accent/10 text-2xl group-hover:scale-110 transition-transform">
@@ -235,7 +236,7 @@ export function EnquirySection({
                     Business Email
                   </p>
                   <p className="text-base font-bold text-foreground break-all">
-                    {business.email}
+                    {businessConfig.email}
                   </p>
                 </div>
               </a>
@@ -243,9 +244,9 @@ export function EnquirySection({
 
             <div className="mt-8 rounded-2xl border border-border/80 bg-background/50 p-5 text-xs text-muted-foreground">
               <p className="font-bold text-foreground">Opening Hours:</p>
-              <p className="mt-1">{business.hours}</p>
+              <p className="mt-1">{businessConfig.hours}</p>
               <p className="mt-2 text-accent font-semibold">
-                ✓ {business.serviceAvailability}
+                ✓ {businessConfig.serviceAvailability}
               </p>
             </div>
           </div>

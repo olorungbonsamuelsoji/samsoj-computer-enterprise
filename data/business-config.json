@@ -1,4 +1,4 @@
-﻿{
+{
   "name": "SAMSOJ COMPUTER ENTERPRISE",
   "shortName": "SAMSOJ",
   "tagline": "Technology Solutions You Can Rely On",
@@ -11,7 +11,7 @@
   "country": "Nigeria",
   "currency": "NGN",
   "currencySymbol": "₦",
-  "hours": "Monday - Saturday: 8:00 AM - 6:00 PM",
+  "hours": "Monday - Saturday: 8:00 AM - 5:00 PM",
   "serviceAvailability": "24/7 WhatsApp Online & Remote Support Access",
   "address": "Nigeria",
   "remoteSupportAvailable": true,
@@ -21,5 +21,6 @@
     "message": "Need quick PC troubleshooting without traveling? Connect with SAMSOJ via Remote Support!",
     "linkText": "Get Remote Support",
     "linkUrl": "#remote-support"
-  }
+  },
+  "updatedAt": "2026-08-28T15:04:54.269Z"
 }

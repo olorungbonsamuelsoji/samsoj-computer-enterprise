@@ -1,12 +1,13 @@
 "use client";
 
-import { business } from "@/lib/config";
+import { useBusinessConfig } from "@/components/hooks/use-business-config";
 import { Button } from "@/components/ui/button";
 import { getMaintenanceWhatsAppUrl, getRemoteSupportWhatsAppUrl } from "@/lib/whatsapp";
 
 export function PricingGuide() {
-  const maintenanceWhatsApp = getMaintenanceWhatsAppUrl();
-  const remoteSupportWhatsApp = getRemoteSupportWhatsAppUrl();
+  const businessConfig = useBusinessConfig();
+  const maintenanceWhatsApp = getMaintenanceWhatsAppUrl(undefined, undefined, businessConfig);
+  const remoteSupportWhatsApp = getRemoteSupportWhatsAppUrl(undefined, undefined, businessConfig);
 
   const pricingTiers = [
     {
@@ -18,7 +19,7 @@ export function PricingGuide() {
       subtitle: "Includes genuine Windows 7, 8, 10, or 11 Pro setup, disk partitioning, driver pack installation & software setup.",
       factors: "Final cost depends on backup data volume, drive partitioning layout, and software suites requested (games, education, security, utilities, media).",
       actionText: "Book Windows Setup",
-      actionUrl: getMaintenanceWhatsAppUrl("Windows 7 to 11 Pro Installation (Starting from ₦10,000)"),
+      actionUrl: getMaintenanceWhatsAppUrl("Windows 7 to 11 Pro Installation (Starting from ₦10,000)", undefined, businessConfig),
       isPopular: true,
     },
     {
@@ -54,7 +55,7 @@ export function PricingGuide() {
       subtitle: "Make your slow PC fast again! Thermal cleaning, startup trimming, registry optimization, and NVMe SSD migration.",
       factors: "Hardware component costs (SSDs, RAM modules) added if physical upgrade is required.",
       actionText: "Speed Up My PC",
-      actionUrl: getMaintenanceWhatsAppUrl("System Optimization & Speed Upgrade (Starting from ₦8,000)"),
+      actionUrl: getMaintenanceWhatsAppUrl("System Optimization & Speed Upgrade (Starting from ₦8,000)", undefined, businessConfig),
       isPopular: false,
     },
   ];
@@ -73,7 +74,7 @@ export function PricingGuide() {
           </h2>
 
           <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">
-            At <strong>{business.name}</strong>, we believe in honest, transparent pricing. We provide clear baseline starting rates and explain exactly why hardware repairs require diagnosis before final billing.
+            At <strong>{businessConfig.name}</strong>, we believe in honest, transparent pricing. We provide clear baseline starting rates and explain exactly why hardware repairs require diagnosis before final billing.
           </p>
         </div>
 
